@@ -1,5 +1,8 @@
 @import 'tailwindcss';
 
+/* Class-based dark mode for toggle */
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* ===== Custom Theme ===== */
 @theme {
   --font-sans: 'Inter', system-ui, sans-serif;
@@ -58,10 +61,22 @@ html {
 
 body {
   font-family: var(--font-sans);
-  background-color: var(--color-surface-950);
-  color: var(--color-surface-200);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Light mode (default) */
+body {
+  background-color: #ffffff;
+  color: var(--color-surface-700);
+}
+
+/* Dark mode */
+.dark body,
+body.dark-body {
+  background-color: var(--color-surface-950);
+  color: var(--color-surface-200);
 }
 
 /* ===== Scrollbar ===== */
@@ -70,15 +85,27 @@ body {
 }
 
 ::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.dark ::-webkit-scrollbar-track {
   background: var(--color-surface-950);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-surface-700);
+  background: var(--color-surface-300);
   border-radius: 4px;
 }
 
+.dark ::-webkit-scrollbar-thumb {
+  background: var(--color-surface-700);
+}
+
 ::-webkit-scrollbar-thumb:hover {
+  background: var(--color-surface-400);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
   background: var(--color-surface-600);
 }
 
