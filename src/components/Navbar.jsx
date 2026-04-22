@@ -9,15 +9,18 @@ const navLinks = [
 ]
 
 function Navbar() {
-  const [isDark, setIsDark] = useState(false)
+  const [isDark, setIsDark] = useState(true) // default dark
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('about')
 
-  // Dark mode toggle
+  // Dark mode — default to dark
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme')
-    if (savedTheme === 'dark') {
+    if (savedTheme === 'light') {
+      setIsDark(false)
+      document.documentElement.classList.remove('dark')
+    } else {
       setIsDark(true)
       document.documentElement.classList.add('dark')
     }
@@ -75,7 +78,7 @@ function Navbar() {
       id="main-navbar"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? 'bg-white/70 dark:bg-surface-950/70 backdrop-blur-2xl shadow-lg shadow-surface-900/5 dark:shadow-surface-950/30 border-b border-surface-200/50 dark:border-surface-800/50'
+          ? 'bg-white/70 dark:bg-surface-950/80 backdrop-blur-2xl shadow-lg shadow-surface-900/5 dark:shadow-surface-950/30 border-b border-surface-200/50 dark:border-surface-800/50'
           : 'bg-transparent'
       }`}
     >
@@ -88,7 +91,7 @@ function Navbar() {
             onClick={(e) => { e.preventDefault(); handleNavClick('#about') }}
             className="group flex items-center gap-3 transition-colors duration-300"
           >
-            <span className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-500 to-accent-500
+            <span className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-400 to-primary-600
                            flex items-center justify-center text-white text-base font-bold font-heading
                            group-hover:scale-110 transition-transform duration-300 shadow-lg
                            shadow-primary-500/30">
@@ -108,21 +111,19 @@ function Navbar() {
                 onClick={(e) => { e.preventDefault(); handleNavClick(link.href) }}
                 className={`relative text-sm font-medium tracking-wide transition-all duration-300
                   ${activeSection === link.href.slice(1)
-                    ? 'text-primary-600 dark:text-primary-400'
-                    : 'text-surface-500 dark:text-surface-400 hover:text-surface-900 dark:hover:text-white'
+                    ? 'text-primary-400'
+                    : 'text-surface-400 dark:text-surface-400 hover:text-surface-900 dark:hover:text-white'
                   }`}
               >
                 {link.name}
-                {/* Active underline */}
                 <span
-                  className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-primary-500 to-accent-500 rounded-full transition-all duration-300 ${
+                  className={`absolute -bottom-1 left-0 h-0.5 bg-primary-400 rounded-full transition-all duration-300 ${
                     activeSection === link.href.slice(1) ? 'w-full opacity-100' : 'w-0 opacity-0'
                   }`}
                 />
               </a>
             ))}
 
-            {/* Divider */}
             <span className="w-px h-6 bg-surface-200 dark:bg-surface-700" />
 
             {/* Dark Mode Toggle */}
@@ -154,9 +155,8 @@ function Navbar() {
               onClick={(e) => { e.preventDefault(); handleNavClick('#contact') }}
               id="contact-btn"
               className="inline-flex items-center px-6 py-2.5 text-sm font-semibold
-                       text-white rounded-xl
-                       bg-gradient-to-r from-primary-500 to-primary-600
-                       hover:from-primary-600 hover:to-accent-600
+                       text-surface-950 rounded-xl
+                       bg-primary-400 hover:bg-primary-300
                        shadow-lg shadow-primary-500/20 hover:shadow-xl hover:shadow-primary-500/30
                        hover:scale-105 active:scale-95
                        transition-all duration-300 cursor-pointer"
@@ -239,8 +239,8 @@ function Navbar() {
             <a
               href="#contact"
               onClick={(e) => { e.preventDefault(); handleNavClick('#contact') }}
-              className="mt-3 text-center px-5 py-3.5 text-sm font-semibold text-white rounded-xl
-                       bg-gradient-to-r from-primary-500 to-primary-600
+              className="mt-3 text-center px-5 py-3.5 text-sm font-semibold text-surface-950 rounded-xl
+                       bg-primary-400
                        shadow-lg shadow-primary-500/20
                        transition-all duration-300"
             >
