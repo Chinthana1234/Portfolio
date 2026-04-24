@@ -1,23 +1,23 @@
 import { useState, useEffect } from 'react'
-import { HiOutlineSun, HiOutlineMoon, HiOutlineBars3, HiOutlineXMark } from 'react-icons/hi2'
+import { motion, AnimatePresence } from 'framer-motion'
+import { FiMenu, FiX, FiSun, FiMoon } from 'react-icons/fi'
 
 const navLinks = [
-  { name: 'About', href: '#about' },
   { name: 'Skills', href: '#skills' },
   { name: 'Projects', href: '#projects' },
   { name: 'Blog', href: '#blog' },
+  { name: 'Contact', href: '#contact' },
 ]
 
 function Navbar() {
-  const [isDark, setIsDark] = useState(true) // default dark
   const [isScrolled, setIsScrolled] = useState(false)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [activeSection, setActiveSection] = useState('about')
+  const [isMobileOpen, setIsMobileOpen] = useState(false)
+  const [isDark, setIsDark] = useState(true)
 
-  // Dark mode — default to dark
+  // Initialize dark mode from localStorage
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme')
-    if (savedTheme === 'light') {
+    const saved = localStorage.getItem('theme')
+    if (saved === 'light') {
       setIsDark(false)
       document.documentElement.classList.remove('dark')
     } else {
@@ -27,229 +27,169 @@ function Navbar() {
   }, [])
 
   const toggleDarkMode = () => {
-    setIsDark(!isDark)
-    if (!isDark) {
-      document.documentElement.classList.add('dark')
-      localStorage.setItem('theme', 'dark')
-    } else {
+    if (isDark) {
       document.documentElement.classList.remove('dark')
       localStorage.setItem('theme', 'light')
+      setIsDark(false)
+    } else {
+      document.documentElement.classList.add('dark')
+      localStorage.setItem('theme', 'dark')
+      setIsDark(true)
     }
   }
 
-  // Scroll detection
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20)
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
-  // Active section detection
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = ['about', 'skills', 'projects', 'blog', 'contact']
-      for (const section of sections) {
-        const element = document.getElementById(section)
-        if (element) {
-          const rect = element.getBoundingClientRect()
-          if (rect.top <= 100 && rect.bottom >= 100) {
-            setActiveSection(section)
-            break
-          }
-        }
-      }
-    }
+    const handleScroll = () => setIsScrolled(window.scrollY > 50)
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   const handleNavClick = (href) => {
-    setIsMobileMenuOpen(false)
-    const element = document.querySelector(href)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-    }
+    setIsMobileOpen(false)
+    const el = document.querySelector(href)
+    if (el) el.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
-    <nav
-      id="main-navbar"
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled
-          ? 'bg-white/70 dark:bg-surface-950/80 backdrop-blur-2xl shadow-lg shadow-surface-900/5 dark:shadow-surface-950/30 border-b border-surface-200/50 dark:border-surface-800/50'
-          : 'bg-transparent'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
-        <div className="flex items-center justify-between h-20">
+    <>
+      <motion.nav
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
+        style={{
+          backgroundColor: isScrolled
+            ? (isDark ? 'rgba(0,0,0,0.85)' : 'rgba(255,255,255,0.9)')
+            : 'transparent',
+          backdropFilter: isScrolled ? 'blur(20px)' : 'none',
+          borderBottom: isScrolled
+            ? (isDark ? '1px solid rgba(255,255,255,0.06)' : '1px solid rgba(0,0,0,0.08)')
+            : '1px solid transparent',
+        }}
+      >
+        <div className="max-w-[1200px] mx-auto px-6 lg:px-8">
+          <div className="flex items-center justify-between h-[72px]">
 
-          {/* Logo */}
-          <a
-            href="#about"
-            onClick={(e) => { e.preventDefault(); handleNavClick('#about') }}
-            className="group flex items-center gap-3 transition-colors duration-300"
-          >
-            <span className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-400 to-primary-600
-                           flex items-center justify-center text-white text-base font-bold font-heading
-                           group-hover:scale-110 transition-transform duration-300 shadow-lg
-                           shadow-primary-500/30">
-              P
-            </span>
-            <span className="text-xl font-heading font-bold tracking-tight text-surface-900 dark:text-white">
-              Portfolio
-            </span>
-          </a>
+            {/* Logo / Name */}
+            <a
+              href="#hero"
+              onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) }}
+              className="text-gray-900 dark:text-white font-semibold text-[15px] tracking-tight hover:text-accent-500 transition-colors duration-300"
+            >
+              Chinthana Sandeepa
+            </a>
 
-          {/* Desktop: Links + Dark Mode + Contact — all in one row */}
-          <div className="hidden md:flex items-center gap-10">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={(e) => { e.preventDefault(); handleNavClick(link.href) }}
-                className={`relative text-sm font-medium tracking-wide transition-all duration-300
-                  ${activeSection === link.href.slice(1)
-                    ? 'text-primary-400'
-                    : 'text-surface-400 dark:text-surface-400 hover:text-surface-900 dark:hover:text-white'
-                  }`}
+            {/* Desktop Links */}
+            <div className="hidden md:flex items-center gap-10">
+              {navLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={(e) => { e.preventDefault(); handleNavClick(link.href) }}
+                  className="text-[13px] font-medium tracking-[0.08em] uppercase
+                           text-gray-400 dark:text-white/50 hover:text-accent-500 transition-colors duration-300"
+                >
+                  {link.name}
+                </a>
+              ))}
+            </div>
+
+            {/* Desktop Right */}
+            <div className="hidden md:flex items-center gap-3">
+              {/* Dark Mode Toggle */}
+              <button
+                onClick={toggleDarkMode}
+                className="relative w-9 h-9 rounded-lg flex items-center justify-center
+                         text-gray-400 dark:text-white/50 hover:text-accent-500
+                         border border-gray-200 dark:border-white/10 hover:border-accent-500/30
+                         transition-all duration-300 cursor-pointer"
+                aria-label="Toggle dark mode"
               >
-                {link.name}
-                <span
-                  className={`absolute -bottom-1 left-0 h-0.5 bg-primary-400 rounded-full transition-all duration-300 ${
-                    activeSection === link.href.slice(1) ? 'w-full opacity-100' : 'w-0 opacity-0'
+                <FiSun
+                  className={`w-4 h-4 absolute transition-all duration-500 ${
+                    isDark ? 'rotate-90 scale-0 opacity-0' : 'rotate-0 scale-100 opacity-100'
                   }`}
                 />
+                <FiMoon
+                  className={`w-4 h-4 absolute transition-all duration-500 ${
+                    isDark ? 'rotate-0 scale-100 opacity-100' : '-rotate-90 scale-0 opacity-0'
+                  }`}
+                />
+              </button>
+
+              <a
+                href="/cv.pdf"
+                className="text-[13px] font-medium tracking-[0.05em] uppercase px-5 py-2
+                         border border-gray-200 dark:border-white/15 rounded-md
+                         text-gray-500 dark:text-white/60
+                         hover:bg-accent-500 hover:text-white hover:border-accent-500
+                         transition-all duration-350"
+              >
+                CV
               </a>
-            ))}
+            </div>
 
-            <span className="w-px h-6 bg-surface-200 dark:bg-surface-700" />
-
-            {/* Dark Mode Toggle */}
-            <button
-              id="dark-mode-toggle"
-              onClick={toggleDarkMode}
-              className="relative w-10 h-10 rounded-xl flex items-center justify-center
-                       text-surface-500 dark:text-surface-400
-                       hover:bg-surface-100 dark:hover:bg-surface-800
-                       hover:text-amber-500 dark:hover:text-amber-400
-                       transition-all duration-300 cursor-pointer"
-              aria-label="Toggle dark mode"
-            >
-              <HiOutlineSun
-                className={`w-5 h-5 absolute transition-all duration-500 ${
-                  isDark ? 'rotate-90 scale-0 opacity-0' : 'rotate-0 scale-100 opacity-100'
-                }`}
-              />
-              <HiOutlineMoon
-                className={`w-5 h-5 absolute transition-all duration-500 ${
-                  isDark ? 'rotate-0 scale-100 opacity-100' : '-rotate-90 scale-0 opacity-0'
-                }`}
-              />
-            </button>
-
-            {/* Contact Button */}
-            <a
-              href="#contact"
-              onClick={(e) => { e.preventDefault(); handleNavClick('#contact') }}
-              id="contact-btn"
-              className="inline-flex items-center px-6 py-2.5 text-sm font-semibold
-                       text-surface-950 rounded-xl
-                       bg-primary-400 hover:bg-primary-300
-                       shadow-lg shadow-primary-500/20 hover:shadow-xl hover:shadow-primary-500/30
-                       hover:scale-105 active:scale-95
-                       transition-all duration-300 cursor-pointer"
-            >
-              Contact Me
-            </a>
-          </div>
-
-          {/* Mobile: Dark Mode + Hamburger */}
-          <div className="flex md:hidden items-center gap-3">
-            <button
-              id="dark-mode-toggle-mobile"
-              onClick={toggleDarkMode}
-              className="relative w-10 h-10 rounded-xl flex items-center justify-center
-                       text-surface-500 dark:text-surface-400
-                       hover:bg-surface-100 dark:hover:bg-surface-800
-                       transition-all duration-300 cursor-pointer"
-              aria-label="Toggle dark mode"
-            >
-              <HiOutlineSun
-                className={`w-5 h-5 absolute transition-all duration-500 ${
-                  isDark ? 'rotate-90 scale-0 opacity-0' : 'rotate-0 scale-100 opacity-100'
-                }`}
-              />
-              <HiOutlineMoon
-                className={`w-5 h-5 absolute transition-all duration-500 ${
-                  isDark ? 'rotate-0 scale-100 opacity-100' : '-rotate-90 scale-0 opacity-0'
-                }`}
-              />
-            </button>
-
-            <button
-              id="mobile-menu-toggle"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="w-10 h-10 rounded-xl flex items-center justify-center
-                       text-surface-500 dark:text-surface-400
-                       hover:bg-surface-100 dark:hover:bg-surface-800
-                       transition-all duration-300 cursor-pointer"
-              aria-label="Toggle menu"
-            >
-              <HiOutlineBars3
-                className={`w-5 h-5 absolute transition-all duration-300 ${
-                  isMobileMenuOpen ? 'rotate-90 scale-0 opacity-0' : 'rotate-0 scale-100 opacity-100'
-                }`}
-              />
-              <HiOutlineXMark
-                className={`w-5 h-5 absolute transition-all duration-300 ${
-                  isMobileMenuOpen ? 'rotate-0 scale-100 opacity-100' : '-rotate-90 scale-0 opacity-0'
-                }`}
-              />
-            </button>
+            {/* Mobile Controls */}
+            <div className="flex md:hidden items-center gap-2">
+              <button
+                onClick={toggleDarkMode}
+                className="w-9 h-9 rounded-lg flex items-center justify-center
+                         text-gray-400 dark:text-white/50 hover:text-accent-500
+                         transition-colors duration-300 cursor-pointer"
+                aria-label="Toggle dark mode"
+              >
+                {isDark ? <FiSun className="w-4 h-4" /> : <FiMoon className="w-4 h-4" />}
+              </button>
+              <button
+                onClick={() => setIsMobileOpen(!isMobileOpen)}
+                className="w-10 h-10 flex items-center justify-center text-gray-500 dark:text-white/60 hover:text-accent-500 transition-colors cursor-pointer"
+                aria-label="Toggle menu"
+              >
+                {isMobileOpen ? <FiX className="w-5 h-5" /> : <FiMenu className="w-5 h-5" />}
+              </button>
+            </div>
           </div>
         </div>
-      </div>
+      </motion.nav>
 
-      {/* Mobile Menu */}
-      <div
-        className={`md:hidden overflow-hidden transition-all duration-500 ease-in-out ${
-          isMobileMenuOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
-        }`}
-      >
-        <div className="px-6 pb-8 pt-4 bg-white/95 dark:bg-surface-950/95 backdrop-blur-2xl
-                      border-t border-surface-100 dark:border-surface-800">
-          <div className="flex flex-col gap-2">
-            {navLinks.map((link) => (
-              <a
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {isMobileOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-40 bg-white/95 dark:bg-black/95 backdrop-blur-xl flex flex-col items-center justify-center gap-8"
+          >
+            {navLinks.map((link, i) => (
+              <motion.a
                 key={link.name}
                 href={link.href}
                 onClick={(e) => { e.preventDefault(); handleNavClick(link.href) }}
-                className={`px-5 py-3.5 rounded-xl text-sm font-medium transition-all duration-300
-                  ${activeSection === link.href.slice(1)
-                    ? 'bg-primary-50 dark:bg-primary-950/30 text-primary-600 dark:text-primary-400'
-                    : 'text-surface-600 dark:text-surface-400 hover:bg-surface-50 dark:hover:bg-surface-900 hover:text-surface-900 dark:hover:text-white'
-                  }`}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ delay: i * 0.08, duration: 0.4 }}
+                className="text-2xl font-semibold tracking-wide text-gray-600 dark:text-white/70 hover:text-accent-500 transition-colors"
               >
                 {link.name}
-              </a>
+              </motion.a>
             ))}
-
-            <a
-              href="#contact"
-              onClick={(e) => { e.preventDefault(); handleNavClick('#contact') }}
-              className="mt-3 text-center px-5 py-3.5 text-sm font-semibold text-surface-950 rounded-xl
-                       bg-primary-400
-                       shadow-lg shadow-primary-500/20
-                       transition-all duration-300"
+            <motion.a
+              href="/cv.pdf"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ delay: navLinks.length * 0.08, duration: 0.4 }}
+              className="btn-outline mt-4"
             >
-              Contact Me
-            </a>
-          </div>
-        </div>
-      </div>
-    </nav>
+              Download CV
+            </motion.a>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   )
 }
 
