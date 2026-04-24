@@ -65,7 +65,7 @@ function Hero() {
               animate="visible"
               className="text-base sm:text-lg text-gray-500 dark:text-white/45 max-w-md mb-10 leading-[1.8] font-light"
             >
-              Hi, I'm <span className="text-gray-900 dark:text-white font-medium">Chinthana Sandeepa</span> —
+              Hi, I'm <span className="text-gray-900 dark:text-white font-medium">   Chinthana Sandeepa</span> —
               transforming ideas into production-ready applications with precision and craft.
             </motion.p>
 
