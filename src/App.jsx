@@ -1,3 +1,4 @@
+import MouseGlow from './components/MouseGlow'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Skills from './components/Skills'
@@ -8,9 +9,10 @@ import './App.css'
 
 function App() {
   return (
-    <div className="min-h-screen bg-white dark:bg-black text-gray-700 dark:text-white/70 transition-colors duration-400">
+    <div className="min-h-screen bg-white dark:bg-black text-gray-700 dark:text-white/70 transition-colors duration-400 relative">
+      <MouseGlow />
       <Navbar />
-      <main>
+      <main className="relative z-10">
         <Hero />
         <Skills />
         <Projects />

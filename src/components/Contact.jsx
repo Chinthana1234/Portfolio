@@ -4,7 +4,7 @@ import { FiMail, FiGithub, FiLinkedin } from 'react-icons/fi'
 const contacts = [
   { icon: FiMail, label: 'Email', value: 'chinthana@example.com', href: 'mailto:chinthana@example.com' },
   { icon: FiGithub, label: 'GitHub', value: 'Chinthana1234', href: 'https://github.com/Chinthana1234' },
-  { icon: FiLinkedin, label: 'LinkedIn', value: 'chinthana-sandeepa', href: 'https://linkedin.com' },
+  { icon: FiLinkedin, label: 'LinkedIn', value: 'chinthana-sandeepa', href: 'https://linkedin.com/in/chinthana-sandeepa' },
 ]
 
 const itemVariants = {

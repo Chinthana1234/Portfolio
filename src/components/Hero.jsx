@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { FiArrowRight, FiGithub, FiTerminal } from 'react-icons/fi';
+import { FiArrowRight, FiGithub, FiLinkedin, FiTerminal } from 'react-icons/fi';
+import { SiReact, SiNodedotjs, SiSpringboot, SiFlutter } from 'react-icons/si';
 import profileImg from '../assets/profile.jpeg';
 
 function AnimatedBackground() {
@@ -118,7 +119,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="flex flex-wrap items-center gap-6"
+              className="flex flex-wrap items-center gap-15"
             >
               <a href="#contact" className="group flex items-center gap-2 px-12 py-5 bg-white/[0.03] hover:bg-white/[0.08] border border-white/[0.08] text-white text-lg rounded-xl transition-all duration-300">
                 Let's Talk
@@ -127,6 +128,20 @@ export default function Hero() {
               <a href="https://github.com/Chinthana1234" target="_blank" rel="noreferrer" className="flex items-center gap-2 px-12 py-5 bg-white/[0.03] hover:bg-white/[0.08] border border-white/[0.08] text-white text-lg rounded-xl transition-all duration-300">
                 <FiGithub /> GitHub
               </a>
+              <a href="https://www.linkedin.com/in/chinthana-sandeepa-03976a357/" target="_blank" rel="noreferrer" className="flex items-center gap-2 px-12 py-5 bg-white/[0.03] hover:bg-white/[0.08] border border-white/[0.08] text-white text-lg rounded-xl transition-all duration-300">
+                <FiLinkedin /> LinkedIn
+              </a>
+            </motion.div>
+
+            {/* Tech stack small row */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="flex items-center gap-10 mt-8 ml-2"
+            >
+
+
             </motion.div>
           </div>
 

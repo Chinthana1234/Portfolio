@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FiMenu, FiX, FiSun, FiMoon, FiDownload } from 'react-icons/fi'
 
+
 const navLinks = [
   { name: 'Skills', href: '#skills' },
   { name: 'Projects', href: '#projects' },
@@ -86,17 +87,19 @@ function Navbar() {
               <motion.a
                 href="#hero"
                 onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) }}
-                className="font-black text-[18px] tracking-[-0.01em] transition-colors duration-300 ml-4"
-                style={{
-                  paddingLeft: "30px",
-                  fontFamily: "'Georgia', 'Times New Roman', serif",
-                  fontWeight: 10,
-                  color: isDark ? 'rgba(240, 233, 233, 0.74)' : '#111827',
-                }}
+                className="transition-colors duration-300 ml-4"
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.2 }}
               >
-                Chinthana Sandeepa
+                <span
+                  className="font-black text-[15px] tracking-[-0.01em]"
+                  style={{
+                    fontFamily: "'Georgia', 'Times New Roman', serif",
+                    color: isDark ? 'rgba(240, 233, 233, 0.56)' : '#111827',
+                  }}
+                >
+                  Chinthana Sandeepa
+                </span>
               </motion.a>
 
               {/* Desktop Center Nav Links */}
