@@ -122,14 +122,14 @@ export default function Hero() {
               className="flex flex-wrap items-center gap-15"
             >
               <a href="#contact" className="group flex items-center gap-2 px-12 py-5 bg-white/[0.03] hover:bg-white/[0.08] border border-white/[0.08] text-white text-lg rounded-xl transition-all duration-300">
-                Let's Talk
+                Connect
                 <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
               </a>
               <a href="https://github.com/Chinthana1234" target="_blank" rel="noreferrer" className="flex items-center gap-2 px-12 py-5 bg-white/[0.03] hover:bg-white/[0.08] border border-white/[0.08] text-white text-lg rounded-xl transition-all duration-300">
                 <FiGithub /> GitHub
               </a>
               <a href="https://www.linkedin.com/in/chinthana-sandeepa-03976a357/" target="_blank" rel="noreferrer" className="flex items-center gap-2 px-12 py-5 bg-white/[0.03] hover:bg-white/[0.08] border border-white/[0.08] text-white text-lg rounded-xl transition-all duration-300">
-                <FiLinkedin /> LinkedIn
+                <FiLinkedin /> Linkedin
               </a>
             </motion.div>
 
