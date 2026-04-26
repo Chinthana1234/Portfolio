@@ -123,7 +123,7 @@ function Projects() {
                 </div>
 
                 {/* Content Section - Glassmorphism */}
-                <div className="p-10 flex-1 flex flex-col bg-black/10 backdrop-blur-md">
+                <div className="px-12 pt-10 pb-14 flex-1 flex flex-col bg-black/10 backdrop-blur-md">
                   <h3 className="text-2xl font-bold text-white transition-colors duration-300">
                     {project.title}
                   </h3>
