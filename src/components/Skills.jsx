@@ -44,7 +44,7 @@ function Skills() {
         </span>
       </div>
 
-      <div className=" space-y-6 section-container relative z-10 max-w-7xl mx-auto px-10">
+      <div className="section-container relative z-10 max-w-7xl mx-auto px-10 flex flex-col gap-40">
 
         {/* Header Section */}
         <motion.div
@@ -52,7 +52,7 @@ function Skills() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-32"
+          className="text-center mb-20"
         >
           <span className="text-[10px] font-mono uppercase text-emerald-500 font-bold mb-6 block" style={{ letterSpacing: '12px' }}>
             TECHNICAL PROFICIENCY
@@ -76,24 +76,24 @@ function Skills() {
                 onMouseEnter={() => setHoveredIndex(i)}
                 onMouseLeave={() => setHoveredIndex(null)}
                 animate={{
-                  scale: isActive ? 1.03 : 1,
+                  scale: isActive ? 1.05 : 1,
                   boxShadow: isActive
-                    ? '0 0 25px 8px rgba(16, 185, 129, 0.9)'
+                    ? '0 0 30px 10px rgba(16, 185, 129, 0.4)'
                     : '0 0 0px rgba(16, 185, 129, 0)',
-                  borderColor: isActive ? 'rgba(16, 185, 129, 0.8)' : 'rgba(255, 255, 255, 0.08)',
-                  backgroundColor: isActive ? 'rgba(16, 185, 129, 0.05)' : 'rgba(255, 255, 255, 0.02)',
+                  borderColor: isActive ? 'rgba(16, 185, 129, 0.6)' : 'rgba(255, 255, 255, 0.05)',
+                  backgroundColor: isActive ? 'rgba(16, 185, 129, 0.08)' : 'rgba(255, 255, 255, 0.02)',
                 }}
-                transition={{ duration: 0.1, ease: "easeOut" }}
-                className="relative flex flex-col items-center justify-center gap-6 p-12 w-full aspect-[1.1/1] rounded-[2.5rem] border backdrop-blur-md cursor-pointer group overflow-hidden"
+                transition={{ duration: 0.2, ease: "circOut" }}
+                className="relative flex flex-col items-center justify-center gap-6 p-10 w-full aspect-square rounded-none border-[0.5px] backdrop-blur-sm cursor-pointer group overflow-hidden"
               >
                 {/* Internal Sweeping Light Animation */}
                 <AnimatePresence>
                   {isActive && (
                     <motion.div
-                      initial={{ x: '-100%', opacity: 0 }}
-                      animate={{ x: '100%', opacity: 1 }}
+                      initial={{ x: '-150%', opacity: 0 }}
+                      animate={{ x: '150%', opacity: 1 }}
                       exit={{ opacity: 0 }}
-                      transition={{ duration: 1.2, repeat: Infinity, repeatDelay: 0.5 }}
+                      transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 0.5 }}
                       className="absolute inset-0 bg-gradient-to-r from-transparent via-emerald-500/10 to-transparent skew-x-12 pointer-events-none"
                     />
                   )}
@@ -102,32 +102,42 @@ function Skills() {
                 <div className="relative z-10">
                   <div className="flex items-center justify-center relative">
                     <Icon
-                      className={`w-10 h-10 transition-all duration-100 ${isActive
-                        ? 'text-emerald-400 brightness-125 scale-110 drop-shadow-[0_0_12px_rgba(16,185,129,0.5)]'
-                        : 'text-white/40'
+                      className={`w-12 h-12 transition-all duration-300 ${isActive
+                        ? 'text-emerald-400 brightness-125 scale-110 drop-shadow-[0_0_15px_rgba(16,185,129,0.6)]'
+                        : 'text-white/30'
                         }`}
                     />
 
-                    {/* Subtle Pulsing Glow Ring around Icon */}
+                    {/* Technical Square Glow around Icon */}
                     {isActive && (
                       <motion.div
-                        initial={{ scale: 0.8, opacity: 0 }}
-                        animate={{ scale: 1.4, opacity: [0, 0.5, 0] }}
-                        transition={{ duration: 1.5, repeat: Infinity }}
-                        className="absolute inset-0 border border-emerald-500/30 rounded-full blur-[2px]"
+                        initial={{ scale: 0.9, opacity: 0 }}
+                        animate={{ scale: 1.2, opacity: [0, 0.4, 0] }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                        className="absolute inset-0 border border-emerald-500/20 rounded-none blur-[1px]"
                       />
                     )}
                   </div>
                 </div>
 
-                <span className={`relative z-10 text-[10px] font-mono tracking-[0.2em] uppercase text-center transition-all duration-100 ${isActive ? 'text-white font-bold' : 'text-white/20'
+                <span className={`relative z-10 text-[9px] font-mono tracking-[0.3em] uppercase text-center transition-all duration-300 ${isActive ? 'text-white font-black' : 'text-white/20'
                   }`}>
                   {skill.name}
                 </span>
 
-                {/* Technical Corner Indicator */}
-                <div className={`absolute top-6 right-6 w-1.5 h-1.5 rounded-full transition-all duration-100 ${isActive ? 'bg-emerald-500 shadow-[0_0_10px_#10b981]' : 'bg-transparent'
+                {/* Technical Square Corner Indicator */}
+                <div className={`absolute top-4 right-4 w-1.5 h-1.5 transition-all duration-300 ${isActive ? 'bg-emerald-500 shadow-[0_0_12px_#10b981] rotate-45' : 'bg-white/10'
                   }`} />
+
+                {/* Decorative Square Borders for active state */}
+                {isActive && (
+                  <>
+                    <div className="absolute top-0 left-0 w-4 h-[1px] bg-emerald-500/50" />
+                    <div className="absolute top-0 left-0 w-[1px] h-4 bg-emerald-500/50" />
+                    <div className="absolute bottom-0 right-0 w-4 h-[1px] bg-emerald-500/50" />
+                    <div className="absolute bottom-0 right-0 w-[1px] h-4 bg-emerald-500/50" />
+                  </>
+                )}
               </motion.div>
             )
           })}

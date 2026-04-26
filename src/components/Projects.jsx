@@ -1,34 +1,34 @@
 import { motion } from 'framer-motion'
-import { FiGithub, FiExternalLink } from 'react-icons/fi'
+import { FiGithub } from 'react-icons/fi'
 
 const projects = [
   {
     title: 'Stall Reservation System',
     description: 'A full-stack reservation system allowing users to book stalls efficiently with interactive UI and robust backend architecture.',
     tech: ['Spring Boot', 'React', 'MySQL'],
-    github: '#', live: '#',
-    image: '/images/proj_stall_1776858898983.png',
+    github: 'https://github.com/Chinthana1234/sa-project', live: '#',
+    image: '/images/stall1.jpg',
   },
   {
     title: 'Food Management System',
     description: 'A comprehensive management platform to track food inventory, process orders, and handle user authentication seamlessly.',
     tech: ['React', 'PHP', 'MongoDB'],
-    github: '#', live: '#',
-    image: '/images/proj_food_1776858917316.png',
+    github: 'https://github.com/Chinthana1234/NA-HackDynamos', live: '#',
+    image: '/images/food1.jpeg',
   },
   {
     title: 'Movie Hub',
     description: 'A modern, highly responsive movie discovery web application using sleek styling and dynamic component rendering.',
     tech: ['React', 'Tailwind CSS'],
-    github: '#', live: '#',
-    image: '/images/proj_movie_1776858934526.png',
+    github: 'https://github.com/Chinthana1234/Movie-Hub', live: '#',
+    image: '/images/movie1.webp',
   },
   {
     title: 'Pet Store E-commerce',
     description: 'An online pet store featuring a shopping cart system, dynamic product catalogs, and custom database integration.',
     tech: ['PHP', 'HTML/CSS', 'MySQL'],
-    github: '#', live: '#',
-    image: '/images/proj_pet_1776858952580.png',
+    github: 'https://github.com/Lochithya/Care4Pets', live: '#',
+    image: '/images/pets1.jpeg  ',
   },
 ]
 
@@ -54,12 +54,12 @@ function Projects() {
           transition={{ duration: 0.6 }}
           className="mb-14"
         >
-          <p className="section-label">Portfolio</p>
+
           <h2 className="section-title">Selected <span className="accent-text">Projects</span></h2>
-          <p className="section-subtitle">A selection of things I've built and shipped.</p>
+
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-16 ml-12">
           {projects.map((project, index) => (
             <motion.div
               key={index}
@@ -67,38 +67,81 @@ function Projects() {
               variants={cardVariants}
               initial="hidden"
               whileInView="visible"
+              whileHover="hover"
               viewport={{ once: true, margin: '-40px' }}
-              className="card group overflow-hidden flex flex-col"
+              className="group relative flex flex-col h-full"
             >
-              <div className="relative h-[200px] sm:h-[220px] overflow-hidden">
-                <img src={project.image} alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
-                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-500" />
-                <div className="absolute top-4 right-4 flex gap-2 opacity-0 -translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-400">
-                  <a href={project.github} target="_blank" rel="noopener noreferrer"
-                    className="w-9 h-9 rounded-lg bg-black/60 backdrop-blur-sm border border-white/10 flex items-center justify-center text-white/70 hover:text-accent-400 hover:border-accent-500/30 transition-all duration-300">
-                    <FiGithub className="w-4 h-4" />
-                  </a>
-                  <a href={project.live} target="_blank" rel="noopener noreferrer"
-                    className="w-9 h-9 rounded-lg bg-black/60 backdrop-blur-sm border border-white/10 flex items-center justify-center text-white/70 hover:text-accent-400 hover:border-accent-500/30 transition-all duration-300">
-                    <FiExternalLink className="w-4 h-4" />
-                  </a>
-                </div>
-              </div>
+              {/* Animated Border SVG */}
+              <svg className="absolute inset-0 w-full h-full pointer-events-none z-20 overflow-visible">
+                <rect
+                  x="0" y="0" width="100%" height="100%"
+                  rx="0" ry="0"
+                  fill="none"
+                  stroke="#2A2A2A"
+                  strokeWidth="1"
+                  className="transition-opacity duration-300 group-hover:opacity-0"
+                />
+                <motion.rect
+                  x="0" y="0" width="100%" height="100%"
+                  rx="0" ry="0"
+                  fill="none"
+                  stroke="#10B981"
+                  strokeWidth="2"
+                  initial={{ pathLength: 0, opacity: 0 }}
+                  variants={{
+                    hover: {
+                      pathLength: 1,
+                      opacity: 1,
+                      transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] }
+                    }
+                  }}
+                  style={{ filter: 'drop-shadow(0 0 4px #10B981)' }}
+                />
+              </svg>
 
-              <div className="p-6 lg:p-7 flex-1 flex flex-col">
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-accent-500 transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-sm text-gray-500 dark:text-white/40 leading-relaxed mb-5 flex-grow line-clamp-3">
-                  {project.description}
-                </p>
-                <div className="flex flex-wrap gap-2 mt-auto">
-                  {project.tech.map((tech, i) => (
-                    <span key={i} className="tag group-hover:border-accent-500/20 group-hover:text-accent-500">
-                      {tech}
-                    </span>
-                  ))}
+              <div className="relative flex flex-col h-full bg-[#1A1A1A] rounded-none overflow-hidden transition-all duration-300">
+                {/* Image Section */}
+                <div className="relative h-[240px] sm:h-[280px] overflow-hidden">
+                  <motion.img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover"
+                    variants={{
+                      hover: { scale: 1.05 }
+                    }}
+                    transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] via-transparent to-transparent opacity-80" />
+
+                  {/* Action Links */}
+                  <div className="absolute top-6 right-6 flex gap-3 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 z-30">
+                    <a href={project.github} target="_blank" rel="noopener noreferrer"
+                      className="w-10 h-10 rounded-xl bg-black/60 backdrop-blur-md border border-white/10 flex items-center justify-center text-white/70 hover:text-emerald-400 hover:border-emerald-500/30 transition-all duration-300">
+                      <FiGithub className="w-5 h-5" />
+                    </a>
+                  </div>
+                </div>
+
+                {/* Content Section - Glassmorphism */}
+                <div className="p-10 flex-1 flex flex-col bg-black/10 backdrop-blur-md">
+                  <h3 className="text-2xl font-bold text-white transition-colors duration-300">
+                    {project.title}
+                  </h3>
+                  <p className="text-[#A0A0A0] text-base leading-[1.6] mt-6 mb-8 flex-grow">
+                    {project.description}
+                  </p>
+
+                  {/* Tech Tags - Silver-Ash logic */}
+                  <div className="flex flex-wrap gap-4 mt-auto">
+                    {project.tech.map((tech, i) => (
+                      <span
+                        key={i}
+                        className="text-sm font-medium tracking-wide transition-all duration-300 text-[#A0A0A0] group-hover:text-[#10B981]"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             </motion.div>
