@@ -40,7 +40,10 @@ const cardVariants = {
   }),
 }
 
+import { useTheme } from '../context/ThemeContext'
+
 function Projects() {
+  const { isDark } = useTheme()
   return (
     <section id="projects" className="relative overflow-hidden bg-white dark:bg-black transition-colors duration-400">
       <div className="watermark">PROJECTS</div>
@@ -77,7 +80,7 @@ function Projects() {
                   x="0" y="0" width="100%" height="100%"
                   rx="0" ry="0"
                   fill="none"
-                  stroke="#2A2A2A"
+                   stroke={isDark ? "#2A2A2A" : "#E5E7EB"}
                   strokeWidth="1"
                   className="transition-opacity duration-300 group-hover:opacity-0"
                 />
@@ -99,7 +102,7 @@ function Projects() {
                 />
               </svg>
 
-              <div className="relative flex flex-col h-full bg-[#1A1A1A] rounded-none overflow-hidden transition-all duration-300">
+              <div className="relative flex flex-col h-full bg-black/[0.03] dark:bg-[#1A1A1A] rounded-none overflow-hidden transition-all duration-300">
                 {/* Image Section */}
                 <div className="relative h-[240px] sm:h-[280px] overflow-hidden">
                   <motion.img
@@ -111,7 +114,7 @@ function Projects() {
                     }}
                     transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] via-transparent to-transparent opacity-80" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-[#1A1A1A] via-transparent to-transparent opacity-80" />
 
                   {/* Action Links */}
                   <div className="absolute top-6 right-6 flex gap-3 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 z-30">
@@ -124,10 +127,10 @@ function Projects() {
 
                 {/* Content Section - Glassmorphism */}
                 <div className="px-12 pt-10 pb-14 flex-1 flex flex-col bg-black/10 backdrop-blur-md">
-                  <h3 className="text-2xl font-bold text-white transition-colors duration-300">
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white transition-colors duration-300">
                     {project.title}
                   </h3>
-                  <p className="text-[#A0A0A0] text-base leading-[1.6] mt-6 mb-8 flex-grow">
+                  <p className="text-gray-600 dark:text-[#A0A0A0] text-base leading-[1.6] mt-6 mb-8 flex-grow">
                     {project.description}
                   </p>
 
@@ -136,7 +139,7 @@ function Projects() {
                     {project.tech.map((tech, i) => (
                       <span
                         key={i}
-                        className="text-sm font-medium tracking-wide transition-all duration-300 text-[#A0A0A0] group-hover:text-[#10B981]"
+                        className="text-sm font-medium tracking-wide transition-all duration-300 text-gray-500 dark:text-[#A0A0A0] group-hover:text-[#10B981]"
                       >
                         {tech}
                       </span>

@@ -5,6 +5,7 @@ import {
   SiNodedotjs, SiExpress, SiSpringboot, SiTailwindcss,
   SiMongodb, SiMysql, SiDocker, SiGit, SiFirebase, SiFlutter,
 } from 'react-icons/si'
+import { useTheme } from '../context/ThemeContext'
 
 const skills = [
   { name: 'JavaScript', icon: SiJavascript },
@@ -24,6 +25,7 @@ const skills = [
 ]
 
 function Skills() {
+  const { isDark } = useTheme()
   const [activeIndex, setActiveIndex] = useState(0)
   const [hoveredIndex, setHoveredIndex] = useState(null)
 
@@ -36,10 +38,10 @@ function Skills() {
   }, [])
 
   return (
-    <section id="skills" className="relative py-40 overflow-hidden bg-[#000000]">
+    <section id="skills" className="relative py-40 overflow-hidden bg-white dark:bg-[#000000] transition-colors duration-400">
       {/* Background Watermark - Static */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 select-none pointer-events-none z-0">
-        <span className="text-[12vw] font-black text-white/[0.015] tracking-widest uppercase">
+        <span className="text-[12vw] font-black text-black/[0.03] dark:text-white/[0.015] tracking-widest uppercase">
           Technologies
         </span>
       </div>
@@ -57,7 +59,7 @@ function Skills() {
           <span className="text-[10px] font-mono uppercase text-emerald-500 font-bold mb-6 block" style={{ letterSpacing: '12px' }}>
             TECHNICAL PROFICIENCY
           </span>
-          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-white">
+          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 dark:text-white">
             Technologies & Tools
           </h2>
         </motion.div>
@@ -80,8 +82,8 @@ function Skills() {
                   boxShadow: isActive
                     ? '0 0 30px 10px rgba(16, 185, 129, 0.4)'
                     : '0 0 0px rgba(16, 185, 129, 0)',
-                  borderColor: isActive ? 'rgba(16, 185, 129, 0.6)' : 'rgba(255, 255, 255, 0.05)',
-                  backgroundColor: isActive ? 'rgba(16, 185, 129, 0.08)' : 'rgba(255, 255, 255, 0.02)',
+                  borderColor: isActive ? 'rgba(16, 185, 129, 0.6)' : (isDark ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.05)'),
+                  backgroundColor: isActive ? 'rgba(16, 185, 129, 0.08)' : (isDark ? 'rgba(255, 255, 255, 0.02)' : 'rgba(0, 0, 0, 0.02)'),
                 }}
                 transition={{ duration: 0.2, ease: "circOut" }}
                 className="relative flex flex-col items-center justify-center gap-6 p-10 w-full aspect-square rounded-none border-[0.5px] backdrop-blur-sm cursor-pointer group overflow-hidden"
@@ -104,7 +106,7 @@ function Skills() {
                     <Icon
                       className={`w-12 h-12 transition-all duration-300 ${isActive
                         ? 'text-emerald-400 brightness-125 scale-110 drop-shadow-[0_0_15px_rgba(16,185,129,0.6)]'
-                        : 'text-white/30'
+                        : (isDark ? 'text-white/30' : 'text-black/20')
                         }`}
                     />
 
@@ -120,13 +122,13 @@ function Skills() {
                   </div>
                 </div>
 
-                <span className={`relative z-10 text-[9px] font-mono tracking-[0.3em] uppercase text-center transition-all duration-300 ${isActive ? 'text-white font-black' : 'text-white/20'
+                <span className={`relative z-10 text-[9px] font-mono tracking-[0.3em] uppercase text-center transition-all duration-300 ${isActive ? 'text-gray-900 dark:text-white font-black' : (isDark ? 'text-white/20' : 'text-black/40')
                   }`}>
                   {skill.name}
                 </span>
 
                 {/* Technical Square Corner Indicator */}
-                <div className={`absolute top-4 right-4 w-1.5 h-1.5 transition-all duration-300 ${isActive ? 'bg-emerald-500 shadow-[0_0_12px_#10b981] rotate-45' : 'bg-white/10'
+                <div className={`absolute top-4 right-4 w-1.5 h-1.5 transition-all duration-300 ${isActive ? 'bg-emerald-500 shadow-[0_0_12px_#10b981] rotate-45' : (isDark ? 'bg-white/10' : 'bg-black/10')
                   }`} />
 
                 {/* Decorative Square Borders for active state */}

@@ -39,9 +39,12 @@ const cardVariant = {
   }),
 }
 
+import { useTheme } from '../context/ThemeContext'
+
 function Blog() {
+  const { isDark } = useTheme()
   return (
-    <section id="blog" className="relative overflow-hidden bg-[#000000] py-40">
+    <section id="blog" className="relative overflow-hidden bg-white dark:bg-black transition-colors duration-400 py-40">
       <div className="watermark">WRITING</div>
       <div className="divider" />
 
@@ -77,7 +80,7 @@ function Blog() {
                   x="0" y="0" width="100%" height="100%"
                   rx="0" ry="0"
                   fill="none"
-                  stroke="#2A2A2A"
+                   stroke={isDark ? "#2A2A2A" : "#E5E7EB"}
                   strokeWidth="1"
                   className="transition-opacity duration-300 group-hover:opacity-0"
                 />
@@ -99,7 +102,7 @@ function Blog() {
                 />
               </svg>
 
-              <div className="relative flex flex-col h-full bg-[#1A1A1A] rounded-none overflow-hidden transition-all duration-300">
+              <div className="relative flex flex-col h-full bg-black/[0.03] dark:bg-[#1A1A1A] rounded-none overflow-hidden transition-all duration-300">
                 {/* Image Section */}
                 <div className="relative h-[220px] overflow-hidden">
                   <motion.img
@@ -111,10 +114,10 @@ function Blog() {
                     }}
                     transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] via-transparent to-transparent opacity-80" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-[#1A1A1A] via-transparent to-transparent opacity-80" />
 
                   {/* Date & Read Time Overlay */}
-                  <div className="absolute bottom-4 left-4 flex items-center gap-3 text-[10px] font-mono text-white/50">
+                  <div className="absolute bottom-4 left-4 flex items-center gap-3 text-[10px] font-mono text-gray-500 dark:text-white/50">
                     <span className="flex items-center gap-1.5">
                       <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
                       {article.date}
@@ -128,10 +131,10 @@ function Blog() {
 
                 {/* Content Section */}
                 <div className="px-12 pt-10 pb-14 flex-1 flex flex-col bg-black/10 backdrop-blur-md">
-                  <h3 className="text-xl font-bold text-white transition-colors duration-300 mb-4 line-clamp-2">
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white transition-colors duration-300 mb-4 line-clamp-2">
                     {article.title}
                   </h3>
-                  <p className="text-[#A0A0A0] text-sm leading-[1.6] mb-8 flex-grow line-clamp-3">
+                  <p className="text-gray-600 dark:text-[#A0A0A0] text-sm leading-[1.6] mb-8 flex-grow line-clamp-3">
                     {article.description}
                   </p>
 
@@ -140,7 +143,7 @@ function Blog() {
                     {article.tags.map((tag, i) => (
                       <span
                         key={i}
-                        className="px-3 py-1 text-[10px] font-mono border border-white/5 bg-white/[0.02] text-white/40"
+                        className="px-3 py-1 text-[10px] font-mono border border-black/10 dark:border-white/5 bg-black/[0.02] dark:bg-white/[0.02] text-gray-500 dark:text-white/40"
                       >
                         {tag}
                       </span>
@@ -148,7 +151,7 @@ function Blog() {
                   </div>
 
                   {/* Read Article Link */}
-                  <div className="flex items-center gap-2 text-[11px] font-bold tracking-[0.2em] uppercase text-white transition-all duration-300 group-hover:text-[#10B981]">
+                  <div className="flex items-center gap-2 text-[11px] font-bold tracking-[0.2em] uppercase text-gray-900 dark:text-white transition-all duration-300 group-hover:text-[#10B981]">
                     Read Article
                     <FiArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
                   </div>

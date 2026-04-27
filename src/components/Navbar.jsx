@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FiMenu, FiX, FiSun, FiMoon, FiDownload } from 'react-icons/fi'
+import { useTheme } from '../context/ThemeContext'
 
 
 const navLinks = [
@@ -13,31 +14,7 @@ const navLinks = [
 function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileOpen, setIsMobileOpen] = useState(false)
-  const [isDark, setIsDark] = useState(true)
-
-  // Initialize dark mode from localStorage
-  useEffect(() => {
-    const saved = localStorage.getItem('theme')
-    if (saved === 'light') {
-      setIsDark(false)
-      document.documentElement.classList.remove('dark')
-    } else {
-      setIsDark(true)
-      document.documentElement.classList.add('dark')
-    }
-  }, [])
-
-  const toggleDarkMode = () => {
-    if (isDark) {
-      document.documentElement.classList.remove('dark')
-      localStorage.setItem('theme', 'light')
-      setIsDark(false)
-    } else {
-      document.documentElement.classList.add('dark')
-      localStorage.setItem('theme', 'dark')
-      setIsDark(true)
-    }
-  }
+  const { isDark, toggleDarkMode } = useTheme()
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50)

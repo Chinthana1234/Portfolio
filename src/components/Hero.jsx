@@ -22,7 +22,7 @@ function AnimatedBackground() {
   }, []);
 
   return (
-    <div ref={containerRef} className="absolute inset-0 overflow-hidden bg-[#050505] pointer-events-none">
+    <div ref={containerRef} className="absolute inset-0 overflow-hidden bg-white dark:bg-[#050505] pointer-events-none transition-colors duration-400">
       <div
         className="absolute inset-0 transition-opacity duration-300"
         style={{
@@ -33,7 +33,7 @@ function AnimatedBackground() {
         <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <pattern id="hero-grid" width="40" height="40" patternUnits="userSpaceOnUse">
-              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.2)" strokeWidth="0.5" />
+              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-black/5 dark:text-white/10" />
             </pattern>
           </defs>
           <rect width="100%" height="100%" fill="url(#hero-grid)" />
@@ -81,7 +81,7 @@ function TypewriterText({ text }) {
 
 export default function Hero() {
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden bg-[#050505]">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden bg-white dark:bg-[#050505] transition-colors duration-400">
       <AnimatedBackground />
 
       <div className="section-container relative z-10 w-full max-w-7xl mx-auto px-6">
@@ -98,7 +98,7 @@ export default function Hero() {
               <TypewriterText text="Software Engineering Undergraduate" />
             </motion.div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-[5rem] font-bold tracking-[-0.04em] text-white mb-6 leading-[0.95]" style={{ fontFamily: "'Inter', sans-serif" }}>
+            <h1 className="text-4xl sm:text-5xl lg:text-[5rem] font-bold tracking-[-0.04em] text-gray-900 dark:text-white mb-6 leading-[0.95]" style={{ fontFamily: "'Inter', sans-serif" }}>
               Crafting Digital <br />
               <span className="text-emerald-500">
                 Experience With
@@ -110,9 +110,9 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="text-base sm:text-lg text-gray-400 max-w-xl leading-relaxed font-light mb-10"
+              className="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-xl leading-relaxed font-light mb-10"
             >
-              Hi, I'm <span className="text-white font-bold">Chinthana Sandeepa</span> — a Full-stack Developer dedicated to architecting scalable digital solutions. I bridge the gap between complex system logic and seamless user experiences, transforming conceptual ideas into production-ready applications with engineering precision.
+              Hi, I'm <span className="text-gray-900 dark:text-white font-bold">Chinthana Sandeepa</span> — a Full-stack Developer dedicated to architecting scalable digital solutions. I bridge the gap between complex system logic and seamless user experiences, transforming conceptual ideas into production-ready applications with engineering precision.
             </motion.p>
 
             <motion.div
@@ -121,14 +121,14 @@ export default function Hero() {
               transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
               className="flex flex-wrap items-center gap-15"
             >
-              <a href="#contact" className="group flex items-center gap-2 px-12 py-5 bg-white/[0.03] hover:bg-white/[0.08] border border-white/[0.08] text-white text-lg rounded-xl transition-all duration-300">
+              <a href="#contact" className="group flex items-center gap-2 px-12 py-5 bg-black/[0.03] dark:bg-white/[0.03] hover:bg-black/[0.08] dark:hover:bg-white/[0.08] border border-black/[0.08] dark:border-white/[0.08] text-gray-900 dark:text-white text-lg rounded-xl transition-all duration-300">
                 Connect
                 <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
               </a>
-              <a href="https://github.com/Chinthana1234" target="_blank" rel="noreferrer" className="flex items-center gap-2 px-12 py-5 bg-white/[0.03] hover:bg-white/[0.08] border border-white/[0.08] text-white text-lg rounded-xl transition-all duration-300">
+              <a href="https://github.com/Chinthana1234" target="_blank" rel="noreferrer" className="flex items-center gap-2 px-12 py-5 bg-black/[0.03] dark:bg-white/[0.03] hover:bg-black/[0.08] dark:hover:bg-white/[0.08] border border-black/[0.08] dark:border-white/[0.08] text-gray-900 dark:text-white text-lg rounded-xl transition-all duration-300">
                 <FiGithub /> GitHub
               </a>
-              <a href="https://www.linkedin.com/in/chinthana-sandeepa-03976a357/" target="_blank" rel="noreferrer" className="flex items-center gap-2 px-12 py-5 bg-white/[0.03] hover:bg-white/[0.08] border border-white/[0.08] text-white text-lg rounded-xl transition-all duration-300">
+              <a href="https://www.linkedin.com/in/chinthana-sandeepa-03976a357/" target="_blank" rel="noreferrer" className="flex items-center gap-2 px-12 py-5 bg-black/[0.03] dark:bg-white/[0.03] hover:bg-black/[0.08] dark:hover:bg-white/[0.08] border border-black/[0.08] dark:border-white/[0.08] text-gray-900 dark:text-white text-lg rounded-xl transition-all duration-300">
                 <FiLinkedin /> Linkedin
               </a>
             </motion.div>
@@ -157,7 +157,7 @@ export default function Hero() {
               <div className="absolute -inset-4 rounded-[2.5rem] bg-emerald-500/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
               {/* Image Frame */}
-              <div className="relative w-72 h-[20rem] sm:w-80 sm:h-[24rem] rounded-[2rem] overflow-hidden border border-white/[0.08] bg-[#0a0a0a] shadow-2xl">
+              <div className="relative w-72 h-[20rem] sm:w-80 sm:h-[24rem] rounded-[2rem] overflow-hidden border border-black/10 dark:border-white/[0.08] bg-white dark:bg-[#0a0a0a] shadow-2xl">
                 <img
                   src={profileImg}
                   alt="Chinthana Sandeepa"
@@ -165,14 +165,14 @@ export default function Hero() {
                 />
 
                 {/* Vignette overlays */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-60" />
-                <div className="absolute inset-0 bg-gradient-to-b from-[#050505]/20 via-transparent to-transparent opacity-40" />
+                <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-[#050505] via-transparent to-transparent opacity-60" />
+                <div className="absolute inset-0 bg-gradient-to-b from-white/20 dark:from-[#050505]/20 via-transparent to-transparent opacity-40" />
 
                 {/* Float tag */}
                 <div className="absolute bottom-8 left-8 right-8">
                   <div className="backdrop-blur-md bg-white/[0.03] border border-white/10 p-4 rounded-2xl flex items-center gap-3">
                     <div className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_#10b981]" />
-                    <span className="text-[10px] font-mono tracking-widest uppercase text-white/50">Software Engineer</span>
+                    <span className="text-[10px] font-mono tracking-widest uppercase text-gray-500 dark:text-white/50">Software Engineer</span>
                   </div>
                 </div>
               </div>
