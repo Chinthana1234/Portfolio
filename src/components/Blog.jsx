@@ -12,7 +12,7 @@ const articles = [
     image: '/images/rest_blog.png',
   },
   {
-    title: 'Getting Started with Spring Boot',
+    title: 'A Complete Guide to Nodemon in Node.js Development',
     description: 'A quick-start walkthrough for spinning up Spring Boot services, structuring REST APIs, and shipping your first backend feature.',
     tags: ['Java', 'Spring Boot', 'Backend'],
     date: 'Apr 1, 2025',
@@ -21,7 +21,7 @@ const articles = [
     image: '/images/blog_nodemon_1776858969198.png',
   },
   {
-    title: 'Understanding the MVC Architecture in Web Development',
+    title: 'Create a Simple operating system',
     description: 'A plain-language breakdown of the MVC pattern, why it still matters, and how to keep controllers lean while views stay clean.',
     tags: ['Full-Stack', 'Architecture', 'Trends'],
     date: 'Dec 3, 2024',
