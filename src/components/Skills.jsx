@@ -86,7 +86,7 @@ function Skills() {
                   backgroundColor: isActive ? 'rgba(16, 185, 129, 0.08)' : (isDark ? 'rgba(255, 255, 255, 0.02)' : 'rgba(0, 0, 0, 0.02)'),
                 }}
                 transition={{ duration: 0.2, ease: "circOut" }}
-                className="relative flex flex-col items-center justify-center gap-6 p-10 w-full aspect-square rounded-none border-[0.5px] backdrop-blur-sm cursor-pointer group overflow-hidden"
+                className="relative flex flex-col items-center justify-center gap-6 p-14 w-full aspect-square rounded-none border-[0.5px] backdrop-blur-sm cursor-pointer group overflow-hidden"
               >
                 {/* Internal Sweeping Light Animation */}
                 <AnimatePresence>

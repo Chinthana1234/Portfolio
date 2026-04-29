@@ -13,7 +13,7 @@ const articles = [
   },
   {
     title: 'A Complete Guide to Nodemon in Node.js Development',
-    description: 'A quick-start walkthrough for spinning up Spring Boot services, structuring REST APIs, and shipping your first backend feature.',
+    description: 'Nodemon is used to make development faster and easier by automatically restarting your application whenever you make changes to your code.',
     tags: ['Java', 'Spring Boot', 'Backend'],
     date: 'Apr 1, 2025',
     readTime: '1 min read',
@@ -22,7 +22,7 @@ const articles = [
   },
   {
     title: 'Create a Simple operating system',
-    description: 'A plain-language breakdown of the MVC pattern, why it still matters, and how to keep controllers lean while views stay clean.',
+    description: ' lightweight operating system built from scratch using x86 assembly. It demonstrates core OS concepts including bootloading, hardware detection, and a basic command-line interface .',
     tags: ['Full-Stack', 'Architecture', 'Trends'],
     date: 'Dec 3, 2024',
     readTime: '4 min read',
