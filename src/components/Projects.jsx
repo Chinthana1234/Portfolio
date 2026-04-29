@@ -46,7 +46,6 @@ function Projects() {
   const { isDark } = useTheme()
   return (
     <section id="projects" className="relative overflow-hidden bg-white dark:bg-black transition-colors duration-400">
-      <div className="watermark">PROJECTS</div>
       <div className="divider" />
 
       <div className="section-container">
@@ -80,7 +79,7 @@ function Projects() {
                   x="0" y="0" width="100%" height="100%"
                   rx="0" ry="0"
                   fill="none"
-                   stroke={isDark ? "#2A2A2A" : "#E5E7EB"}
+                  stroke={isDark ? "#2A2A2A" : "#E5E7EB"}
                   strokeWidth="1"
                   className="transition-opacity duration-300 group-hover:opacity-0"
                 />
