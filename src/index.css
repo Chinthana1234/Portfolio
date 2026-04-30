@@ -162,12 +162,16 @@ body {
 .section-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 7rem 2rem;
+  padding: 9rem 3rem;
   position: relative;
 }
 
+@media (max-width: 1024px) {
+  .section-container { padding: 7rem 2rem; }
+}
+
 @media (max-width: 768px) {
-  .section-container { padding: 5rem 1.25rem; }
+  .section-container { padding: 5rem 1.5rem; }
 }
 
 /* ===== Section Header ===== */
@@ -177,7 +181,7 @@ body {
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--color-accent-500);
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
 }
 
 .section-title {
@@ -186,7 +190,7 @@ body {
   color: #111827;
   letter-spacing: -0.03em;
   line-height: 1.15;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
 .dark .section-title {
@@ -197,7 +201,7 @@ body {
   font-size: 1rem;
   color: #6b7280;
   max-width: 500px;
-  line-height: 1.7;
+  line-height: 1.8;
 }
 
 .dark .section-subtitle {

@@ -54,14 +54,14 @@ function Projects() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.6 }}
-          className="mb-14"
+          className="mb-20"
         >
 
           <h2 className="section-title">Selected <span className="accent-text">Projects</span></h2>
 
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-16 ml-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 sm:gap-x-12 gap-y-14 sm:gap-y-20">
           {projects.map((project, index) => (
             <motion.div
               key={index}
@@ -125,11 +125,11 @@ function Projects() {
                 </div>
 
                 {/* Content Section - Glassmorphism */}
-                <div className="px-12 pt-10 pb-14 flex-1 flex flex-col bg-black/10 backdrop-blur-md">
+                <div className="px-8 sm:px-14 pt-8 sm:pt-12 pb-10 sm:pb-16 flex-1 flex flex-col bg-black/10 backdrop-blur-md">
                   <h3 className="text-2xl font-bold text-gray-900 dark:text-white transition-colors duration-300">
                     {project.title}
                   </h3>
-                  <p className="text-gray-600 dark:text-[#A0A0A0] text-base leading-[1.6] mt-6 mb-8 flex-grow">
+                  <p className="text-gray-600 dark:text-[#A0A0A0] text-base leading-[1.75] mt-6 mb-10 flex-grow">
                     {project.description}
                   </p>
 

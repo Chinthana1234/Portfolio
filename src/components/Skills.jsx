@@ -38,7 +38,7 @@ function Skills() {
   }, [])
 
   return (
-    <section id="skills" className="relative py-40 overflow-hidden bg-white dark:bg-[#000000] transition-colors duration-400">
+    <section id="skills" className="relative py-20 sm:py-32 lg:py-40 overflow-hidden bg-white dark:bg-[#000000] transition-colors duration-400">
       {/* Background Watermark - Static */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 select-none pointer-events-none z-0">
         <span className="text-[12vw] font-black text-black/[0.03] dark:text-white/[0.015] tracking-widest uppercase">
@@ -46,7 +46,7 @@ function Skills() {
         </span>
       </div>
 
-      <div className="section-container relative z-10 max-w-7xl mx-auto px-10 flex flex-col gap-40">
+      <div className="section-container relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 flex flex-col gap-10 sm:gap-20 lg:gap-40">
 
         {/* Header Section */}
         <motion.div
@@ -54,9 +54,9 @@ function Skills() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-20"
+          className="text-center mb-16 sm:mb-24"
         >
-          <span className="text-[10px] font-mono uppercase text-emerald-500 font-bold mb-6 block" style={{ letterSpacing: '12px' }}>
+          <span className="text-[10px] font-mono uppercase text-emerald-500 font-bold mb-8 block" style={{ letterSpacing: '12px' }}>
             TECHNICAL PROFICIENCY
           </span>
           <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 dark:text-white">
@@ -65,7 +65,7 @@ function Skills() {
         </motion.div>
 
         {/* Skills Grid - Strict 7-column grid (2 rows of 7) */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-24 max-w-[1600px] mx-auto px-10 justify-items-center">
+        <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-7 gap-3 sm:gap-8 lg:gap-12 max-w-[1600px] mx-auto px-2 sm:px-4 lg:px-10 justify-items-center">
           {skills.map((skill, i) => {
             const Icon = skill.icon
             const isAutoActive = activeIndex === i && hoveredIndex === null
@@ -86,26 +86,28 @@ function Skills() {
                   backgroundColor: isActive ? 'rgba(16, 185, 129, 0.08)' : (isDark ? 'rgba(255, 255, 255, 0.02)' : 'rgba(0, 0, 0, 0.02)'),
                 }}
                 transition={{ duration: 0.2, ease: "circOut" }}
-                className="relative flex flex-col items-center justify-center gap-6 p-14 w-full aspect-square rounded-none border-[0.5px] backdrop-blur-sm cursor-pointer group overflow-hidden"
+                className="relative flex flex-col items-center justify-center gap-2 sm:gap-4 p-4 sm:p-8 lg:p-14 w-full aspect-square rounded-none border-[0.5px] backdrop-blur-sm cursor-pointer group"
               >
-                {/* Internal Sweeping Light Animation */}
-                <AnimatePresence>
-                  {isActive && (
-                    <motion.div
-                      initial={{ x: '-150%', opacity: 0 }}
-                      animate={{ x: '150%', opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 0.5 }}
-                      className="absolute inset-0 bg-gradient-to-r from-transparent via-emerald-500/10 to-transparent skew-x-12 pointer-events-none"
-                    />
-                  )}
-                </AnimatePresence>
+                {/* Internal Sweeping Light Animation — contained in its own overflow-hidden wrapper */}
+                <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                  <AnimatePresence>
+                    {isActive && (
+                      <motion.div
+                        initial={{ x: '-150%', opacity: 0 }}
+                        animate={{ x: '150%', opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 0.5 }}
+                        className="absolute inset-0 bg-gradient-to-r from-transparent via-emerald-500/10 to-transparent skew-x-12"
+                      />
+                    )}
+                  </AnimatePresence>
+                </div>
 
                 <div className="relative z-10">
                   <div className="flex items-center justify-center relative">
                     <Icon
-                      className={`w-12 h-12 transition-all duration-300 ${isActive
-                        ? 'text-emerald-400 brightness-125 scale-110 drop-shadow-[0_0_15px_rgba(16,185,129,0.6)]'
+                      className={`w-6 h-6 sm:w-8 sm:h-8 lg:w-12 lg:h-12 transition-all duration-300 ${isActive
+                        ? 'text-emerald-400 brightness-125 drop-shadow-[0_0_15px_rgba(16,185,129,0.6)]'
                         : (isDark ? 'text-white/30' : 'text-black/20')
                         }`}
                     />

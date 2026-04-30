@@ -81,24 +81,24 @@ function TypewriterText({ text }) {
 
 export default function Hero() {
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden bg-white dark:bg-[#050505] transition-colors duration-400">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center pt-20 pb-12 overflow-hidden bg-white dark:bg-[#050505] transition-colors duration-400">
       <AnimatedBackground />
 
-      <div className="section-container relative z-10 w-full max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+      <div className="section-container relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
 
           {/* Left: Text Content */}
-          <div className="lg:col-span-7 flex flex-col items-start">
+          <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5 }}
-              className="mb-6"
+              className="mb-8"
             >
               <TypewriterText text="Software Engineering Undergraduate" />
             </motion.div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-[5rem] font-bold tracking-[-0.04em] text-gray-900 dark:text-white mb-6 leading-[0.95]" style={{ fontFamily: "'Inter', sans-serif" }}>
+            <h1 className="text-[2.2rem] sm:text-5xl lg:text-[5rem] font-bold tracking-[-0.04em] text-gray-900 dark:text-white mb-8 leading-[1.05]" style={{ fontFamily: "'Inter', sans-serif" }}>
               Crafting Digital <br />
               <span className="text-emerald-500">
                 Experience With
@@ -110,7 +110,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-xl leading-relaxed font-light mb-10"
+              className="text-sm sm:text-base text-gray-600 dark:text-gray-400 max-w-xl leading-loose font-light mb-10"
             >
               Hi, I'm <span className="text-gray-900 dark:text-white font-bold">Chinthana Sandeepa</span> — a Full-stack Developer dedicated to architecting scalable digital solutions. I bridge the gap between complex system logic and seamless user experiences, transforming conceptual ideas into production-ready applications with engineering precision.
             </motion.p>
@@ -119,16 +119,16 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="flex flex-wrap items-center gap-15"
+              className="flex flex-wrap items-center justify-center lg:justify-start gap-4"
             >
-              <a href="#contact" className="group flex items-center gap-2 px-12 py-5 bg-black/[0.03] dark:bg-white/[0.03] hover:bg-black/[0.08] dark:hover:bg-white/[0.08] border border-black/[0.08] dark:border-white/[0.08] text-gray-900 dark:text-white text-lg rounded-xl transition-all duration-300">
+              <a href="#contact" className="group flex items-center gap-2.5 px-7 py-3.5 sm:px-9 sm:py-4 bg-black/[0.03] dark:bg-white/[0.03] hover:bg-black/[0.08] dark:hover:bg-white/[0.08] border border-black/[0.08] dark:border-white/[0.08] text-gray-900 dark:text-white text-sm sm:text-base rounded-xl transition-all duration-300">
                 Connect
                 <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
               </a>
-              <a href="https://github.com/Chinthana1234" target="_blank" rel="noreferrer" className="flex items-center gap-2 px-12 py-5 bg-black/[0.03] dark:bg-white/[0.03] hover:bg-black/[0.08] dark:hover:bg-white/[0.08] border border-black/[0.08] dark:border-white/[0.08] text-gray-900 dark:text-white text-lg rounded-xl transition-all duration-300">
+              <a href="https://github.com/Chinthana1234" target="_blank" rel="noreferrer" className="flex items-center gap-2.5 px-7 py-3.5 sm:px-9 sm:py-4 bg-black/[0.03] dark:bg-white/[0.03] hover:bg-black/[0.08] dark:hover:bg-white/[0.08] border border-black/[0.08] dark:border-white/[0.08] text-gray-900 dark:text-white text-sm sm:text-base rounded-xl transition-all duration-300">
                 <FiGithub /> GitHub
               </a>
-              <a href="https://www.linkedin.com/in/chinthana-sandeepa-03976a357/" target="_blank" rel="noreferrer" className="flex items-center gap-2 px-12 py-5 bg-black/[0.03] dark:bg-white/[0.03] hover:bg-black/[0.08] dark:hover:bg-white/[0.08] border border-black/[0.08] dark:border-white/[0.08] text-gray-900 dark:text-white text-lg rounded-xl transition-all duration-300">
+              <a href="https://www.linkedin.com/in/chinthana-sandeepa-03976a357/" target="_blank" rel="noreferrer" className="flex items-center gap-2.5 px-7 py-3.5 sm:px-9 sm:py-4 bg-black/[0.03] dark:bg-white/[0.03] hover:bg-black/[0.08] dark:hover:bg-white/[0.08] border border-black/[0.08] dark:border-white/[0.08] text-gray-900 dark:text-white text-sm sm:text-base rounded-xl transition-all duration-300">
                 <FiLinkedin /> Linkedin
               </a>
             </motion.div>
@@ -150,14 +150,14 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.9, x: 20 }}
             animate={{ opacity: 1, scale: 1, x: 0 }}
             transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-5 flex justify-center lg:justify-end"
+            className="lg:col-span-5 flex justify-center order-first lg:order-last"
           >
             <div className="relative group">
               {/* Outer glow */}
               <div className="absolute -inset-4 rounded-[2.5rem] bg-emerald-500/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
               {/* Image Frame */}
-              <div className="relative w-72 h-[20rem] sm:w-80 sm:h-[24rem] rounded-[2rem] overflow-hidden border border-black/10 dark:border-white/[0.08] bg-white dark:bg-[#0a0a0a] shadow-2xl">
+              <div className="relative w-56 h-[16rem] sm:w-72 sm:h-[20rem] lg:w-80 lg:h-[24rem] rounded-[2rem] overflow-hidden border border-black/10 dark:border-white/[0.08] bg-white dark:bg-[#0a0a0a] shadow-2xl">
                 <img
                   src={profileImg}
                   alt="Chinthana Sandeepa"

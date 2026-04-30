@@ -11,7 +11,7 @@ const FormField = ({ label, type = 'text', placeholder, value, onChange, isTextA
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] }}
-      className="relative group mb-10"
+      className="relative group mb-14"
     >
       <motion.label
         initial={false}
@@ -32,8 +32,7 @@ const FormField = ({ label, type = 'text', placeholder, value, onChange, isTextA
           onChange={onChange}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
-          className="w-full bg-transparent focus:outline-none transition-all duration-300 resize-none text-base text-gray-900 dark:text-white placeholder:opacity-0 pt-5 pb-3"
-          style={{ borderBottom: '1px solid rgba(255,255,255,0.18)', borderTop: 'none', borderLeft: 'none', borderRight: 'none' }}
+          className="w-full bg-transparent focus:outline-none transition-all duration-300 resize-none text-base text-gray-900 dark:text-white placeholder:opacity-0 pt-5 pb-3 border-0 border-b border-black/20 dark:border-white/20"
         />
       ) : (
         <input
@@ -42,8 +41,7 @@ const FormField = ({ label, type = 'text', placeholder, value, onChange, isTextA
           onChange={onChange}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
-          className="w-full bg-transparent focus:outline-none transition-all duration-300 text-base text-gray-900 dark:text-white placeholder:opacity-0 pt-5 pb-3"
-          style={{ borderBottom: '1px solid rgba(255,255,255,0.18)', borderTop: 'none', borderLeft: 'none', borderRight: 'none' }}
+          className="w-full bg-transparent focus:outline-none transition-all duration-300 text-base text-gray-900 dark:text-white placeholder:opacity-0 pt-5 pb-3 border-0 border-b border-black/20 dark:border-white/20"
         />
       )}
 
@@ -63,13 +61,35 @@ function Contact() {
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     setIsSubmitting(true)
-    setTimeout(() => {
-      setIsSubmitting(false)
-      setIsSubmitted(true)
-    }, 1500)
+    
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/chinthanasandeepa123@gmail.com", {
+        method: "POST",
+        headers: { 
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            message: formData.message
+        })
+      });
+
+      if (response.ok) {
+        setIsSubmitting(false);
+        setIsSubmitted(true);
+      } else {
+        setIsSubmitting(false);
+        alert("Failed to send message. Please try again.");
+      }
+    } catch (error) {
+      setIsSubmitting(false);
+      alert("Failed to send message. Please try again.");
+    }
   }
 
   const containerVariants = {
@@ -92,14 +112,14 @@ function Contact() {
       <div className="divider" />
 
       {/* Main Content Area - Full height to center content vertically */}
-      <div className="flex-1 flex flex-col justify-center w-full max-w-[1400px] mx-auto py-12 lg:py-20 relative z-10" style={{ paddingLeft: '120px', paddingRight: '40px' }}>
+      <div className="flex-1 flex flex-col justify-center w-full max-w-[1400px] mx-auto py-12 lg:py-20 relative z-10 px-4 sm:px-8 lg:px-16">
 
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 lg:grid-cols-2 w-full" style={{ gap: '2.5rem', columnGap: '4rem' }}
+          className="grid grid-cols-1 lg:grid-cols-2 w-full gap-10 lg:gap-16"
         >
 
           {/* Left Column: Huge Typography & Info */}
@@ -107,7 +127,7 @@ function Contact() {
 
             <motion.h2
               variants={itemVariants}
-              className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tighter leading-[1.05] text-gray-900 dark:text-white mb-5"
+              className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tighter leading-[1.05] text-gray-900 dark:text-white mb-8"
             >
               Work <br />
               <span className="accent-text">with me.</span>
@@ -115,19 +135,19 @@ function Contact() {
 
             <motion.p
               variants={itemVariants}
-              className="text-base text-gray-500 dark:text-white/40 mb-8 max-w-lg font-light"
-              style={{ lineHeight: '1.6' }}
+              className="text-base text-gray-500 dark:text-white/40 mb-10 max-w-lg font-light"
+              style={{ lineHeight: '1.75' }}
             >
 
             </motion.p>
 
-            <motion.div variants={itemVariants} className="flex flex-col gap-3 w-full max-w-md mx-auto">
+            <motion.div variants={itemVariants} className="flex flex-col gap-4 w-full max-w-md">
 
               {/* Email Card */}
               <motion.a
                 href="mailto:chinthanasandeepa123@gmail.com"
                 whileHover="hover"
-                className="group relative flex items-center gap-4 p-4 cursor-pointer"
+                className="group relative flex items-center gap-5 p-5 cursor-pointer"
                 style={{ background: 'rgba(255,255,255,0.02)' }}
               >
                 <svg className="absolute inset-0 w-full h-full pointer-events-none z-10 overflow-visible">
@@ -139,7 +159,7 @@ function Contact() {
                 </div>
                 <div className="flex flex-col gap-1 relative z-10">
                   <span className="text-[10px] font-mono tracking-[0.3em] uppercase" style={{ color: '#2EE59D' }}>Email</span>
-                  <span className="text-base font-medium text-gray-900 dark:text-white">chinthanasandeepa123@gmail.com</span>
+                  <span className="text-sm font-medium text-gray-900 dark:text-white break-all">chinthanasandeepa123@gmail.com</span>
                 </div>
               </motion.a>
 
@@ -149,7 +169,7 @@ function Contact() {
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover="hover"
-                className="group relative flex items-center gap-4 p-4 cursor-pointer"
+                className="group relative flex items-center gap-5 p-5 cursor-pointer"
                 style={{ background: 'rgba(255,255,255,0.02)' }}
               >
                 <svg className="absolute inset-0 w-full h-full pointer-events-none z-10 overflow-visible">
@@ -171,7 +191,7 @@ function Contact() {
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover="hover"
-                className="group relative flex items-center gap-4 p-4 cursor-pointer"
+                className="group relative flex items-center gap-5 p-5 cursor-pointer"
                 style={{ background: 'rgba(255,255,255,0.02)' }}
               >
                 <svg className="absolute inset-0 w-full h-full pointer-events-none z-10 overflow-visible">
@@ -197,7 +217,7 @@ function Contact() {
             variants={itemVariants}
             className="flex items-center lg:justify-end"
           >
-            <div className="w-full relative overflow-hidden transition-all duration-500" style={{ padding: '60px', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 10px 40px rgba(0,0,0,0.4)', background: 'rgba(255,255,255,0.02)', backdropFilter: 'blur(24px)' }}>
+            <div className="w-full relative overflow-hidden transition-all duration-500" style={{ padding: '40px', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 10px 40px rgba(0,0,0,0.4)', background: 'rgba(255,255,255,0.02)', backdropFilter: 'blur(24px)' }}>
 
               {/* Subtle background glow inside the form card */}
               <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
@@ -233,13 +253,13 @@ function Contact() {
 
                       <motion.button
                         disabled={isSubmitting || !formData.name || !formData.email || !formData.message}
-                        whileHover={{ x: 6 }}
+                        whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                         transition={{ duration: 0.25, ease: 'easeOut' }}
-                        className="relative flex items-center justify-end gap-3 mt-10 ml-auto disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer group/btn"
+                        className="relative flex items-center justify-center gap-3 mt-10 ml-auto disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer group/btn px-8 py-4 rounded-full border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10"
                       >
                         <span
-                          className="text-[11px] font-black tracking-[0.5em] uppercase text-gray-900 dark:text-white transition-colors duration-300 group-hover/btn:opacity-80"
+                          className="text-[11px] font-black tracking-[0.5em] uppercase text-gray-900 dark:text-white transition-colors duration-300"
                         >
                           {isSubmitting ? 'Transmitting...' : 'Initiate Project'}
                         </span>

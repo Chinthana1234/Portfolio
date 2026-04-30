@@ -44,21 +44,21 @@ import { useTheme } from '../context/ThemeContext'
 function Blog() {
   const { isDark } = useTheme()
   return (
-    <section id="blog" className="relative overflow-hidden bg-white dark:bg-black transition-colors duration-400 py-40">
+    <section id="blog" className="relative overflow-hidden bg-white dark:bg-black transition-colors duration-400 py-20 sm:py-32 lg:py-40">
       <div className="divider" />
 
-      <div className="section-container relative z-10 max-w-7xl mx-auto px-10">
+      <div className="section-container relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.6 }}
-          className="mb-16"
+          className="mb-20"
         >
           <h2 className="section-title">Technical <span className="accent-text">Articles</span></h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 ml-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 lg:gap-12">
           {articles.map((article, index) => (
             <motion.a
               key={index}
@@ -129,16 +129,16 @@ function Blog() {
                 </div>
 
                 {/* Content Section */}
-                <div className="px-12 pt-10 pb-14 flex-1 flex flex-col bg-black/10 backdrop-blur-md">
+                <div className="px-8 sm:px-12 pt-8 sm:pt-10 pb-10 sm:pb-14 flex-1 flex flex-col bg-black/10 backdrop-blur-md">
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white transition-colors duration-300 mb-4 line-clamp-2">
                     {article.title}
                   </h3>
-                  <p className="text-gray-600 dark:text-[#A0A0A0] text-sm leading-[1.6] mb-8 flex-grow line-clamp-3">
+                  <p className="text-gray-600 dark:text-[#A0A0A0] text-sm leading-[1.8] mb-10 flex-grow line-clamp-3">
                     {article.description}
                   </p>
 
                   {/* Tags */}
-                  <div className="flex flex-wrap gap-2 mb-8">
+                  <div className="flex flex-wrap gap-3 mb-10">
                     {article.tags.map((tag, i) => (
                       <span
                         key={i}
