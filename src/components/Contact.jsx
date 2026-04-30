@@ -2,57 +2,30 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FiSend, FiCheckCircle, FiArrowUpRight, FiMail, FiGithub, FiLinkedin } from 'react-icons/fi'
 
-const FormField = ({ label, type = 'text', placeholder, value, onChange, isTextArea = false, delay = 0 }) => {
-  const [isFocused, setIsFocused] = useState(false)
-
+const FormField = ({ label, type = 'text', placeholder, value, onChange, isTextArea = false }) => {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] }}
-      className="relative group mb-14"
-    >
-      <motion.label
-        initial={false}
-        animate={{
-          y: isFocused || value ? -30 : 0,
-          scale: isFocused || value ? 0.82 : 1,
-          color: isFocused ? '#2EE59D' : '#555555',
-        }}
-        className="absolute left-0 text-[10px] font-mono tracking-[0.4em] uppercase pointer-events-none origin-left"
-      >
+    <div className="flex flex-col gap-2 mb-6">
+      <label className="text-[12px] font-sans text-gray-400 uppercase tracking-wide">
         {label}
-      </motion.label>
-
+      </label>
       {isTextArea ? (
         <textarea
-          rows="5"
+          rows="8"
+          placeholder={placeholder}
           value={value}
           onChange={onChange}
-          onFocus={() => setIsFocused(true)}
-          onBlur={() => setIsFocused(false)}
-          className="w-full bg-transparent focus:outline-none transition-all duration-300 resize-none text-base text-gray-900 dark:text-white placeholder:opacity-0 pt-5 pb-3 border-0 border-b border-black/20 dark:border-white/20"
+          className="w-full bg-black border border-white/10 text-white placeholder:text-gray-600 focus:outline-none focus:border-emerald-500/50 transition-colors duration-300 resize-none py-3 px-4 min-h-[120px] text-sm rounded-sm"
         />
       ) : (
         <input
           type={type}
+          placeholder={placeholder}
           value={value}
           onChange={onChange}
-          onFocus={() => setIsFocused(true)}
-          onBlur={() => setIsFocused(false)}
-          className="w-full bg-transparent focus:outline-none transition-all duration-300 text-base text-gray-900 dark:text-white placeholder:opacity-0 pt-5 pb-3 border-0 border-b border-black/20 dark:border-white/20"
+          className="w-full bg-black border border-white/10 text-white placeholder:text-gray-600 focus:outline-none focus:border-emerald-500/50 transition-colors duration-300 py-3 px-4 min-h-[44px] text-sm rounded-sm"
         />
       )}
-
-      {/* Animated mint glow on focus */}
-      <motion.div
-        initial={{ scaleX: 0 }}
-        animate={{ scaleX: isFocused ? 1 : 0 }}
-        className="absolute bottom-0 left-0 right-0 h-[2px] origin-left"
-        style={{ backgroundColor: '#2EE59D', boxShadow: '0 0 14px #2EE59D' }}
-      />
-    </motion.div>
+    </div>
   )
 }
 
@@ -64,18 +37,18 @@ function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     setIsSubmitting(true)
-    
+
     try {
       const response = await fetch("https://formsubmit.co/ajax/chinthanasandeepa123@gmail.com", {
         method: "POST",
-        headers: { 
-            "Content-Type": "application/json",
-            "Accept": "application/json"
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
         },
         body: JSON.stringify({
-            name: formData.name,
-            email: formData.email,
-            message: formData.message
+          name: formData.name,
+          email: formData.email,
+          message: formData.message
         })
       });
 
@@ -119,7 +92,7 @@ function Contact() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 lg:grid-cols-2 w-full gap-10 lg:gap-16"
+          className="grid grid-cols-1 lg:grid-cols-2 items-center w-full gap-10 lg:gap-16 xl:gap-20"
         >
 
           {/* Left Column: Huge Typography & Info */}
@@ -141,7 +114,7 @@ function Contact() {
 
             </motion.p>
 
-            <motion.div variants={itemVariants} className="flex flex-col gap-4 w-full max-w-md">
+            <motion.div variants={itemVariants} className="flex flex-col gap-4 w-full lg:w-[90%] xl:w-[85%]">
 
               {/* Email Card */}
               <motion.a
@@ -215,63 +188,52 @@ function Contact() {
           {/* Right Column: The Form */}
           <motion.div
             variants={itemVariants}
-            className="flex items-center lg:justify-end"
+            className="flex items-center"
           >
-            <div className="w-full relative overflow-hidden transition-all duration-500" style={{ padding: '40px', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 10px 40px rgba(0,0,0,0.4)', background: 'rgba(255,255,255,0.02)', backdropFilter: 'blur(24px)' }}>
-
-              {/* Subtle background glow inside the form card */}
-              <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+            <div className="w-full relative transition-all duration-500 p-8 sm:p-10 lg:px-12 lg:py-16" style={{ borderRadius: '4px', border: '1px solid rgba(255,255,255,0.05)', background: '#111111' }}>
 
               <AnimatePresence mode="wait">
                 {!isSubmitted ? (
                   <motion.div
                     key="form"
-                    exit={{ opacity: 0, scale: 0.95, filter: 'blur(10px)' }}
+                    exit={{ opacity: 0, scale: 0.95 }}
                     transition={{ duration: 0.4 }}
-                    className="relative z-10"
                   >
+                    <h3 className="text-2xl sm:text-3xl text-white mb-8">Send a Message</h3>
                     <form onSubmit={handleSubmit} className="flex flex-col">
                       <FormField
-                        label="Your Name"
+                        label="Name"
+                        placeholder="Your name"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       />
 
                       <FormField
-                        label="Email Address"
+                        label="Email"
                         type="email"
+                        placeholder="your.email@example.com"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       />
 
                       <FormField
                         label="Message"
+                        placeholder="Your message..."
                         isTextArea
                         value={formData.message}
                         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       />
 
-                      <motion.button
+                      <button
+                        type="submit"
                         disabled={isSubmitting || !formData.name || !formData.email || !formData.message}
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                        transition={{ duration: 0.25, ease: 'easeOut' }}
-                        className="relative flex items-center justify-center gap-3 mt-10 ml-auto disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer group/btn px-8 py-4 rounded-full border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10"
+                        className="w-full flex items-center justify-center gap-3 mt-4 py-4 px-6 border border-white/10 hover:border-emerald-500/50 bg-black disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 group rounded-sm min-h-[50px]"
                       >
-                        <span
-                          className="text-[11px] font-black tracking-[0.5em] uppercase text-gray-900 dark:text-white transition-colors duration-300"
-                        >
-                          {isSubmitting ? 'Transmitting...' : 'Initiate Project'}
+                        <span className="text-[13px] font-medium tracking-wider text-white">
+                          {isSubmitting ? 'SENDING...' : 'SEND MESSAGE'}
                         </span>
-                        <motion.div
-                          animate={isSubmitting ? { x: 20, y: -20, opacity: 0 } : {}}
-                        >
-                          <FiSend
-                            className="w-5 h-5 transition-transform duration-300 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1"
-                            style={{ color: '#2EE59D' }}
-                          />
-                        </motion.div>
-                      </motion.button>
+                        <FiSend className="w-4 h-4 text-white group-hover:text-emerald-500 transition-colors duration-300" />
+                      </button>
                     </form>
                   </motion.div>
                 ) : (
