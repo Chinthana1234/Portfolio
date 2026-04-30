@@ -4,17 +4,17 @@ import { FiSend, FiCheckCircle, FiArrowUpRight, FiMail, FiGithub, FiLinkedin } f
 
 const FormField = ({ label, type = 'text', placeholder, value, onChange, isTextArea = false }) => {
   return (
-    <div className="flex flex-col gap-2 mb-6">
-      <label className="text-[12px] font-sans text-gray-400 uppercase tracking-wide">
+    <div className="flex flex-col gap-2">
+      <label className="text-xs font-bold text-gray-300 tracking-wide uppercase">
         {label}
       </label>
       {isTextArea ? (
         <textarea
-          rows="8"
+          rows="6"
           placeholder={placeholder}
           value={value}
           onChange={onChange}
-          className="w-full bg-black border border-white/10 text-white placeholder:text-gray-600 focus:outline-none focus:border-emerald-500/50 transition-colors duration-300 resize-none py-3 px-4 min-h-[120px] text-sm rounded-sm"
+          className="w-full bg-[#1a1a1a] border border-white/10 text-white placeholder:text-slate-500 focus:outline-none focus:border-2 focus:border-emerald-500 transition-all duration-300 resize-none py-3 px-4 min-h-[160px] text-sm rounded-lg"
         />
       ) : (
         <input
@@ -22,7 +22,7 @@ const FormField = ({ label, type = 'text', placeholder, value, onChange, isTextA
           placeholder={placeholder}
           value={value}
           onChange={onChange}
-          className="w-full bg-black border border-white/10 text-white placeholder:text-gray-600 focus:outline-none focus:border-emerald-500/50 transition-colors duration-300 py-3 px-4 min-h-[44px] text-sm rounded-sm"
+          className="w-full bg-[#1a1a1a] border border-white/10 text-white placeholder:text-slate-500 focus:outline-none focus:border-2 focus:border-emerald-500 transition-all duration-300 py-3 px-4 min-h-[50px] text-sm rounded-lg"
         />
       )}
     </div>
@@ -92,15 +92,15 @@ function Contact() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 lg:grid-cols-2 items-center w-full gap-10 lg:gap-16 xl:gap-20"
+          className="grid grid-cols-1 lg:grid-cols-2 items-center w-full gap-16 lg:gap-20 xl:gap-32"
         >
 
           {/* Left Column: Huge Typography & Info */}
-          <div className="flex flex-col justify-start items-start text-left">
+          <div className="inset-[300px] top-4  left-100 flex flex-col justify-start items-start text-left lg:ml-[150px] xl:ml-[350px] rounded-[24px] overflow-hidden">
 
             <motion.h2
               variants={itemVariants}
-              className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tighter leading-[1.05] text-gray-900 dark:text-white mb-8"
+              className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tighter leading-[1.05] text-gray-900 dark:text-white mb-20"
             >
               Work <br />
               <span className="accent-text">with me.</span>
@@ -114,7 +114,7 @@ function Contact() {
 
             </motion.p>
 
-            <motion.div variants={itemVariants} className="flex flex-col gap-4 w-full lg:w-[90%] xl:w-[85%]">
+            <motion.div variants={itemVariants} className="flex flex-col gap-4 w-fit pr-8 sm:pr-12 lg:pr-16">
 
               {/* Email Card */}
               <motion.a
@@ -188,9 +188,9 @@ function Contact() {
           {/* Right Column: The Form */}
           <motion.div
             variants={itemVariants}
-            className="flex items-center"
+            className="flex items-center lg:ml-auto w-full lg:w-[90%] xl:w-[85%]"
           >
-            <div className="w-full relative transition-all duration-500 p-8 sm:p-10 lg:px-12 lg:py-16" style={{ borderRadius: '4px', border: '1px solid rgba(255,255,255,0.05)', background: '#111111' }}>
+            <div className="w-full relative transition-all duration-500 p-8 sm:p-10" style={{ borderRadius: '24px', border: '1px solid rgba(255,255,255,0.05)', background: '#111111' }}>
 
               <AnimatePresence mode="wait">
                 {!isSubmitted ? (
@@ -199,11 +199,11 @@ function Contact() {
                     exit={{ opacity: 0, scale: 0.95 }}
                     transition={{ duration: 0.4 }}
                   >
-                    <h3 className="text-2xl sm:text-3xl text-white mb-8">Send a Message</h3>
-                    <form onSubmit={handleSubmit} className="flex flex-col">
+                    <h3 className="text-2xl sm:text-3xl font-bold font-sans text-white mb-8">Send a Message</h3>
+                    <form onSubmit={handleSubmit} className="flex flex-col gap-6">
                       <FormField
                         label="Name"
-                        placeholder="Your name"
+                        placeholder="John Doe"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       />
@@ -211,14 +211,14 @@ function Contact() {
                       <FormField
                         label="Email"
                         type="email"
-                        placeholder="your.email@example.com"
+                        placeholder="john@example.com"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       />
 
                       <FormField
                         label="Message"
-                        placeholder="Your message..."
+                        placeholder="How can I help you?"
                         isTextArea
                         value={formData.message}
                         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
@@ -227,12 +227,12 @@ function Contact() {
                       <button
                         type="submit"
                         disabled={isSubmitting || !formData.name || !formData.email || !formData.message}
-                        className="w-full flex items-center justify-center gap-3 mt-4 py-4 px-6 border border-white/10 hover:border-emerald-500/50 bg-black disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 group rounded-sm min-h-[50px]"
+                        className="w-full flex items-center justify-center gap-3 mt-6 py-4 px-6 bg-[#1a1a1a] border border-white/5 hover:border-2 hover:border-emerald-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 rounded-xl min-h-[50px] group"
                       >
-                        <span className="text-[13px] font-medium tracking-wider text-white">
-                          {isSubmitting ? 'SENDING...' : 'SEND MESSAGE'}
+                        <span className="text-[14px] font-semibold tracking-wide text-white">
+                          {isSubmitting ? 'Sending...' : 'Send Message'}
                         </span>
-                        <FiSend className="w-4 h-4 text-white group-hover:text-emerald-500 transition-colors duration-300" />
+                        <FiSend className="w-4 h-4 text-white group-hover:text-emerald-500 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" />
                       </button>
                     </form>
                   </motion.div>
@@ -241,7 +241,7 @@ function Contact() {
                     key="success"
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    className="flex flex-col items-center justify-center py-24 text-center relative z-10"
+                    className="flex flex-col items-center justify-center py-20 text-center relative z-10"
                   >
                     <motion.div
                       initial={{ scale: 0 }}
@@ -250,15 +250,15 @@ function Contact() {
                     >
                       <FiCheckCircle className="w-20 h-20 text-emerald-500 mb-8" />
                     </motion.div>
-                    <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Message Sent</h3>
-                    <p className="text-gray-500 dark:text-white/50 text-base mb-12">
+                    <h3 className="text-3xl font-semibold text-white mb-4">Message Sent</h3>
+                    <p className="text-gray-400 text-base mb-12">
                       Thank you for reaching out. I'll get back to you shortly.
                     </p>
                     <button
                       onClick={() => { setIsSubmitted(false); setFormData({ name: '', email: '', message: '' }) }}
-                      className="text-[11px] font-mono tracking-[0.3em] text-emerald-500 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors uppercase underline underline-offset-8"
+                      className="text-[13px] font-medium text-emerald-500 hover:text-emerald-400 transition-colors"
                     >
-                      Send Another
+                      Send Another Message
                     </button>
                   </motion.div>
                 )}
@@ -271,8 +271,8 @@ function Contact() {
 
       {/* Footer info at the absolute bottom of the screen */}
       <div className="w-full border-t border-black/5 dark:border-white/[0.03] py-8 flex items-center justify-center text-center mt-auto">
-        <p className="text-[10px] font-mono text-[#444444] tracking-[0.3em] uppercase">
-          © {new Date().getFullYear()} Chinthana Sandeepa. All rights reserved.
+        <p className="text-[12px] font-sans text-gray-600 uppercase">
+          © {new Date().getFullYear()} CHINTHANA SANDEEPA. ALL RIGHTS RESERVED.
         </p>
       </div>
     </section>

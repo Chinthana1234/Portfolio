@@ -129,11 +129,11 @@ function Navbar() {
                 {/* Pill-shaped Download CV button with gradient */}
                 <motion.a
                   href="/cv.pdf"
-                  className="inline-flex items-center gap-1.5 text-[10px] font-bold tracking-[0.1em] uppercase text-white transition-all duration-300"
+                  className="inline-flex items-center gap-1.5 text-[10px] font-bold tracking-[0.1em] uppercase text-black transition-all duration-300"
                   style={{
                     padding: '7px 16px',
                     borderRadius: '999px',
-                    background: 'linear-gradient(135deg, #0d9488, #10b981, #34d399)',
+                    background: '#10B981',
                     boxShadow: '0 0 20px rgba(16, 185, 129, 0.2), 0 2px 8px rgba(0,0,0,0.15)',
                   }}
                   whileHover={{
@@ -216,16 +216,16 @@ function Navbar() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ delay: navLinks.length * 0.08, duration: 0.45 }}
-              className="inline-flex items-center gap-1.5 mt-4 text-[11px] font-bold tracking-[0.1em] uppercase text-white"
+              className="inline-flex items-center gap-1.5 mt-4 text-[11px] font-bold tracking-[0.1em] uppercase text-black"
               style={{
                 padding: '9px 20px',
                 borderRadius: '999px',
-                background: 'linear-gradient(135deg, #0d9488, #10b981, #34d399)',
+                background: '#10B981',
                 boxShadow: '0 0 25px rgba(16, 185, 129, 0.25)',
               }}
             >
               <FiDownload className="w-3.5 h-3.5" />
-              Download CV
+              Resume
             </motion.a>
           </motion.div>
         )}
