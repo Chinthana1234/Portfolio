@@ -1,20 +1,23 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { FiSend, FiCheckCircle, FiArrowUpRight, FiMail, FiGithub, FiLinkedin } from 'react-icons/fi'
+import { FiSend, FiCheckCircle, FiMail, FiGithub, FiLinkedin, FiArrowRight } from 'react-icons/fi'
 
 const FormField = ({ label, type = 'text', placeholder, value, onChange, isTextArea = false }) => {
   return (
-    <div className="flex flex-col gap-2">
-      <label className="text-xs font-bold text-gray-300 tracking-wide uppercase">
-        {label}
-      </label>
+    <div className="flex flex-col gap-3 group/field">
+      <div className="flex justify-between items-center px-1">
+        <label className="text-[10px] font-mono tracking-[0.3em] uppercase text-white/30 group-focus-within/field:text-[#10B981] transition-colors duration-300">
+          {label}
+        </label>
+        <div className="h-[1px] w-4 bg-white/10 group-focus-within/field:w-8 group-focus-within/field:bg-[#10B981] transition-all duration-500" />
+      </div>
       {isTextArea ? (
         <textarea
-          rows="6"
+          rows="5"
           placeholder={placeholder}
           value={value}
           onChange={onChange}
-          className="w-full bg-[#1a1a1a] border border-white/10 text-white placeholder:text-slate-500 focus:outline-none focus:border-2 focus:border-emerald-500 transition-all duration-300 resize-none py-3 px-4 min-h-[160px] text-sm rounded-lg"
+          className="w-full bg-white/[0.03] border border-white/10 text-white placeholder:text-white/20 focus:outline-none focus:border-[#10B981]/50 focus:bg-white/[0.05] transition-all duration-500 resize-none py-5 px-6 text-sm rounded-none"
         />
       ) : (
         <input
@@ -22,7 +25,7 @@ const FormField = ({ label, type = 'text', placeholder, value, onChange, isTextA
           placeholder={placeholder}
           value={value}
           onChange={onChange}
-          className="w-full bg-[#1a1a1a] border border-white/10 text-white placeholder:text-slate-500 focus:outline-none focus:border-2 focus:border-emerald-500 transition-all duration-300 py-3 px-4 min-h-[50px] text-sm rounded-lg"
+          className="w-full bg-white/[0.03] border border-white/10 text-white placeholder:text-white/20 focus:outline-none focus:border-[#10B981]/50 focus:bg-white/[0.05] transition-all duration-500 py-5 px-6 text-sm rounded-none h-16"
         />
       )}
     </div>
@@ -57,11 +60,9 @@ function Contact() {
         setIsSubmitted(true);
       } else {
         setIsSubmitting(false);
-        alert("Failed to send message. Please try again.");
       }
     } catch (error) {
       setIsSubmitting(false);
-      alert("Failed to send message. Please try again.");
     }
   }
 
@@ -69,141 +70,139 @@ function Contact() {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-      }
+      transition: { staggerChildren: 0.1 }
     }
   }
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 1, ease: [0.22, 1, 0.36, 1] } }
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] }
+    }
   }
 
-  return (
-    <section id="contact" className="relative overflow-hidden bg-white dark:bg-black transition-colors duration-400 min-h-screen flex flex-col pt-24">
-      <div className="divider" />
+  const contactLinks = [
+    {
+      id: 'email',
+      label: 'Email',
+      value: 'chinthanasandeepa123@gmail.com',
+      href: 'mailto:chinthanasandeepa123@gmail.com',
+      icon: <FiMail className="w-5 h-5" />,
+    },
+    {
+      id: 'github',
+      label: 'GitHub',
+      value: 'Chinthana1234',
+      href: 'https://github.com/Chinthana1234',
+      icon: <FiGithub className="w-5 h-5" />,
+    },
+    {
+      id: 'linkedin',
+      label: 'LinkedIn',
+      value: 'chinthana-sandeepa',
+      href: 'https://linkedin.com/in/chinthana-sandeepa',
+      icon: <FiLinkedin className="w-5 h-5" />,
+    }
+  ]
 
-      {/* Main Content Area - Full height to center content vertically */}
-      <div className="flex-1 flex flex-col justify-center w-full max-w-[1400px] mx-auto py-12 lg:py-20 relative z-10 px-4 sm:px-8 lg:px-16">
+  return (
+    <section id="contact" className="relative bg-[#050505] py-24 lg:py-40 overflow-hidden">
+      {/* Dynamic Background Accents */}
+      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#10B981]/5 blur-[150px] rounded-full -mr-96 -mt-96 pointer-events-none opacity-50" />
+      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#10B981]/5 blur-[150px] rounded-full -ml-80 -mb-80 pointer-events-none opacity-30" />
+
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+        {/* Section Header */}
+        <motion.div 
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          className="flex items-center gap-4 mb-20"
+        >
+          <span className="text-[#10B981] font-mono text-xs tracking-[0.4em]">04</span>
+          <div className="h-[1px] w-12 bg-[#10B981]/30" />
+          <span className="text-white/40 font-mono text-xs tracking-[0.4em] uppercase">Contact</span>
+        </motion.div>
 
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 lg:grid-cols-2 items-center w-full gap-16 lg:gap-20 xl:gap-32"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-32 items-start"
         >
-
-          {/* Left Column: Huge Typography & Info */}
-          <div className="inset-[300px] top-4  left-100 flex flex-col justify-start items-start text-left lg:ml-[150px] xl:ml-[350px] rounded-[24px] overflow-hidden">
-
+          {/* Left Column: Typography & Info */}
+          <div className="flex flex-col">
             <motion.h2
               variants={itemVariants}
-              className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tighter leading-[1.05] text-gray-900 dark:text-white mb-20"
+              className="text-5xl md:text-7xl lg:text-8xl font-light tracking-tighter text-white mb-12 leading-[0.95]"
             >
               Work <br />
-              <span className="accent-text">with me.</span>
+              <span className="text-[#10B981] font-normal italic">With Me.</span>
             </motion.h2>
 
             <motion.p
               variants={itemVariants}
-              className="text-base text-gray-500 dark:text-white/40 mb-10 max-w-lg font-light"
-              style={{ lineHeight: '1.75' }}
+              className="text-white/40 text-lg font-light max-w-md mb-16 leading-relaxed"
             >
-
+              Have a project in mind or just want to say hi? Feel free to reach out. I'm always open to new opportunities.
             </motion.p>
 
-            <motion.div variants={itemVariants} className="flex flex-col gap-4 w-fit pr-8 sm:pr-12 lg:pr-16">
-
-              {/* Email Card */}
-              <motion.a
-                href="mailto:chinthanasandeepa123@gmail.com"
-                whileHover="hover"
-                className="group relative flex items-center gap-5 p-5 cursor-pointer"
-                style={{ background: 'rgba(255,255,255,0.02)' }}
-              >
-                <svg className="absolute inset-0 w-full h-full pointer-events-none z-10 overflow-visible">
-                  <rect x="0" y="0" width="100%" height="100%" rx="0" ry="0" fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="1" className="transition-opacity duration-300 group-hover:opacity-0" />
-                  <motion.rect x="0" y="0" width="100%" height="100%" rx="0" ry="0" fill="none" stroke="#10B981" strokeWidth="2" initial={{ pathLength: 0, opacity: 0 }} variants={{ hover: { pathLength: 1, opacity: 1, transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] } } }} style={{ filter: 'drop-shadow(0 0 4px #10B981)' }} />
-                </svg>
-                <div className="w-11 h-11 flex items-center justify-center flex-shrink-0 relative z-10" style={{ border: '1px solid rgba(255,255,255,0.12)' }}>
-                  <FiMail className="w-6 h-6 text-gray-400 group-hover:text-white transition-colors duration-300" />
-                </div>
-                <div className="flex flex-col gap-1 relative z-10">
-                  <span className="text-[10px] font-mono tracking-[0.3em] uppercase" style={{ color: '#2EE59D' }}>Email</span>
-                  <span className="text-sm font-medium text-gray-900 dark:text-white break-all">chinthanasandeepa123@gmail.com</span>
-                </div>
-              </motion.a>
-
-              {/* GitHub Card */}
-              <motion.a
-                href="https://github.com/Chinthana1234"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover="hover"
-                className="group relative flex items-center gap-5 p-5 cursor-pointer"
-                style={{ background: 'rgba(255,255,255,0.02)' }}
-              >
-                <svg className="absolute inset-0 w-full h-full pointer-events-none z-10 overflow-visible">
-                  <rect x="0" y="0" width="100%" height="100%" rx="0" ry="0" fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="1" className="transition-opacity duration-300 group-hover:opacity-0" />
-                  <motion.rect x="0" y="0" width="100%" height="100%" rx="0" ry="0" fill="none" stroke="#10B981" strokeWidth="2" initial={{ pathLength: 0, opacity: 0 }} variants={{ hover: { pathLength: 1, opacity: 1, transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] } } }} style={{ filter: 'drop-shadow(0 0 4px #10B981)' }} />
-                </svg>
-                <div className="w-11 h-11 flex items-center justify-center flex-shrink-0 relative z-10" style={{ border: '1px solid rgba(255,255,255,0.12)' }}>
-                  <FiGithub className="w-6 h-6 text-gray-400 group-hover:text-white transition-colors duration-300" />
-                </div>
-                <div className="flex flex-col gap-1 relative z-10">
-                  <span className="text-[10px] font-mono tracking-[0.3em] uppercase" style={{ color: '#2EE59D' }}>GitHub</span>
-                  <span className="text-base font-medium text-gray-900 dark:text-white">Chinthana1234</span>
-                </div>
-              </motion.a>
-
-              {/* LinkedIn Card */}
-              <motion.a
-                href="https://linkedin.com/in/chinthana-sandeepa"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover="hover"
-                className="group relative flex items-center gap-5 p-5 cursor-pointer"
-                style={{ background: 'rgba(255,255,255,0.02)' }}
-              >
-                <svg className="absolute inset-0 w-full h-full pointer-events-none z-10 overflow-visible">
-                  <rect x="0" y="0" width="100%" height="100%" rx="0" ry="0" fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="1" className="transition-opacity duration-300 group-hover:opacity-0" />
-                  <motion.rect x="0" y="0" width="100%" height="100%" rx="0" ry="0" fill="none" stroke="#10B981" strokeWidth="2" initial={{ pathLength: 0, opacity: 0 }} variants={{ hover: { pathLength: 1, opacity: 1, transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] } } }} style={{ filter: 'drop-shadow(0 0 4px #10B981)' }} />
-                </svg>
-                <div className="w-11 h-11 flex items-center justify-center flex-shrink-0 relative z-10" style={{ border: '1px solid rgba(255,255,255,0.12)' }}>
-                  <FiLinkedin className="w-6 h-6 text-gray-400 group-hover:text-white transition-colors duration-300" />
-                </div>
-                <div className="flex flex-col gap-1 relative z-10">
-                  <span className="text-[10px] font-mono tracking-[0.3em] uppercase" style={{ color: '#2EE59D' }}>LinkedIn</span>
-                  <span className="text-base font-medium text-gray-900 dark:text-white">chinthana-sandeepa</span>
-                </div>
-              </motion.a>
-
+            <motion.div variants={itemVariants} className="flex flex-col gap-6">
+              {contactLinks.map((link) => (
+                <motion.a
+                  key={link.id}
+                  href={link.href}
+                  target={link.id !== 'email' ? "_blank" : undefined}
+                  rel={link.id !== 'email' ? "noopener noreferrer" : undefined}
+                  whileHover="hover"
+                  className="group relative flex items-center justify-between p-6 bg-white/[0.02] border border-white/5 transition-all duration-500 hover:border-[#10B981]/20 hover:bg-white/[0.04]"
+                >
+                  <div className="flex items-center gap-6">
+                    <div className="w-12 h-12 flex items-center justify-center bg-black border border-white/10 text-white/50 group-hover:text-[#10B981] group-hover:border-[#10B981]/30 transition-all duration-500">
+                      {link.icon}
+                    </div>
+                    <div className="flex flex-col gap-1">
+                      <span className="text-[9px] font-mono tracking-[0.3em] uppercase text-white/30">
+                        {link.label}
+                      </span>
+                      <span className="text-white/80 group-hover:text-white transition-colors">
+                        {link.value}
+                      </span>
+                    </div>
+                  </div>
+                  <FiArrowRight className="w-4 h-4 text-white/0 group-hover:text-[#10B981] group-hover:translate-x-2 transition-all duration-500" />
+                </motion.a>
+              ))}
             </motion.div>
-
-
           </div>
 
           {/* Right Column: The Form */}
-          <motion.div
-            variants={itemVariants}
-            className="flex items-center lg:ml-auto w-full lg:w-[90%] xl:w-[85%]"
-          >
-            <div className="w-full relative transition-all duration-500 p-8 sm:p-10" style={{ borderRadius: '24px', border: '1px solid rgba(255,255,255,0.05)', background: '#111111' }}>
-
+          <motion.div variants={itemVariants} className="w-full">
+            <div className="bg-white/[0.02] border border-white/5 p-8 md:p-14 relative overflow-hidden">
+              {/* Subtle Decorative Line */}
+              <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#10B981]/20 to-transparent" />
+              
               <AnimatePresence mode="wait">
                 {!isSubmitted ? (
                   <motion.div
                     key="form"
-                    exit={{ opacity: 0, scale: 0.95 }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.4 }}
                   >
-                    <h3 className="text-2xl sm:text-3xl font-bold font-sans text-white mb-8">Send a Message</h3>
-                    <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+                    <div className="flex items-center gap-4 mb-12">
+                      <h3 className="text-2xl font-light text-white tracking-tight">Send a Message</h3>
+                      <div className="h-[1px] flex-grow bg-white/5" />
+                    </div>
+
+                    <form onSubmit={handleSubmit} className="flex flex-col gap-10">
                       <FormField
                         label="Name"
-                        placeholder="John Doe"
+                        placeholder="Your name"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       />
@@ -211,73 +210,84 @@ function Contact() {
                       <FormField
                         label="Email"
                         type="email"
-                        placeholder="john@example.com"
+                        placeholder="your.email@example.com"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       />
 
                       <FormField
                         label="Message"
-                        placeholder="How can I help you?"
+                        placeholder="What's on your mind?"
                         isTextArea
                         value={formData.message}
                         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       />
 
-                      <button
+                      <motion.button
                         type="submit"
+                        whileHover="hover"
                         disabled={isSubmitting || !formData.name || !formData.email || !formData.message}
-                        className="w-full flex items-center justify-center gap-3 mt-6 py-4 px-6 bg-[#1a1a1a] border border-white/5 hover:border-2 hover:border-emerald-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 rounded-xl min-h-[50px] group"
+                        className="group relative w-full h-16 bg-white text-black text-xs font-bold tracking-[0.3em] uppercase overflow-hidden transition-all duration-500"
                       >
-                        <span className="text-[14px] font-semibold tracking-wide text-white">
-                          {isSubmitting ? 'Sending...' : 'Send Message'}
+                        <span className="relative z-10 flex items-center justify-center gap-3">
+                          {isSubmitting ? 'Sending...' : 'Submit Message'}
+                          <FiSend className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                         </span>
-                        <FiSend className="w-4 h-4 text-white group-hover:text-emerald-500 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" />
-                      </button>
+                        {/* Hover Overlay */}
+                        <div className="absolute inset-0 bg-[#10B981] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
+                      </motion.button>
                     </form>
                   </motion.div>
                 ) : (
                   <motion.div
                     key="success"
-                    initial={{ opacity: 0, scale: 0.9 }}
+                    initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    className="flex flex-col items-center justify-center py-20 text-center relative z-10"
+                    className="flex flex-col items-center justify-center py-20 text-center"
                   >
-                    <motion.div
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1, rotate: 360 }}
-                      transition={{ type: "spring", damping: 12, stiffness: 200 }}
-                    >
-                      <FiCheckCircle className="w-20 h-20 text-emerald-500 mb-8" />
-                    </motion.div>
-                    <h3 className="text-3xl font-semibold text-white mb-4">Message Sent</h3>
-                    <p className="text-gray-400 text-base mb-12">
-                      Thank you for reaching out. I'll get back to you shortly.
+                    <div className="w-24 h-24 bg-[#10B981]/10 rounded-full flex items-center justify-center mb-10 relative">
+                      <FiCheckCircle className="w-12 h-12 text-[#10B981] relative z-10" />
+                      <div className="absolute inset-0 bg-[#10B981]/20 blur-2xl rounded-full scale-150 animate-pulse" />
+                    </div>
+                    <h3 className="text-3xl font-light text-white mb-6 tracking-tight">Message Received</h3>
+                    <p className="text-white/40 text-lg font-light mb-12 max-w-sm">
+                      Thank you for reaching out. I'll get back to you as soon as possible.
                     </p>
                     <button
                       onClick={() => { setIsSubmitted(false); setFormData({ name: '', email: '', message: '' }) }}
-                      className="text-[13px] font-medium text-emerald-500 hover:text-emerald-400 transition-colors"
+                      className="text-[#10B981] hover:text-white transition-colors duration-300 font-mono text-[10px] uppercase tracking-[0.4em]"
                     >
-                      Send Another Message
+                      Send Another
                     </button>
                   </motion.div>
                 )}
               </AnimatePresence>
             </div>
           </motion.div>
-
         </motion.div>
-      </div>
 
-      {/* Footer info at the absolute bottom of the screen */}
-      <div className="w-full border-t border-black/5 dark:border-white/[0.03] py-8 flex items-center justify-center text-center mt-auto">
-        <p className="text-[12px] font-sans text-gray-600 uppercase">
-          © {new Date().getFullYear()} CHINTHANA SANDEEPA. ALL RIGHTS RESERVED.
-        </p>
+        {/* Enhanced Footer */}
+        <div className="mt-32 lg:mt-48 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
+          <div className="flex flex-col gap-2 items-center md:items-start">
+            <p className="text-[10px] font-mono tracking-[0.4em] text-white/20 uppercase">
+              © {new Date().getFullYear()} CHINTHANA SANDEEPA
+            </p>
+            <p className="text-[9px] font-mono tracking-[0.2em] text-white/10 uppercase">
+              Designed & Built with Passion
+            </p>
+          </div>
+          <div className="flex gap-12">
+            {['Twitter', 'Instagram', 'Dribbble'].map((social) => (
+              <a key={social} href="#" className="relative group text-[10px] font-mono tracking-[0.4em] text-white/30 hover:text-[#10B981] uppercase transition-colors">
+                {social}
+                <span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-[#10B981] group-hover:w-full transition-all duration-500" />
+              </a>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   )
 }
 
 export default Contact
-
