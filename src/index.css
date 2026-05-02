@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 
 /* Class-based dark mode */
-@custom-variant dark (&:where(.dark, .dark *));
+@variant dark (&:is(.dark *));
 
 /* ===== Theme Tokens ===== */
 @theme {

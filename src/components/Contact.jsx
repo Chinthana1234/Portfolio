@@ -137,18 +137,11 @@ function Contact() {
           <div className="flex flex-col">
             <motion.h2
               variants={itemVariants}
-              className="text-5xl md:text-7xl lg:text-8xl font-light tracking-tighter text-white mb-12 leading-[0.95]"
+              className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tighter text-white mb-12 leading-[0.95]"
             >
               Work <br />
               <span className="text-[#10B981] font-normal italic">With Me.</span>
             </motion.h2>
-
-            <motion.p
-              variants={itemVariants}
-              className="text-white/40 text-lg font-light max-w-md mb-16 leading-relaxed"
-            >
-              Have a project in mind or just want to say hi? Feel free to reach out. I'm always open to new opportunities.
-            </motion.p>
 
             <motion.div variants={itemVariants} className="flex flex-col gap-6">
               {contactLinks.map((link) => (
