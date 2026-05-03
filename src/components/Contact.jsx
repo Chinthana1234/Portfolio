@@ -137,7 +137,7 @@ function Contact() {
           <div className="flex flex-col">
             <motion.h2
               variants={itemVariants}
-              className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tighter text-white mb-12 leading-[0.95]"
+              className="text-6xl md:text-7xl lg:text-8xl font-light tracking-tighter text-white mb-12 leading-[0.95]"
             >
               Work <br />
               <span className="text-[#10B981] font-normal italic">With Me.</span>
