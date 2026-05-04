@@ -115,7 +115,7 @@ function Contact() {
 
       <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
         {/* Section Header */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
@@ -143,7 +143,7 @@ function Contact() {
               <span className="text-[#10B981] font-normal italic">With Me.</span>
             </motion.h2>
 
-            <motion.div variants={itemVariants} className="flex flex-col gap-6">
+            <motion.div variants={itemVariants} className="flex flex-col gap-6 max-w-md">
               {contactLinks.map((link) => (
                 <motion.a
                   key={link.id}
@@ -177,7 +177,7 @@ function Contact() {
             <div className="bg-white/[0.02] border border-white/5 p-8 md:p-14 relative overflow-hidden">
               {/* Subtle Decorative Line */}
               <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#10B981]/20 to-transparent" />
-              
+
               <AnimatePresence mode="wait">
                 {!isSubmitted ? (
                   <motion.div
