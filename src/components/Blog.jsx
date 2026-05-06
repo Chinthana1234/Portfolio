@@ -129,16 +129,16 @@ function Blog() {
                 </div>
 
                 {/* Content Section */}
-                <div className="px-8 sm:px-12 pt-8 sm:pt-10 pb-10 sm:pb-14 flex-1 flex flex-col bg-black/10 backdrop-blur-md">
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white transition-colors duration-300 mb-4 line-clamp-2">
+                <div className="p-6 sm:p-8 flex-1 flex flex-col gap-4 bg-black/10 backdrop-blur-md">
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white transition-colors duration-300 line-clamp-2">
                     {article.title}
                   </h3>
-                  <p className="text-gray-600 dark:text-[#A0A0A0] text-sm leading-[1.8] mb-10 flex-grow line-clamp-3">
+                  <p className="text-gray-600 dark:text-[#A0A0A0] text-sm leading-[1.8] flex-grow line-clamp-3">
                     {article.description}
                   </p>
 
                   {/* Tags */}
-                  <div className="flex flex-wrap gap-3 mb-10">
+                  <div className="flex flex-wrap gap-3 mt-2 pt-4 border-t border-black/5 dark:border-white/5">
                     {article.tags.map((tag, i) => (
                       <span
                         key={i}

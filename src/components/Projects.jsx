@@ -125,16 +125,16 @@ function Projects() {
                 </div>
 
                 {/* Content Section - Glassmorphism */}
-                <div className="px-8 sm:px-14 pt-8 sm:pt-12 pb-10 sm:pb-16 flex-1 flex flex-col bg-black/10 backdrop-blur-md">
+                <div className="p-6 sm:p-8 flex-1 flex flex-col gap-4 bg-black/10 backdrop-blur-md">
                   <h3 className="text-2xl font-bold text-gray-900 dark:text-white transition-colors duration-300">
                     {project.title}
                   </h3>
-                  <p className="text-gray-600 dark:text-[#A0A0A0] text-base leading-[1.75] mt-6 mb-10 flex-grow">
+                  <p className="text-gray-600 dark:text-[#A0A0A0] text-sm leading-[1.8] flex-grow">
                     {project.description}
                   </p>
 
-                  {/* Tech Tags - Silver-Ash logic */}
-                  <div className="flex flex-wrap gap-4 mt-auto">
+                  {/* Tech Tags */}
+                  <div className="flex flex-wrap gap-3 mt-2 pt-4 border-t border-black/5 dark:border-white/5">
                     {project.tech.map((tech, i) => (
                       <span
                         key={i}
