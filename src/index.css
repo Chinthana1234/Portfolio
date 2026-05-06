@@ -377,6 +377,20 @@ a { color: inherit; text-decoration: none; }
   display: flex;
   align-items: flex-start;
   gap: 1rem;
+  padding: 0.875rem 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.5rem;
+  transition: border-color 0.35s ease, background-color 0.35s ease;
+  cursor: default;
+}
+
+.contact-info__item:hover {
+  border-color: rgba(16, 185, 129, 0.4);
+  background-color: rgba(16, 185, 129, 0.04);
+}
+
+.contact-info__item:hover .contact-info__icon {
+  color: #10B981;
 }
 
 .contact-info__icon {
@@ -385,6 +399,7 @@ a { color: inherit; text-decoration: none; }
   margin-top: 0.125rem;
   color: rgba(255, 255, 255, 0.6);
   flex-shrink: 0;
+  transition: color 0.35s ease;
 }
 
 .contact-info__text {
@@ -416,6 +431,25 @@ a { color: inherit; text-decoration: none; }
   gap: 1.25rem;
 }
 
+/* Form input & textarea hover borders */
+.contact-form input,
+.contact-form textarea {
+  transition: border-color 0.35s ease, background-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.contact-form input:hover,
+.contact-form textarea:hover {
+  border-color: rgba(16, 185, 129, 0.35);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: rgba(16, 185, 129, 0.5);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.08);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
 /* Name & Email side-by-side row */
 .contact-form__row {
   display: grid;
@@ -445,16 +479,20 @@ a { color: inherit; text-decoration: none; }
   gap: 0.625rem;
   padding: 0 1.5rem;
   height: 2.75rem;
-  background: #ffffff;
-  color: #000000;
+  background: transparent;
+  color: #ffffff;
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.1em;
-  border: none;
+  border: 1px solid transparent;
   border-radius: 2px;
   cursor: pointer;
   overflow: hidden;
-  transition: all 0.5s ease;
+  transition: all 0.35s ease;
+}
+
+.contact-form__submit:hover {
+  border-color: #10B981;
 }
 
 .contact-form__submit:disabled {
@@ -470,21 +508,6 @@ a { color: inherit; text-decoration: none; }
   gap: 0.625rem;
 }
 
-.contact-form__submit-overlay {
-  position: absolute;
-  inset: 0;
-  background-color: #10B981;
-  transform: translateY(100%);
-  transition: transform 0.5s ease-out;
-}
-
-.contact-form__submit:hover .contact-form__submit-overlay {
-  transform: translateY(0);
-}
-
-.contact-form__submit:hover .contact-form__submit-inner {
-  color: #ffffff;
-}
 
 /* ---- Success State ---- */
 .contact-success {

@@ -118,11 +118,11 @@ function Contact() {
           className="contact-header"
         >
           <h2 className="contact-header__title">
-            Get In Touch
+            Work <span className="accent-text">With Me.</span>
           </h2>
           <div className="contact-header__accent" />
           <p className="contact-header__subtitle">
-            Have a question or want to work together? Send me a message!
+
           </p>
         </motion.div>
 
@@ -218,8 +218,6 @@ function Contact() {
                           <FiSend className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                           {isSubmitting ? 'Sending...' : 'Send Message'}
                         </span>
-                        {/* Hover Overlay */}
-                        <div className="contact-form__submit-overlay" />
                       </motion.button>
                     </div>
                   </form>
