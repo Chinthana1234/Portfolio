@@ -7,16 +7,16 @@ const education = [
   {
     degree: 'Bachelor of Science in Software Engineering',
     institution: 'University of Kelaniya',
-    period: '2023 – Present',
-    grade: 'CGPA: 3.90 / 4.0',
+    period: '2024 – Present',
+    grade: 'CGPA: 3.30 / 4.0',
     description:
       'Specializing in Net-Centric Web Application Development, Data Science and Engineering Application, Health Informatic Engineering domains.',
   },
   {
     degree: 'GCE Advanced Level',
-    institution: 'Bandarawela Central College',
-    period: '2019 – 2022',
-    grade: 'Z-Score: 1.6086',
+    institution: 'Kularathna College Ambalangoda',
+    period: '2022– 2024',
+    grade: 'Z-Score: 1.546',
     description:
       'Completed coursework in Mathematics, Chemistry, and Physics.',
   },
@@ -127,35 +127,43 @@ function Certifications() {
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true, margin: '-40px' }}
-                  className="relative group"
+                  className="relative group cursor-default"
                 >
                   {/* Timeline dot */}
                   <span className="absolute -left-[1.65rem] top-1.5 w-3 h-3 rounded-none border-2 border-emerald-500 bg-white dark:bg-black group-hover:bg-emerald-500 transition-colors duration-300" />
 
-                  {/* Period badge */}
-                  <span className="inline-block mb-3 text-[10px] font-mono tracking-[0.2em] uppercase text-emerald-500 bg-emerald-500/10 px-2 py-0.5 border border-emerald-500/20">
-                    {edu.period}
-                  </span>
+                  {/* Hover card wrapper */}
+                  <div className="relative p-4 -mx-4 rounded-none transition-all duration-300
+                    group-hover:bg-emerald-500/[0.04] dark:group-hover:bg-emerald-500/[0.06]
+                  ">
 
-                  <h4 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white leading-snug mb-1">
-                    {edu.degree}
-                  </h4>
-
-                  <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
-                    <p className="flex items-center gap-1.5 text-sm text-gray-600 dark:text-white/50">
-                      <FiMapPin className="w-3 h-3 flex-shrink-0" />
-                      {edu.institution}
-                    </p>
-                    <span className="text-xs font-mono font-bold text-emerald-500">
-                      {edu.grade}
+                    {/* Period badge */}
+                    <span className="inline-block mb-3 text-[10px] font-mono tracking-[0.2em] uppercase text-emerald-500 bg-emerald-500/10 px-2 py-0.5 border border-emerald-500/20 transition-colors duration-300 group-hover:bg-emerald-500/20 group-hover:border-emerald-500/40">
+                      {edu.period}
                     </span>
-                  </div>
 
-                  <p className="text-sm leading-relaxed text-gray-500 dark:text-white/35">
-                    {edu.description}
-                  </p>
+                    <h4 className="text-lg sm:text-xl font-bold leading-snug mb-1 text-gray-900 dark:text-white transition-colors duration-300 group-hover:text-emerald-500 dark:group-hover:text-emerald-400">
+                      {edu.degree}
+                    </h4>
+
+                    <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+                      <p className="flex items-center gap-1.5 text-sm text-gray-600 dark:text-white/50 transition-colors duration-300 group-hover:text-gray-800 dark:group-hover:text-white/70">
+                        <FiMapPin className="w-3 h-3 flex-shrink-0 transition-colors duration-300 group-hover:text-emerald-500" />
+                        {edu.institution}
+                      </p>
+                      <span className="text-xs font-mono font-bold text-emerald-500 transition-all duration-300 group-hover:drop-shadow-[0_0_6px_rgba(16,185,129,0.6)]">
+                        {edu.grade}
+                      </span>
+                    </div>
+
+                    <p className="text-sm leading-relaxed text-gray-500 dark:text-white/35 transition-colors duration-300 group-hover:text-gray-600 dark:group-hover:text-white/50">
+                      {edu.description}
+                    </p>
+
+                  </div>
                 </motion.div>
               ))}
+
             </div>
           </div>
 
