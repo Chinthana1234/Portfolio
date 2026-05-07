@@ -1,7 +1,28 @@
 import { motion } from 'framer-motion'
-import { FiAward, FiExternalLink } from 'react-icons/fi'
+import { FiAward, FiExternalLink, FiBook, FiMapPin } from 'react-icons/fi'
 import { useTheme } from '../context/ThemeContext'
 
+/* ── Education Data ─────────────────────────────────────── */
+const education = [
+  {
+    degree: 'Bachelor of Science in Software Engineering',
+    institution: 'University of Kelaniya',
+    period: '2023 – Present',
+    grade: 'CGPA: 3.90 / 4.0',
+    description:
+      'Specializing in Net-Centric Web Application Development, Data Science and Engineering Application, Health Informatic Engineering domains.',
+  },
+  {
+    degree: 'GCE Advanced Level',
+    institution: 'Bandarawela Central College',
+    period: '2019 – 2022',
+    grade: 'Z-Score: 1.6086',
+    description:
+      'Completed coursework in Mathematics, Chemistry, and Physics.',
+  },
+]
+
+/* ── Certification Data ─────────────────────────────────── */
 const certifications = [
   {
     title: 'Figma Design Basics and Features',
@@ -33,22 +54,32 @@ const certifications = [
   },
 ]
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 40 },
+/* ── Animation Variants ─────────────────────────────────── */
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
   visible: (i) => ({
-    opacity: 1, y: 0,
-    transition: { duration: 0.6, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] },
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.55, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] },
   }),
 }
 
+/* ══════════════════════════════════════════════════════════
+   Component
+══════════════════════════════════════════════════════════ */
 function Certifications() {
   const { isDark } = useTheme()
 
   return (
-    <section id="certifications" className="relative overflow-hidden bg-white dark:bg-black transition-colors duration-400 py-20 lg:py-32">
+    <section
+      id="certifications"
+      className="relative overflow-hidden bg-white dark:bg-black transition-colors duration-400 py-20 lg:py-32"
+    >
       <div className="divider" />
 
       <div className="section-container relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
+
+        {/* ── Section Header ────────────────────────────── */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -56,83 +87,123 @@ function Certifications() {
           transition={{ duration: 0.6 }}
           className="mb-16 sm:mb-24"
         >
-          <span className="text-[10px] font-mono uppercase text-emerald-500 font-bold mb-8 block" style={{ letterSpacing: '12px' }}>
+          <span
+            className="text-[10px] font-mono uppercase text-emerald-500 font-bold mb-8 block"
+            style={{ letterSpacing: '12px' }}
+          >
             ACHIEVEMENTS
           </span>
-          <h2 className="section-title">Licenses & <span className="accent-text">Certifications</span></h2>
+          <h2 className="section-title">
+            Education &amp; <span className="accent-text">Certifications</span>
+          </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-x-8 sm:gap-x-12 gap-y-8 sm:gap-y-12">
-          {certifications.map((cert, index) => (
+        {/* ── Two-Column Layout ─────────────────────────── */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+
+          {/* ══ LEFT — Education ═════════════════════════ */}
+          <div>
             <motion.div
-              key={index}
-              custom={index}
-              variants={cardVariants}
-              initial="hidden"
-              whileInView="visible"
-              whileHover="hover"
-              viewport={{ once: true, margin: '-40px' }}
-              className="group relative flex flex-col h-full"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.55 }}
+              className="flex items-center gap-3 mb-10"
             >
-              {/* Animated Border SVG */}
-              <svg className="absolute inset-0 w-full h-full pointer-events-none z-20 overflow-visible">
-                <rect
-                  x="0" y="0" width="100%" height="100%"
-                  rx="0" ry="0"
-                  fill="none"
-                  stroke={isDark ? "#2A2A2A" : "#E5E7EB"}
-                  strokeWidth="1"
-                  className="transition-opacity duration-300 group-hover:opacity-0"
-                />
-                <motion.rect
-                  x="0" y="0" width="100%" height="100%"
-                  rx="0" ry="0"
-                  fill="none"
-                  stroke="#10B981"
-                  strokeWidth="2"
-                  initial={{ pathLength: 0, opacity: 0 }}
-                  variants={{
-                    hover: {
-                      pathLength: 1,
-                      opacity: 1,
-                      transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] }
-                    }
-                  }}
-                  style={{ filter: 'drop-shadow(0 0 4px #10B981)' }}
-                />
-              </svg>
-
-              <div className="relative flex-1 p-8 sm:p-10 bg-black/[0.03] dark:bg-[#1A1A1A] transition-all duration-300">
-                <div className="flex items-start gap-6">
-                  <div className="w-14 h-14 rounded-none bg-emerald-500/10 flex items-center justify-center flex-shrink-0 border border-emerald-500/20 group-hover:bg-emerald-500/20 transition-colors duration-300">
-                    <FiAward className="w-6 h-6 text-emerald-500" />
-                  </div>
-
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white transition-colors duration-300 leading-tight mb-2">
-                      {cert.title}
-                    </h3>
-                    <p className="text-base text-gray-600 dark:text-[#A0A0A0] font-medium mb-1">
-                      {cert.issuer}
-                    </p>
-                    <p className="text-sm text-gray-500 dark:text-[#707070] mb-6">
-                      Issued {cert.date} · Credential ID {cert.credentialId}
-                    </p>
-
-                    <a
-                      href={cert.verifyLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-xs font-mono tracking-[0.2em] uppercase text-gray-900 dark:text-white hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors duration-300"
-                    >
-                      <span>Show Credential</span>
-                      <FiExternalLink className="w-4 h-4" />
-                    </a>
-                  </div>
-                </div>
+              <div className="w-8 h-8 rounded-none bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20">
+                <FiBook className="w-4 h-4 text-emerald-500" />
               </div>
+              <h3 className="text-xs font-mono uppercase tracking-[0.25em] text-gray-500 dark:text-white/40">
+                Education
+              </h3>
             </motion.div>
-          ))}
+
+            <div className="relative pl-6 border-l border-gray-200 dark:border-white/[0.06] flex flex-col gap-12">
+              {education.map((edu, i) => (
+                <motion.div
+                  key={i}
+                  custom={i}
+                  variants={fadeUp}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, margin: '-40px' }}
+                  className="relative group"
+                >
+                  {/* Timeline dot */}
+                  <span className="absolute -left-[1.65rem] top-1.5 w-3 h-3 rounded-none border-2 border-emerald-500 bg-white dark:bg-black group-hover:bg-emerald-500 transition-colors duration-300" />
+
+                  {/* Period badge */}
+                  <span className="inline-block mb-3 text-[10px] font-mono tracking-[0.2em] uppercase text-emerald-500 bg-emerald-500/10 px-2 py-0.5 border border-emerald-500/20">
+                    {edu.period}
+                  </span>
+
+                  <h4 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white leading-snug mb-1">
+                    {edu.degree}
+                  </h4>
+
+                  <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+                    <p className="flex items-center gap-1.5 text-sm text-gray-600 dark:text-white/50">
+                      <FiMapPin className="w-3 h-3 flex-shrink-0" />
+                      {edu.institution}
+                    </p>
+                    <span className="text-xs font-mono font-bold text-emerald-500">
+                      {edu.grade}
+                    </span>
+                  </div>
+
+                  <p className="text-sm leading-relaxed text-gray-500 dark:text-white/35">
+                    {edu.description}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* ══ RIGHT — Certifications ═══════════════════ */}
+          <div>
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.55 }}
+              className="flex items-center gap-3 mb-10"
+            >
+              <div className="w-8 h-8 rounded-none bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20">
+                <FiAward className="w-4 h-4 text-emerald-500" />
+              </div>
+              <h3 className="text-xs font-mono uppercase tracking-[0.25em] text-gray-500 dark:text-white/40">
+                Certifications
+              </h3>
+            </motion.div>
+
+            <div className="flex flex-col divide-y divide-gray-100 dark:divide-white/[0.05]">
+              {certifications.map((cert, i) => (
+                <motion.a
+                  key={i}
+                  href={cert.verifyLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  custom={i}
+                  variants={fadeUp}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, margin: '-20px' }}
+                  className="group flex items-start justify-between gap-4 py-5 hover:bg-emerald-500/[0.03] transition-colors duration-300 px-3 -mx-3 cursor-pointer"
+                >
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-semibold text-gray-900 dark:text-white/80 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 transition-colors duration-300 leading-snug mb-1">
+                      {cert.title}
+                    </p>
+                    <p className="text-xs text-gray-400 dark:text-white/30">
+                      {cert.issuer} · {cert.date}
+                    </p>
+                  </div>
+                  <FiExternalLink className="w-3.5 h-3.5 text-gray-300 dark:text-white/20 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 transition-colors duration-300 flex-shrink-0 mt-0.5" />
+                </motion.a>
+              ))}
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
