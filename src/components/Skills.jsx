@@ -39,13 +39,6 @@ function Skills() {
 
   return (
     <section id="skills" className="relative py-20 sm:py-32 lg:py-40 overflow-hidden bg-white dark:bg-[#000000] transition-colors duration-400">
-      {/* Background Watermark - Static */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 select-none pointer-events-none z-0">
-        <span className="text-[12vw] font-black text-black/[0.03] dark:text-white/[0.015] tracking-widest uppercase">
-          Technologies
-        </span>
-      </div>
-
       <div className="section-container relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 flex flex-col gap-10 sm:gap-20 lg:gap-40">
 
         {/* Header Section */}

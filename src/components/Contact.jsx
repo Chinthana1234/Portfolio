@@ -85,19 +85,19 @@ function Contact() {
     {
       id: 'email',
       label: 'Email',
-      value: 'imansha.idr@gmail.com',
+      value: 'chinthanasandeepa123@gmail.com',
       icon: <FiMail className="w-5 h-5" />,
     },
     {
       id: 'phone',
       label: 'Phone',
-      value: '+94 76 311 7229',
+      value: '+94 713179561',
       icon: <FiPhone className="w-5 h-5" />,
     },
     {
       id: 'location',
       label: 'Location',
-      value: 'Mahiyangana, Sri Lanka',
+      value: 'Ambalangoda , Sri Lanka',
       icon: <FiMapPin className="w-5 h-5" />,
     }
   ]
