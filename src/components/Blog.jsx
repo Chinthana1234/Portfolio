@@ -58,7 +58,7 @@ function Blog() {
           <h2 className="section-title">Technical <span className="accent-text">Articles</span></h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 lg:gap-12 justify-items-center sm:justify-items-stretch">
           {articles.map((article, index) => (
             <motion.a
               key={index}
@@ -71,7 +71,7 @@ function Blog() {
               href={article.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative flex flex-col h-full"
+              className="group relative flex flex-col h-full max-w-[260px] sm:max-w-none mx-auto w-full"
             >
               {/* Animated Border SVG (matching Projects) */}
               <svg className="absolute inset-0 w-full h-full pointer-events-none z-20 overflow-visible">
@@ -102,8 +102,8 @@ function Blog() {
               </svg>
 
               <div className="relative flex flex-col h-full bg-black/[0.03] dark:bg-[#1A1A1A] rounded-none overflow-hidden transition-all duration-300">
-                {/* Image Section */}
-                <div className="relative h-[220px] overflow-hidden">
+                {/* Image Section - Reduced Height for mobile */}
+                <div className="relative h-[130px] sm:h-[220px] overflow-hidden">
                   <motion.img
                     src={article.image}
                     alt={article.title}
@@ -129,7 +129,7 @@ function Blog() {
                 </div>
 
                 {/* Content Section */}
-                <div className="p-6 sm:p-8 flex-1 flex flex-col gap-4 bg-black/10 backdrop-blur-md">
+                <div className="p-4 sm:p-8 flex-1 flex flex-col gap-4 bg-black/10 backdrop-blur-md">
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white transition-colors duration-300 line-clamp-2">
                     {article.title}
                   </h3>

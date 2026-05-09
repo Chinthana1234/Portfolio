@@ -63,7 +63,7 @@ function Projects() {
           <h2 className="section-title">Selected <span className="accent-text">Projects</span></h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 sm:gap-x-12 gap-y-10 sm:gap-y-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 sm:gap-x-12 gap-y-10 sm:gap-y-12 justify-items-center sm:justify-items-stretch">
           {projects.map((project, index) => (
             <motion.div
               key={index}
@@ -73,7 +73,7 @@ function Projects() {
               whileInView="visible"
               whileHover="hover"
               viewport={{ once: true, margin: '-40px' }}
-              className="group relative flex flex-col h-full"
+              className="group relative flex flex-col h-full max-w-[260px] sm:max-w-none mx-auto w-full"
             >
               {/* Animated Border SVG */}
               <svg className="absolute inset-0 w-full h-full pointer-events-none z-20 overflow-visible">
@@ -104,8 +104,8 @@ function Projects() {
               </svg>
 
               <div className="relative flex flex-col h-full bg-black/[0.03] dark:bg-[#1A1A1A] rounded-none overflow-hidden transition-all duration-300">
-                {/* Image Section - Reduced Height */}
-                <div className="relative h-[180px] sm:h-[220px] overflow-hidden">
+                {/* Image Section - Reduced Height for mobile */}
+                <div className="relative h-[130px] sm:h-[220px] overflow-hidden">
                   <motion.img
                     src={project.image}
                     alt={project.title}
@@ -127,7 +127,7 @@ function Projects() {
                 </div>
 
                 {/* Content Section - Adjusted Padding */}
-                <div className="p-5 sm:p-7 flex-1 flex flex-col gap-3 bg-black/10 backdrop-blur-md">
+                <div className="p-4 sm:p-7 flex-1 flex flex-col gap-3 bg-black/10 backdrop-blur-md">
                   <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white transition-colors duration-300">
                     {project.title}
                   </h3>
