@@ -4,28 +4,28 @@ import { FiGithub } from 'react-icons/fi'
 const projects = [
   {
     title: 'Stall Reservation System',
-    description: 'A full-stack reservation system allowing users to book stalls efficiently with interactive UI and robust backend architecture.',
+    description: 'A full-stack reservation system allowing users to book stalls efficiently. Features an interactive UI, real-time availability checking, and a robust backend architecture for seamless transaction management.',
     tech: ['Spring Boot', 'React', 'MySQL'],
     github: 'https://github.com/Chinthana1234/sa-project', live: '#',
     image: '/images/stall1.jpg',
   },
   {
     title: 'Food Management System',
-    description: 'A comprehensive management platform to track food inventory, process orders, and handle user authentication seamlessly.',
+    description: 'A comprehensive management platform designed to track food inventory, process daily orders, and handle secure user authentication, streamlining operations for restaurant staff.',
     tech: ['React', 'PHP', 'MongoDB'],
     github: 'https://github.com/Chinthana1234/NA-HackDynamos', live: '#',
     image: '/images/food1.jpeg',
   },
   {
     title: 'Movie Hub',
-    description: 'A modern, highly responsive movie discovery web application using sleek styling and dynamic component rendering.',
+    description: 'A modern, highly responsive movie discovery web application. It leverages external APIs to fetch real-time data, using sleek styling and dynamic component rendering for a premium user experience.',
     tech: ['React', 'Tailwind CSS'],
     github: 'https://github.com/Chinthana1234/Movie-Hub', live: '#',
     image: '/images/movie1.webp',
   },
   {
     title: 'Pet Store E-commerce',
-    description: 'An online pet store featuring a shopping cart system, dynamic product catalogs, and custom database integration.',
+    description: 'An online pet store featuring a complete shopping cart system, dynamic product catalogs, and custom database integration to handle inventory, user profiles, and order history.',
     tech: ['PHP', 'HTML/CSS', 'MySQL'],
     github: 'https://github.com/Lochithya/Care4Pets', live: '#',
     image: '/images/pets1.jpeg  ',
@@ -41,27 +41,29 @@ const cardVariants = {
 }
 
 import { useTheme } from '../context/ThemeContext'
+import { FiArrowRight } from 'react-icons/fi'
 
 function Projects() {
   const { isDark } = useTheme()
   return (
-    <section id="projects" className="relative overflow-hidden bg-white dark:bg-black transition-colors duration-400">
+    <section id="projects" className="relative overflow-hidden bg-white dark:bg-black transition-colors duration-400 py-20 lg:py-32">
       <div className="divider" />
 
-      <div className="section-container">
+      <div className="section-container relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.6 }}
-          className="mb-20"
+          className="mb-16 sm:mb-24"
         >
-
+          <span className="text-[10px] font-mono uppercase text-emerald-500 font-bold mb-8 block" style={{ letterSpacing: '12px' }}>
+            PORTFOLIO
+          </span>
           <h2 className="section-title">Selected <span className="accent-text">Projects</span></h2>
-
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 sm:gap-x-12 gap-y-14 sm:gap-y-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 sm:gap-x-12 gap-y-10 sm:gap-y-12">
           {projects.map((project, index) => (
             <motion.div
               key={index}
@@ -102,8 +104,8 @@ function Projects() {
               </svg>
 
               <div className="relative flex flex-col h-full bg-black/[0.03] dark:bg-[#1A1A1A] rounded-none overflow-hidden transition-all duration-300">
-                {/* Image Section */}
-                <div className="relative h-[240px] sm:h-[280px] overflow-hidden">
+                {/* Image Section - Reduced Height */}
+                <div className="relative h-[180px] sm:h-[220px] overflow-hidden">
                   <motion.img
                     src={project.image}
                     alt={project.title}
@@ -116,33 +118,41 @@ function Projects() {
                   <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-[#1A1A1A] via-transparent to-transparent opacity-80" />
 
                   {/* Action Links */}
-                  <div className="absolute top-6 right-6 flex gap-3 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 z-30">
+                  <div className="absolute top-4 right-4 flex gap-3 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 z-30">
                     <a href={project.github} target="_blank" rel="noopener noreferrer"
-                      className="w-10 h-10 rounded-xl bg-black/60 backdrop-blur-md border border-white/10 flex items-center justify-center text-white/70 hover:text-emerald-400 hover:border-emerald-500/30 transition-all duration-300">
-                      <FiGithub className="w-5 h-5" />
+                      className="w-9 h-9 rounded-xl bg-black/60 backdrop-blur-md border border-white/10 flex items-center justify-center text-white/70 hover:text-emerald-400 hover:border-emerald-500/30 transition-all duration-300">
+                      <FiGithub className="w-4 h-4" />
                     </a>
                   </div>
                 </div>
 
-                {/* Content Section - Glassmorphism */}
-                <div className="p-6 sm:p-8 flex-1 flex flex-col gap-4 bg-black/10 backdrop-blur-md">
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white transition-colors duration-300">
+                {/* Content Section - Adjusted Padding */}
+                <div className="p-5 sm:p-7 flex-1 flex flex-col gap-3 bg-black/10 backdrop-blur-md">
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white transition-colors duration-300">
                     {project.title}
                   </h3>
-                  <p className="text-gray-600 dark:text-[#A0A0A0] text-sm leading-[1.8] flex-grow">
+                  <p className="text-gray-600 dark:text-[#A0A0A0] text-sm leading-[1.6] flex-grow mb-2">
                     {project.description}
                   </p>
 
-                  {/* Tech Tags */}
-                  <div className="flex flex-wrap gap-3 mt-2 pt-4 border-t border-black/5 dark:border-white/5">
-                    {project.tech.map((tech, i) => (
-                      <span
-                        key={i}
-                        className="text-sm font-medium tracking-wide transition-all duration-300 text-gray-500 dark:text-[#A0A0A0] group-hover:text-[#10B981]"
-                      >
-                        {tech}
-                      </span>
-                    ))}
+                  <div className="flex flex-col gap-4 mt-auto pt-4 border-t border-black/5 dark:border-white/5">
+                    {/* Tech Tags */}
+                    <div className="flex flex-wrap gap-2.5">
+                      {project.tech.map((tech, i) => (
+                        <span
+                          key={i}
+                          className="text-[11px] sm:text-xs font-mono uppercase tracking-wider transition-all duration-300 text-gray-500 dark:text-[#A0A0A0] group-hover:text-[#10B981]"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                    
+                    {/* More Details Link */}
+                    <a href={project.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-widest text-gray-900 dark:text-white hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors duration-300 w-fit group/link mt-1">
+                      More Details
+                      <FiArrowRight className="w-3.5 h-3.5 group-hover/link:translate-x-1 transition-transform" />
+                    </a>
                   </div>
                 </div>
               </div>
