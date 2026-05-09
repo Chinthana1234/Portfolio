@@ -18,9 +18,9 @@ function App() {
         <main className="relative z-10">
           <Hero />
           <Skills />
+          <Certifications />
           <Projects />
           <Blog />
-          <Certifications />
           <Contact />
         </main>
       </div>
