@@ -129,7 +129,7 @@ function Blog() {
                 </div>
 
                 {/* Content Section */}
-                <div className="p-4 sm:p-8 flex-1 flex flex-col gap-4 bg-black/10 backdrop-blur-md">
+                <div className="p-4 sm:p-8 flex-1 flex flex-col gap-4 bg-black/10 backdrop-blur-md items-center sm:items-start text-center sm:text-left">
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white transition-colors duration-300 line-clamp-2">
                     {article.title}
                   </h3>
@@ -138,7 +138,7 @@ function Blog() {
                   </p>
 
                   {/* Tags */}
-                  <div className="flex flex-wrap gap-3 mt-2 pt-4 border-t border-black/5 dark:border-white/5">
+                  <div className="flex flex-wrap gap-3 mt-2 pt-4 border-t border-black/5 dark:border-white/5 w-full justify-center sm:justify-start">
                     {article.tags.map((tag, i) => (
                       <span
                         key={i}
@@ -150,7 +150,7 @@ function Blog() {
                   </div>
 
                   {/* Read Article Link */}
-                  <div className="flex items-center gap-2 text-[11px] font-bold tracking-[0.2em] uppercase text-gray-900 dark:text-white transition-all duration-300 group-hover:text-[#10B981]">
+                  <div className="flex items-center justify-center sm:justify-start w-full gap-2 text-[11px] font-bold tracking-[0.2em] uppercase text-gray-900 dark:text-white transition-all duration-300 group-hover:text-[#10B981] mt-2">
                     Read Article
                     <FiArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
                   </div>

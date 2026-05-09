@@ -127,7 +127,7 @@ function Projects() {
                 </div>
 
                 {/* Content Section - Adjusted Padding */}
-                <div className="p-4 sm:p-7 flex-1 flex flex-col gap-3 bg-black/10 backdrop-blur-md">
+                <div className="p-4 sm:p-7 flex-1 flex flex-col gap-3 bg-black/10 backdrop-blur-md items-center sm:items-start text-center sm:text-left">
                   <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white transition-colors duration-300">
                     {project.title}
                   </h3>
@@ -135,9 +135,9 @@ function Projects() {
                     {project.description}
                   </p>
 
-                  <div className="flex flex-col gap-4 mt-auto pt-4 border-t border-black/5 dark:border-white/5">
+                  <div className="flex flex-col gap-4 mt-auto pt-4 border-t border-black/5 dark:border-white/5 w-full items-center sm:items-start">
                     {/* Tech Tags */}
-                    <div className="flex flex-wrap gap-2.5">
+                    <div className="flex flex-wrap gap-2.5 justify-center sm:justify-start">
                       {project.tech.map((tech, i) => (
                         <span
                           key={i}
@@ -149,7 +149,7 @@ function Projects() {
                     </div>
                     
                     {/* More Details Link */}
-                    <a href={project.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-widest text-gray-900 dark:text-white hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors duration-300 w-fit group/link mt-1">
+                    <a href={project.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center sm:justify-start gap-1.5 text-xs font-mono uppercase tracking-widest text-gray-900 dark:text-white hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors duration-300 w-fit group/link mt-1">
                       More Details
                       <FiArrowRight className="w-3.5 h-3.5 group-hover/link:translate-x-1 transition-transform" />
                     </a>
