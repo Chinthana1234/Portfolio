@@ -5,6 +5,7 @@ import { useTheme } from '../context/ThemeContext'
 
 
 const navLinks = [
+  { name: 'About', href: '#hero' },
   { name: 'Skills', href: '#skills' },
   { name: 'Education', href: '#certifications' },
   { name: 'Projects', href: '#projects' },
