@@ -5,7 +5,7 @@ import { FiSend, FiCheckCircle, FiMail, FiPhone, FiMapPin } from 'react-icons/fi
 const FormField = ({ label, type = 'text', placeholder, value, onChange, isTextArea = false }) => {
   return (
     <div className="flex flex-col gap-2 group/field">
-      <label className="text-sm font-semibold text-white/80 group-focus-within/field:text-[#10B981] transition-colors duration-300">
+      <label className="text-sm font-semibold text-gray-700 dark:text-white/80 group-focus-within/field:text-[#10B981] transition-colors duration-300">
         {label}
       </label>
       {isTextArea ? (
@@ -14,7 +14,7 @@ const FormField = ({ label, type = 'text', placeholder, value, onChange, isTextA
           placeholder={placeholder}
           value={value}
           onChange={onChange}
-          className="w-full bg-white/[0.03] border border-white/15 text-white placeholder:text-white/30 focus:outline-none focus:border-[#10B981]/50 focus:bg-white/[0.05] transition-all duration-500 resize-none py-3 px-4 text-sm rounded-sm"
+          className="w-full bg-black/[0.03] dark:bg-white/[0.03] border border-black/10 dark:border-white/15 text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-white/30 focus:outline-none focus:border-[#10B981]/50 focus:bg-black/[0.05] dark:focus:bg-white/[0.05] transition-all duration-500 resize-none py-3 px-4 text-sm rounded-sm"
         />
       ) : (
         <input
@@ -22,7 +22,7 @@ const FormField = ({ label, type = 'text', placeholder, value, onChange, isTextA
           placeholder={placeholder}
           value={value}
           onChange={onChange}
-          className="w-full bg-white/[0.03] border border-white/15 text-white placeholder:text-white/30 focus:outline-none focus:border-[#10B981]/50 focus:bg-white/[0.05] transition-all duration-500 py-3 px-4 text-sm rounded-sm h-12"
+          className="w-full bg-black/[0.03] dark:bg-white/[0.03] border border-black/10 dark:border-white/15 text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-white/30 focus:outline-none focus:border-[#10B981]/50 focus:bg-black/[0.05] dark:focus:bg-white/[0.05] transition-all duration-500 py-3 px-4 text-sm rounded-sm h-12"
         />
       )}
     </div>
