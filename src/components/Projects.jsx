@@ -147,12 +147,6 @@ function Projects() {
                         </span>
                       ))}
                     </div>
-                    
-                    {/* More Details Link */}
-                    <a href={project.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center sm:justify-start gap-1.5 text-xs font-mono uppercase tracking-widest text-gray-900 dark:text-white hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors duration-300 w-fit group/link mt-1">
-                      More Details
-                      <FiArrowRight className="w-3.5 h-3.5 group-hover/link:translate-x-1 transition-transform" />
-                    </a>
                   </div>
                 </div>
               </div>
