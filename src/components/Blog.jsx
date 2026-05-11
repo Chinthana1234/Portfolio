@@ -3,6 +3,15 @@ import { FiArrowUpRight } from 'react-icons/fi'
 
 const articles = [
   {
+    title: 'Microservices vs Monolith: What You Should Actually Choose in 2026',
+    description: 'In 2021, if you proposed a Monolith for a new project, you were viewed as a dinosaur. In 2026, if you propose Microservices for a new project...',
+    tags: ['Architecture', 'Microservices', 'Trends'],
+    date: 'May 8, 2026',
+    readTime: '4 min read',
+    link: 'https://medium.com/@chinthanasandeepa123',
+    image: '/images/microservices_blog.png',
+  },
+  {
     title: 'Stop Confusing REST API and RESTful API',
     description: 'A clear explanation of the fundamental differences between REST and RESTful APIs, and why the distinction matters for modern web services.',
     tags: ['API', 'REST', 'Web Dev'],
@@ -58,7 +67,7 @@ function Blog() {
           <h2 className="section-title">Technical <span className="accent-text">Articles</span></h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 sm:gap-16 lg:gap-20 justify-items-center sm:justify-items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 sm:gap-16 lg:gap-8 xl:gap-12 justify-items-center sm:justify-items-stretch">
           {articles.map((article, index) => (
             <motion.a
               key={index}
