@@ -93,12 +93,12 @@ export default function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5 }}
-              className="mb-8"
+              className="mb-12"
             >
               <TypewriterText text="Software Engineering Undergraduate" />
             </motion.div>
 
-            <h1 className="text-[1.6rem] sm:text-4xl lg:text-[3.5rem] font-bold tracking-[-0.04em] text-gray-900 dark:text-white mb-8 leading-[1.05]" style={{ fontFamily: "'Inter', sans-serif" }}>
+            <h1 className="text-[1.6rem] sm:text-4xl lg:text-[3.5rem] font-bold tracking-[-0.04em] text-gray-900 dark:text-white mb-12 leading-[1.05]" style={{ fontFamily: "'Inter', sans-serif" }}>
               Crafting Digital <br />
               <span className="text-emerald-500">
                 Experience With
@@ -110,7 +110,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="text-sm sm:text-base text-gray-600 dark:text-gray-400 max-w-xl leading-loose font-light mb-10"
+              className="text-sm sm:text-base text-gray-600 dark:text-gray-400 max-w-xl leading-loose font-light mb-16"
             >
               Hi, I'm <span className="text-gray-900 dark:text-white font-bold">Chinthana Sandeepa</span> — a Full Stack Developer passionate about building scalable, efficient, and user-friendly web applications. I enjoy transforming ideas into modern digital solutions by combining clean frontend experiences with powerful backend systems. As a Software Engineering undergraduate at the University of Kelaniya, I'm continuously learning new technologies and improving my skills to create impactful and innovative software solutions.
             </motion.p>
@@ -119,7 +119,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="flex flex-wrap items-center justify-center lg:justify-start gap-4"
+              className="flex flex-wrap items-center justify-center lg:justify-start gap-8"
             >
               <a href="#contact" className="group flex items-center gap-2.5 px-7 py-3.5 sm:px-9 sm:py-4 bg-black/[0.03] dark:bg-white/[0.03] hover:bg-black/[0.08] dark:hover:bg-white/[0.08] border border-black/[0.08] dark:border-white/[0.08] hover:border-emerald-500 dark:hover:border-emerald-500 hover:shadow-[0_0_16px_rgba(16,185,129,0.25)] text-gray-900 dark:text-white text-sm sm:text-base rounded-xl transition-all duration-300">
                 Connect

@@ -53,12 +53,12 @@ function Blog() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.6 }}
-          className="mb-20"
+          className="mb-24 sm:mb-32"
         >
           <h2 className="section-title">Technical <span className="accent-text">Articles</span></h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 lg:gap-12 justify-items-center sm:justify-items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 sm:gap-16 lg:gap-20 justify-items-center sm:justify-items-stretch">
           {articles.map((article, index) => (
             <motion.a
               key={index}
@@ -129,7 +129,7 @@ function Blog() {
                 </div>
 
                 {/* Content Section */}
-                <div className="p-4 sm:p-8 flex-1 flex flex-col gap-4 bg-black/10 backdrop-blur-md items-center sm:items-start text-center sm:text-left">
+                <div className="p-6 sm:p-10 flex-1 flex flex-col gap-5 bg-black/10 backdrop-blur-md items-center sm:items-start text-center sm:text-left">
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white transition-colors duration-300 line-clamp-2">
                     {article.title}
                   </h3>

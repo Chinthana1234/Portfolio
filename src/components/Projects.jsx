@@ -55,7 +55,7 @@ function Projects() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.6 }}
-          className="mb-16 sm:mb-24"
+          className="mb-20 sm:mb-32"
         >
           <span className="text-[10px] font-mono uppercase text-emerald-500 font-bold mb-8 block" style={{ letterSpacing: '12px' }}>
             PORTFOLIO
@@ -63,7 +63,7 @@ function Projects() {
           <h2 className="section-title">Selected <span className="accent-text">Projects</span></h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 sm:gap-x-12 gap-y-10 sm:gap-y-12 justify-items-center sm:justify-items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 sm:gap-x-16 gap-y-16 sm:gap-y-20 justify-items-center sm:justify-items-stretch">
           {projects.map((project, index) => (
             <motion.div
               key={index}
@@ -127,11 +127,11 @@ function Projects() {
                 </div>
 
                 {/* Content Section - Adjusted Padding */}
-                <div className="p-4 sm:p-7 flex-1 flex flex-col gap-3 bg-black/10 backdrop-blur-md items-center sm:items-start text-center sm:text-left">
+                <div className="p-6 sm:p-10 flex-1 flex flex-col gap-5 bg-black/10 backdrop-blur-md items-center sm:items-start text-center sm:text-left">
                   <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white transition-colors duration-300">
                     {project.title}
                   </h3>
-                  <p className="text-gray-600 dark:text-[#A0A0A0] text-sm leading-[1.6] flex-grow mb-2">
+                  <p className="text-gray-600 dark:text-[#A0A0A0] text-sm leading-[1.6] flex-grow mb-4">
                     {project.description}
                   </p>
 

@@ -39,7 +39,7 @@ function Skills() {
 
   return (
     <section id="skills" className="relative py-20 sm:py-32 lg:py-40 overflow-hidden bg-white dark:bg-[#000000] transition-colors duration-400">
-      <div className="section-container relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 flex flex-col gap-10 sm:gap-20 lg:gap-40">
+      <div className="section-container relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 flex flex-col gap-12 sm:gap-24 lg:gap-40">
 
         {/* Header Section */}
         <motion.div
@@ -47,7 +47,7 @@ function Skills() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16 sm:mb-24"
+          className="text-center mb-20 sm:mb-32"
         >
           <span className="text-[10px] font-mono uppercase text-emerald-500 font-bold mb-8 block" style={{ letterSpacing: '12px' }}>
             TECHNICAL PROFICIENCY
