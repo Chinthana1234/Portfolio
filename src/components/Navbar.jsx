@@ -104,7 +104,7 @@ function Navbar() {
               </div>
 
               {/* Desktop Right — Toggle + CTA */}
-              <div className="hidden md:flex items-center gap-4">
+              <div className="hidden md:flex items-center gap-4 ml-auto">
                 {/* Dark Mode Toggle */}
                 <motion.button
                   onClick={toggleDarkMode}
@@ -149,7 +149,7 @@ function Navbar() {
               </div>
 
               {/* Mobile Controls */}
-              <div className="flex md:hidden items-center gap-2">
+              <div className="flex md:hidden items-center gap-2 ml-auto">
                 <button
                   onClick={toggleDarkMode}
                   className="w-9 h-9 rounded-full flex items-center justify-center transition-colors duration-300 cursor-pointer"
