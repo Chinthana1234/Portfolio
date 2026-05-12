@@ -77,7 +77,7 @@ function Navbar() {
                     color: isDark ? 'rgba(240, 233, 233, 0.56)' : '#111827',
                   }}
                 >
-                  Chinthana Sandeepa
+                  Chinthana
                 </span>
               </motion.a>
 
