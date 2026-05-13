@@ -40,7 +40,7 @@ function Navbar() {
       >
         {/* Glassmorphism container */}
         <div
-          className="transition-all duration-700 flex justify-center"
+          className="transition-all duration-700"
           style={{
             backgroundColor: isScrolled
               ? (isDark ? 'rgba(8, 8, 8, 0.75)' : 'rgba(255, 255, 255, 0.8)')
@@ -60,7 +60,7 @@ function Navbar() {
           }}
         >
           {/* Desktop layout */}
-          <div className="relative w-full max-w-6xl mx-auto px-8 md:px-12 hidden md:flex justify-between items-center h-[76px]">
+          <div className="relative w-full max-w-[1200px] mx-auto px-8 md:px-12 hidden md:flex justify-between items-center h-[76px]">
 
             {/* Left — Logo / Name */}
             <div className="flex items-center">
@@ -152,7 +152,7 @@ function Navbar() {
           </div>
 
           {/* Mobile: simple flex row */}
-          <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 flex md:hidden items-center justify-between h-[76px]">
+          <div className="max-w-[1200px] mx-auto px-8 flex md:hidden items-center justify-between h-[76px]">
             {/* Mobile Logo */}
             <motion.a
               href="#hero"
@@ -168,7 +168,7 @@ function Navbar() {
                   color: isDark ? 'rgba(240, 233, 233, 0.56)' : '#111827',
                 }}
               >
-                Chinthana
+                CHINTHANA
               </span>
             </motion.a>
 
