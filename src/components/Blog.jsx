@@ -8,7 +8,7 @@ const articles = [
     tags: ['Architecture', 'Microservices', 'Trends'],
     date: 'May 8, 2026',
     readTime: '4 min read',
-    link: 'https://medium.com/@chinthanasandeepa123',
+    link: 'https://medium.com/@chinthanasandeepa123/microservices-vs-monolith-what-you-should-actually-choose-in-2026-3cebc391ec84',
     image: '/images/microservices_blog.png',
   },
   {

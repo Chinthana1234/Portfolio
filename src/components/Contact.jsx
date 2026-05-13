@@ -260,9 +260,19 @@ function Contact() {
             </p>
           </div>
           <div className="contact-footer__socials">
-            {['Twitter', 'Instagram', 'Dribbble'].map((social) => (
-              <a key={social} href="#" className="contact-footer__social-link">
-                {social}
+            {[
+              { name: 'Email', href: 'mailto:chinthanasandeepa123@gmail.com' },
+              { name: 'LinkedIn', href: 'https://www.linkedin.com/in/chinthana-sandeepa-03976a357/' },
+              { name: 'GitHub', href: 'https://github.com/Chinthana1234' }
+            ].map((social) => (
+              <a 
+                key={social.name} 
+                href={social.href} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="contact-footer__social-link"
+              >
+                {social.name}
                 <span className="contact-footer__social-underline" />
               </a>
             ))}
