@@ -40,7 +40,7 @@ function Navbar() {
       >
         {/* Glassmorphism container */}
         <div
-          className="transition-all duration-700"
+          className="transition-all duration-700 flex justify-center"
           style={{
             backgroundColor: isScrolled
               ? (isDark ? 'rgba(8, 8, 8, 0.75)' : 'rgba(255, 255, 255, 0.8)')
