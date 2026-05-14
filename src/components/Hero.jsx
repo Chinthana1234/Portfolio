@@ -9,7 +9,7 @@ export default function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center h-full">
 
           {/* Left: Text Content */}
-          <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left z-20 -mt-20 lg:-mt-52">
+          <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left z-20 -mt-32 lg:-mt-72">
 
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -18,9 +18,9 @@ export default function Hero() {
             >
 
 
-              <h1 className="text-4xl sm:text-5xl lg:text-[4rem] font-bold tracking-normal text-white mb-8 leading-[1.25]" style={{ fontFamily: "'Inter', sans-serif" }}>
+              <h1 className="text-4xl sm:text-5xl lg:text-[4rem] font-bold tracking-tight text-white mb-10 leading-[1.25]" style={{ fontFamily: "'Inter', sans-serif" }}>
                 CRAFTING DIGITAL<br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-600">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-500">
                   EXPERIENCE WITH
                 </span><br />
                 PRECISION.
@@ -42,14 +42,14 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="flex flex-wrap items-center justify-center lg:justify-start gap-4"
+              className="flex flex-wrap items-center justify-center lg:justify-start gap-6"
             >
-              <a href="#contact" className="group flex items-center gap-3 px-6 py-3 border border-white/20 hover:border-white text-white text-xs sm:text-sm font-medium tracking-[0.2em] uppercase transition-all duration-300">
-                <FiMessageSquare className="text-lg opacity-70 group-hover:opacity-100 transition-opacity" />
+              <a href="#contact" className="group flex items-center gap-3 px-8 py-3.5 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white text-xs sm:text-sm font-semibold tracking-widest uppercase rounded-sm shadow-[0_0_20px_rgba(16,185,129,0.2)] hover:shadow-[0_0_30px_rgba(16,185,129,0.4)] transition-all duration-300">
+                <FiMessageSquare className="text-lg" />
                 GET IN TOUCH
               </a>
-              <a href="#about" className="group flex items-center gap-3 px-6 py-3 border border-white/20 hover:border-white text-white text-xs sm:text-sm font-medium tracking-[0.2em] uppercase transition-all duration-300">
-                <FiDownload className="text-lg opacity-70 group-hover:opacity-100 transition-opacity" />
+              <a href="#about" className="group flex items-center gap-3 px-8 py-3.5 border border-white/20 hover:border-emerald-500/50 hover:bg-emerald-500/10 text-white text-xs sm:text-sm font-medium tracking-widest uppercase rounded-sm transition-all duration-300">
+                <FiDownload className="text-lg opacity-70 group-hover:opacity-100 group-hover:text-emerald-400 transition-all" />
                 CV
               </a>
             </motion.div>
