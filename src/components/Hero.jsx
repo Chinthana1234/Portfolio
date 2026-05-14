@@ -5,11 +5,11 @@ import profileImg from '../assets/Profile.png';
 export default function Hero() {
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center pt-20 pb-0 overflow-hidden bg-black transition-colors duration-400">
-      <div className="section-container relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 h-full flex flex-col justify-center -mt-12 lg:-mt-20">
+      <div className="section-container relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 h-full flex flex-col justify-center -mt-24 lg:-mt-40">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center h-full">
 
           {/* Left: Text Content */}
-          <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left z-20">
+          <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left z-20 -mt-20 lg:-mt-52">
 
             <motion.div
               initial={{ opacity: 0, x: -20 }}
