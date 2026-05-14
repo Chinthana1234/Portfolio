@@ -49,7 +49,9 @@ function Contact() {
           name: formData.name,
           email: formData.email,
           subject: formData.subject,
-          message: formData.message
+          message: formData.message,
+          _captcha: "false",
+          _template: "table"
         })
       });
 
