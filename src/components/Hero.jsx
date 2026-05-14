@@ -23,13 +23,12 @@ export default function Hero() {
                     'Fullstack Developer',
                   ]}
                   wrapper="span"
-                  speed={50}
-                  className="text-emerald-400 font-medium tracking-[0.2em] uppercase text-xs sm:text-sm"
+                  className="text-emerald-400 font-medium tracking-[0.2em] uppercase text-sm sm:text-base"
                   cursor={true}
                 />
               </div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-[4rem] font-bold tracking-tight text-white mb-10 leading-[1.25]" style={{ fontFamily: "'Inter', sans-serif" }}>
+              <h1 className="text-5xl sm:text-6xl lg:text-[4.5rem] font-bold tracking-tight text-white mb-10 leading-[1.25]" style={{ fontFamily: "'Inter', sans-serif" }}>
                 CRAFTING DIGITAL<br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-500">
                   EXPERIENCE WITH
@@ -44,7 +43,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="text-base sm:text-lg text-gray-400 max-w-xl leading-relaxed font-light mb-20"
+              className="text-lg sm:text-xl text-gray-400 max-w-2xl leading-relaxed font-light mb-20"
             >
               Incubating raw concepts into market-leading solutions.
             </motion.p>
@@ -55,9 +54,9 @@ export default function Hero() {
               transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
               className="flex flex-wrap items-center justify-center lg:justify-start gap-6 mt-6"
             >
-              <a href="#contact" className="group relative flex items-center justify-center gap-3 px-10 py-4 border border-white/20 hover:border-emerald-500 text-white text-[11px] sm:text-[13px] font-medium tracking-[0.25em] uppercase overflow-hidden transition-all duration-500">
+              <a href="#contact" className="group relative flex items-center justify-center gap-3 px-12 py-5 border border-white/20 hover:border-emerald-500 text-white text-[13px] sm:text-[15px] font-medium tracking-[0.25em] uppercase overflow-hidden transition-all duration-500">
                 <div className="absolute inset-0 bg-emerald-500/5 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
-                <FiMessageSquare className="text-lg opacity-60 group-hover:opacity-100 group-hover:text-emerald-400 transition-all duration-500 relative z-10" />
+                <FiMessageSquare className="text-xl opacity-60 group-hover:opacity-100 group-hover:text-emerald-400 transition-all duration-500 relative z-10" />
                 <span className="relative z-10">GET IN TOUCH</span>
               </a>
             </motion.div>
