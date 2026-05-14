@@ -1,187 +1,160 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { FiArrowRight, FiGithub, FiLinkedin, FiTerminal } from 'react-icons/fi';
-import { SiReact, SiNodedotjs, SiSpringboot, SiFlutter } from 'react-icons/si';
+import { FiArrowRight } from 'react-icons/fi';
 import profileImg from '../assets/profile.jpeg';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-function AnimatedBackground() {
-  const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
-  const containerRef = useRef(null);
-
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      if (!containerRef.current) return;
-      const rect = containerRef.current.getBoundingClientRect();
-      const x = ((e.clientX - rect.left) / rect.width) * 100;
-      const y = ((e.clientY - rect.top) / rect.height) * 100;
-      setMousePos({ x, y });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
-  return (
-    <div ref={containerRef} className="absolute inset-0 overflow-hidden bg-white dark:bg-[#050505] pointer-events-none transition-colors duration-400">
-      <div
-        className="absolute inset-0 transition-opacity duration-300"
-        style={{
-          background: `radial-gradient(circle 800px at ${mousePos.x}% ${mousePos.y}%, rgba(16, 185, 129, 0.08), transparent 80%)`,
-        }}
-      />
-      <div className="absolute inset-0 opacity-[0.1]">
-        <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="hero-grid" width="40" height="40" patternUnits="userSpaceOnUse">
-              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-black/5 dark:text-white/10" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#hero-grid)" />
-        </svg>
-      </div>
-    </div>
-  );
-}
-
-function TypewriterText({ text }) {
-  const [key, setKey] = useState(0);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setKey((prev) => prev + 1);
-    }, 6000); // Reset every 6 seconds (typing + pause)
-    return () => clearTimeout(timer);
-  }, [key]);
-
-  return (
-    <span key={key} className="text-xs sm:text-sm font-mono tracking-[0.3em] uppercase text-emerald-500 font-bold flex flex-wrap">
-      {text.split("").map((char, index) => (
-        <motion.span
-          key={index}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{
-            duration: 0.05,
-            delay: index * 0.05,
-            ease: "easeInOut",
-          }}
-          style={{ whiteSpace: 'pre' }}
-        >
-          {char}
-        </motion.span>
-      ))}
-      <motion.span
-        animate={{ opacity: [0, 1, 0] }}
-        transition={{ repeat: Infinity, duration: 0.8 }}
-        className="inline-block w-[2px] h-4 bg-emerald-500 ml-1 self-center"
-      />
-    </span>
-  );
-}
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Hero() {
+  const [offsetY, setOffsetY] = useState(0);
+  const containerRef = useRef(null);
+  const contentRef = useRef(null);
+  
+  useEffect(() => {
+    const handleScroll = () => setOffsetY(window.scrollY);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useGSAP(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top top",
+        end: "+=80%", // Reduced pin duration for a faster transition
+        scrub: 0.8, // Adjusted scrub for smoother, more responsive feel
+        pin: true,
+      }
+    });
+
+    tl.to(contentRef.current, {
+      scale: 3, // Zoom in
+      opacity: 0, // Fade out
+      ease: "power2.inOut"
+    });
+  }, { scope: containerRef });
+
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center pt-20 pb-12 overflow-hidden bg-white dark:bg-[#050505] transition-colors duration-400">
-      <AnimatedBackground />
+    <section ref={containerRef} id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black transition-colors duration-400">
+      
+      <div ref={contentRef} className="w-full h-full flex flex-col items-center justify-center relative min-h-screen pt-20 pb-12">
+        
+        {/* Large Background Typography */}
+        <div 
+          className="absolute left-0 top-1/2 -translate-y-1/2 opacity-[0.03] text-[12vw] font-black leading-[0.85] uppercase select-none pointer-events-none overflow-hidden whitespace-nowrap z-0 flex flex-col text-white"
+          style={{ transform: `translateY(calc(-50% + ${offsetY * 0.2}px))` }}
+        >
+          <span>DESIGN</span>
+          <span>DEVELOP</span>
+          <span>DELIVER</span>
+        </div>
 
-      <div className="section-container relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
+        {/* Subtle Grid overlay for texture */}
+        <div className="absolute inset-0 opacity-[0.02] pointer-events-none">
+          <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="hero-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="1" className="text-white" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#hero-grid)" />
+          </svg>
+        </div>
 
-          {/* Left: Text Content */}
-          <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left">
+        <div className="section-container relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+            
+            {/* Left: Content */}
+            <div className="flex flex-col items-center lg:items-start text-center lg:text-left z-10">
+              <motion.h1 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                className="text-[2.5rem] sm:text-5xl lg:text-[4.5rem] font-bold tracking-[-0.04em] text-white mb-6 leading-[1.1]" 
+                style={{ fontFamily: "'Inter', sans-serif" }}
+              >
+                Crafting Digital <br />
+                <span className="text-emerald-500">
+                  Experience With
+                </span> <br />
+                Precision.
+              </motion.h1>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                className="text-gray-400 text-lg mb-10 max-w-md"
+              >
+                Transforming ideas into production-ready applications
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                className="flex flex-wrap justify-center lg:justify-start gap-4"
+              >
+                <a href="#contact" className="group flex items-center gap-2.5 px-8 py-3.5 border border-white hover:border-emerald-500 hover:bg-emerald-500/10 text-white hover:text-emerald-500 text-sm font-bold uppercase tracking-wider rounded-none transition-all duration-300">
+                  GET IN TOUCH
+                  <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
+                </a>
+                <a href="#about" className="group flex items-center gap-2.5 px-8 py-3.5 border border-white/20 hover:border-white text-white/70 hover:text-white text-sm font-bold uppercase tracking-wider rounded-none transition-all duration-300">
+                  ABOUT
+                </a>
+              </motion.div>
+            </div>
+
+            {/* Right: Profile Image */}
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-              className="mb-12"
+              initial={{ opacity: 0, scale: 0.95, x: 20 }}
+              animate={{ opacity: 1, scale: 1, x: 0 }}
+              transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              className="flex justify-center lg:justify-end z-10"
             >
-              <TypewriterText text="Software Engineering Undergraduate" />
-            </motion.div>
-
-            <h1 className="text-[1.6rem] sm:text-4xl lg:text-[3.5rem] font-bold tracking-[-0.04em] text-gray-900 dark:text-white mb-12 leading-[1.05]" style={{ fontFamily: "'Inter', sans-serif" }}>
-              Crafting Digital <br />
-              <span className="text-emerald-500">
-                Experience With
-              </span> <br />
-              Precision.
-            </h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="text-sm sm:text-base text-gray-600 dark:text-gray-400 max-w-xl leading-loose font-light mb-16"
-            >
-              Hi, I'm <span className="text-gray-900 dark:text-white font-bold">Chinthana Sandeepa</span> — a Full Stack Developer passionate about building scalable, efficient, and user-friendly web applications. I enjoy transforming ideas into modern digital solutions by combining clean frontend experiences with powerful backend systems. As a Software Engineering undergraduate at the University of Kelaniya, I'm continuously learning new technologies and improving my skills to create impactful and innovative software solutions.
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="flex flex-wrap items-center justify-center lg:justify-start gap-8"
-            >
-              <a href="#contact" className="group flex items-center gap-2.5 px-7 py-3.5 sm:px-9 sm:py-4 bg-black/[0.03] dark:bg-white/[0.03] hover:bg-black/[0.08] dark:hover:bg-white/[0.08] border border-black/[0.08] dark:border-white/[0.08] hover:border-emerald-500 dark:hover:border-emerald-500 hover:shadow-[0_0_16px_rgba(16,185,129,0.25)] text-gray-900 dark:text-white text-sm sm:text-base rounded-xl transition-all duration-300">
-                Connect
-                <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
-              </a>
-              <a href="https://github.com/Chinthana1234" target="_blank" rel="noreferrer" className="flex items-center gap-2.5 px-7 py-3.5 sm:px-9 sm:py-4 bg-black/[0.03] dark:bg-white/[0.03] hover:bg-black/[0.08] dark:hover:bg-white/[0.08] border border-black/[0.08] dark:border-white/[0.08] hover:border-emerald-500 dark:hover:border-emerald-500 hover:shadow-[0_0_16px_rgba(16,185,129,0.25)] text-gray-900 dark:text-white text-sm sm:text-base rounded-xl transition-all duration-300">
-                <FiGithub /> GitHub
-              </a>
-              <a href="https://www.linkedin.com/in/chinthana-sandeepa-03976a357/" target="_blank" rel="noreferrer" className="flex items-center gap-2.5 px-7 py-3.5 sm:px-9 sm:py-4 bg-black/[0.03] dark:bg-white/[0.03] hover:bg-black/[0.08] dark:hover:bg-white/[0.08] border border-black/[0.08] dark:border-white/[0.08] hover:border-emerald-500 dark:hover:border-emerald-500 hover:shadow-[0_0_16px_rgba(16,185,129,0.25)] text-gray-900 dark:text-white text-sm sm:text-base rounded-xl transition-all duration-300">
-                <FiLinkedin /> Linkedin
-              </a>
-            </motion.div>
-
-            {/* Tech stack small row */}
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="flex items-center gap-10 mt-8 ml-2"
-            >
+              <div className="relative group w-72 sm:w-80 lg:w-[28rem]">
+                {/* Image Frame blending with black background */}
+                <div className="relative w-full aspect-[3/4] overflow-hidden bg-black">
+                  <img
+                    src={profileImg}
+                    alt="Chinthana Sandeepa"
+                    className="w-full h-full object-cover object-center opacity-90 transition-all duration-1000 ease-out grayscale hover:grayscale-0"
+                    style={{ filter: 'contrast(1.1) brightness(0.9)' }}
+                  />
+                  {/* Aggressive fade edges to black to blend the image seamlessly */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent opacity-100" />
+                  <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent opacity-100" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent opacity-100" />
+                  <div className="absolute inset-0 bg-gradient-to-l from-black/60 via-transparent to-transparent opacity-100" />
+                </div>
+              </div>
             </motion.div>
 
           </div>
-
-          {/* Right: Image Content */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9, x: 20 }}
-            animate={{ opacity: 1, scale: 1, x: 0 }}
-            transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-5 flex justify-center order-first lg:order-last"
-          >
-            <div className="relative group">
-              {/* Outer glow */}
-              <div className="absolute -inset-4 rounded-[2.5rem] bg-emerald-500/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-
-              {/* Image Frame */}
-              <div className="relative w-56 h-[16rem] sm:w-72 sm:h-[20rem] lg:w-80 lg:h-[24rem] rounded-[2rem] overflow-hidden border border-black/10 dark:border-white/[0.08] bg-white dark:bg-[#0a0a0a] shadow-2xl">
-                <img
-                  src={profileImg}
-                  alt="Chinthana Sandeepa"
-                  className="w-full h-full object-cover object-top opacity-90 group-hover:scale-105 group-hover:opacity-100 transition-all duration-1000 ease-out"
-                />
-
-                {/* Vignette overlays */}
-                <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-[#050505] via-transparent to-transparent opacity-60" />
-                <div className="absolute inset-0 bg-gradient-to-b from-white/20 dark:from-[#050505]/20 via-transparent to-transparent opacity-40" />
-
-                {/* Float tag */}
-                <div className="absolute bottom-8 left-8 right-8">
-                  <div className="backdrop-blur-md bg-white/[0.03] border border-white/10 p-4 rounded-2xl flex items-center gap-3">
-                    <div className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_#10b981]" />
-                    <span className="text-[10px] font-mono tracking-widest uppercase text-gray-500 dark:text-white/50">Software Engineer</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Decorative corner elements */}
-              <div className="absolute -top-4 -right-4 w-20 h-20 border-t border-r border-emerald-500/20 rounded-tr-[2rem] pointer-events-none" />
-              <div className="absolute -bottom-4 -left-4 w-20 h-20 border-b border-l border-emerald-500/20 rounded-bl-[2rem] pointer-events-none" />
-            </div>
-          </motion.div>
         </div>
+
+        {/* Scroll Indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.5, duration: 1 }}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 hidden md:flex flex-col items-center gap-2"
+        >
+          <a href="#about" className="flex flex-col items-center text-white/40 hover:text-white transition-colors group">
+            <span className="text-[9px] tracking-[0.3em] uppercase font-bold mb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Scroll</span>
+            <div className="w-[1px] h-16 bg-white/10 relative overflow-hidden">
+              <motion.div
+                className="w-full h-1/2 bg-white absolute top-0"
+                animate={{ y: [0, 64] }}
+                transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }}
+              />
+            </div>
+          </a>
+        </motion.div>
+        
       </div>
     </section>
   );

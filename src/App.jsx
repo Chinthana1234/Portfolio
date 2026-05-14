@@ -7,6 +7,7 @@ import Projects from './components/Projects'
 import Blog from './components/Blog'
 import Certifications from './components/Certifications'
 import Contact from './components/Contact'
+import About from './components/About'
 import './App.css'
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Navbar />
         <main className="relative z-10">
           <Hero />
+          <About />
           <Skills />
           <Certifications />
           <Projects />
