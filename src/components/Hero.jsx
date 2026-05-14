@@ -46,7 +46,7 @@ export default function Hero() {
               transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
               className="text-base sm:text-lg text-gray-400 max-w-xl leading-relaxed font-light mb-20"
             >
-              Transforming ideas into production-ready applications
+              Incubating raw concepts into market-leading solutions.
             </motion.p>
 
             <motion.div
