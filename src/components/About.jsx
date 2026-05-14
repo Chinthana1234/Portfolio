@@ -52,13 +52,13 @@ export default function About() {
             </p>
             <br />
             <div className="flex flex-wrap gap-6 mt-8">
-              <a href="https://github.com/Chinthana1234" target="_blank" rel="noreferrer" className="flex items-center gap-3 px-12 py-5 bg-gray-100 dark:bg-white/5 hover:bg-gray-200 dark:hover:bg-white/10 text-gray-900 dark:text-white rounded-none text-lg font-medium transition-all duration-300">
+              <a href="https://github.com/Chinthana1234" target="_blank" rel="noreferrer" className="flex items-center gap-3 px-12 py-5 border border-transparent bg-gray-100 dark:bg-white/5 hover:bg-gray-200 dark:hover:bg-white/10 hover:border-emerald-500 text-gray-900 dark:text-white rounded-none text-lg font-medium transition-all duration-300">
                 <FiGithub className="text-2xl" /> GitHub
               </a>
-              <a href="https://www.linkedin.com/in/chinthana-sandeepa-03976a357/" target="_blank" rel="noreferrer" className="flex items-center gap-3 px-12 py-5 bg-gray-100 dark:bg-white/5 hover:bg-gray-200 dark:hover:bg-white/10 text-gray-900 dark:text-white rounded-none text-lg font-medium transition-all duration-300">
+              <a href="https://www.linkedin.com/in/chinthana-sandeepa-03976a357/" target="_blank" rel="noreferrer" className="flex items-center gap-3 px-12 py-5 border border-transparent bg-gray-100 dark:bg-white/5 hover:bg-gray-200 dark:hover:bg-white/10 hover:border-emerald-500 text-gray-900 dark:text-white rounded-none text-lg font-medium transition-all duration-300">
                 <FiLinkedin className="text-2xl" /> LinkedIn
               </a>
-              <a href="#contact" className="flex items-center gap-3 px-12 py-5 bg-gray-100 dark:bg-white/5 hover:bg-gray-200 dark:hover:bg-white/10 text-gray-900 dark:text-white rounded-none text-lg font-medium transition-all duration-300">
+              <a href="#contact" className="flex items-center gap-3 px-12 py-5 border border-transparent bg-gray-100 dark:bg-white/5 hover:bg-gray-200 dark:hover:bg-white/10 hover:border-emerald-500 text-gray-900 dark:text-white rounded-none text-lg font-medium transition-all duration-300">
                 <FiMail className="text-2xl" /> Get In Touch
               </a>
             </div>

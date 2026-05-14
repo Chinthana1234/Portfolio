@@ -28,12 +28,12 @@ export default function Hero() {
                 />
               </div>
 
-              <h1 className="text-5xl sm:text-6xl lg:text-[4.5rem] font-bold tracking-tight text-white mb-10 leading-[1.25]" style={{ fontFamily: "'Inter', sans-serif" }}>
-                CRAFTING DIGITAL<br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-500">
+              <h1 className="text-3xl min-[375px]:text-4xl sm:text-6xl lg:text-[4.5rem] font-bold tracking-tight text-white mb-8 sm:mb-10 leading-[1.3] flex flex-col" style={{ fontFamily: "'Inter', sans-serif" }}>
+                <span className="whitespace-nowrap">CRAFTING DIGITAL</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-500 whitespace-nowrap">
                   EXPERIENCE WITH
-                </span><br />
-                PRECISION.
+                </span>
+                <span className="whitespace-nowrap">PRECISION.</span>
               </h1>
 
 
