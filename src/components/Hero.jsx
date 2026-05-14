@@ -20,7 +20,7 @@ export default function Hero() {
               <div className="mb-4 h-6">
                 <TypeAnimation
                   sequence={[
-                    'Fullstack Engineer',
+                    'Fullstack Developer',
                   ]}
                   wrapper="span"
                   speed={50}
