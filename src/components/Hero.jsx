@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { TypeAnimation } from 'react-type-animation';
 import { FiMessageSquare, FiDownload } from 'react-icons/fi';
 import profileImg from '../assets/Profile.png';
 
@@ -16,7 +17,17 @@ export default function Hero() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             >
-
+              <div className="mb-4 h-6">
+                <TypeAnimation
+                  sequence={[
+                    'Fullstack Engineer',
+                  ]}
+                  wrapper="span"
+                  speed={50}
+                  className="text-emerald-400 font-medium tracking-[0.2em] uppercase text-xs sm:text-sm"
+                  cursor={true}
+                />
+              </div>
 
               <h1 className="text-4xl sm:text-5xl lg:text-[4rem] font-bold tracking-tight text-white mb-10 leading-[1.25]" style={{ fontFamily: "'Inter', sans-serif" }}>
                 CRAFTING DIGITAL<br />
@@ -33,7 +44,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="text-base sm:text-lg text-gray-400 max-w-xl leading-relaxed font-light mb-12"
+              className="text-base sm:text-lg text-gray-400 max-w-xl leading-relaxed font-light mb-20"
             >
               Transforming ideas into production-ready applications
             </motion.p>
@@ -42,15 +53,12 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="flex flex-wrap items-center justify-center lg:justify-start gap-6"
+              className="flex flex-wrap items-center justify-center lg:justify-start gap-6 mt-6"
             >
-              <a href="#contact" className="group flex items-center gap-3 px-8 py-3.5 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white text-xs sm:text-sm font-semibold tracking-widest uppercase rounded-sm shadow-[0_0_20px_rgba(16,185,129,0.2)] hover:shadow-[0_0_30px_rgba(16,185,129,0.4)] transition-all duration-300">
-                <FiMessageSquare className="text-lg" />
-                GET IN TOUCH
-              </a>
-              <a href="#about" className="group flex items-center gap-3 px-8 py-3.5 border border-white/20 hover:border-emerald-500/50 hover:bg-emerald-500/10 text-white text-xs sm:text-sm font-medium tracking-widest uppercase rounded-sm transition-all duration-300">
-                <FiDownload className="text-lg opacity-70 group-hover:opacity-100 group-hover:text-emerald-400 transition-all" />
-                CV
+              <a href="#contact" className="group relative flex items-center justify-center gap-3 px-10 py-4 border border-white/20 hover:border-emerald-500 text-white text-[11px] sm:text-[13px] font-medium tracking-[0.25em] uppercase overflow-hidden transition-all duration-500">
+                <div className="absolute inset-0 bg-emerald-500/5 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
+                <FiMessageSquare className="text-lg opacity-60 group-hover:opacity-100 group-hover:text-emerald-400 transition-all duration-500 relative z-10" />
+                <span className="relative z-10">GET IN TOUCH</span>
               </a>
             </motion.div>
 
