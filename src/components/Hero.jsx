@@ -16,7 +16,7 @@ export default function Hero() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             >
-              <div className="w-12 h-[1px] bg-gray-500 mb-8 mx-auto lg:mx-0" />
+
 
               <h1 className="text-4xl sm:text-5xl lg:text-[4rem] font-bold tracking-normal text-white mb-8 leading-[1.25]" style={{ fontFamily: "'Inter', sans-serif" }}>
                 CRAFTING DIGITAL<br />
@@ -26,7 +26,7 @@ export default function Hero() {
                 PRECISION.
               </h1>
 
-              <div className="w-12 h-[1px] bg-gray-500 mt-8 mb-8 mx-auto lg:mx-0" />
+
             </motion.div>
 
             <motion.p
