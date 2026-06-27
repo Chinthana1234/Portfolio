@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { FiMenu, FiX, FiSun, FiMoon, FiDownload } from 'react-icons/fi'
+import { FiMenu, FiX, FiDownload } from 'react-icons/fi'
 import { useTheme } from '../context/ThemeContext'
 
 
@@ -16,7 +16,7 @@ const navLinks = [
 function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileOpen, setIsMobileOpen] = useState(false)
-  const { isDark, toggleDarkMode } = useTheme()
+  const { isDark } = useTheme()
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50)
@@ -105,30 +105,8 @@ function Navbar() {
               ))}
             </div>
 
-            {/* Right — Toggle + Resume */}
+            {/* Right — Resume */}
             <div className="flex items-center gap-4">
-              {/* Dark Mode Toggle */}
-              <motion.button
-                onClick={toggleDarkMode}
-                className="relative w-9 h-9 rounded-full flex items-center justify-center cursor-pointer transition-all duration-300"
-                style={{
-                  color: isDark ? 'rgba(255,255,255,0.5)' : '#6b7280',
-                  border: isDark ? '1px solid rgba(255,255,255,0.1)' : '1px solid rgba(0,0,0,0.1)',
-                }}
-                whileHover={{ scale: 1.1, borderColor: 'rgba(16, 185, 129, 0.4)' }}
-                whileTap={{ scale: 0.95 }}
-                aria-label="Toggle dark mode"
-              >
-                <FiSun
-                  className={`w-[15px] h-[15px] absolute transition-all duration-500 ${isDark ? 'rotate-90 scale-0 opacity-0' : 'rotate-0 scale-100 opacity-100'
-                    }`}
-                />
-                <FiMoon
-                  className={`w-[15px] h-[15px] absolute transition-all duration-500 ${isDark ? 'rotate-0 scale-100 opacity-100' : '-rotate-90 scale-0 opacity-0'
-                    }`}
-                />
-              </motion.button>
-
               {/* Pill-shaped Download CV button */}
               <motion.a
                 href="/cv.pdf"
@@ -174,16 +152,6 @@ function Navbar() {
 
             {/* Mobile Controls */}
             <div className="flex items-center gap-2">
-              <button
-                onClick={toggleDarkMode}
-                className="w-9 h-9 rounded-full flex items-center justify-center transition-colors duration-300 cursor-pointer"
-                style={{
-                  color: isDark ? 'rgba(255,255,255,0.5)' : '#6b7280',
-                }}
-                aria-label="Toggle dark mode"
-              >
-                {isDark ? <FiSun className="w-4 h-4" /> : <FiMoon className="w-4 h-4" />}
-              </button>
               <button
                 onClick={() => setIsMobileOpen(!isMobileOpen)}
                 className="w-10 h-10 flex items-center justify-center transition-colors cursor-pointer"

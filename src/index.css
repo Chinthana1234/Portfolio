@@ -219,7 +219,7 @@ a { color: inherit; text-decoration: none; }
 /* Section wrapper */
 .contact-section {
   position: relative;
-  @apply bg-white dark:bg-[#050505] transition-colors duration-400;
+  @apply bg-white dark:bg-black transition-colors duration-400;
   padding: 4rem 0 2rem;
   overflow: hidden;
 }

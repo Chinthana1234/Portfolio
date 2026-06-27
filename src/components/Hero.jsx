@@ -5,7 +5,7 @@ import profileImg from '../assets/Profile.png';
 
 export default function Hero() {
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center pt-20 pb-0 overflow-hidden bg-black transition-colors duration-400">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center pt-20 pb-0 overflow-hidden bg-white dark:bg-black transition-colors duration-400">
       <div className="section-container relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 h-full flex flex-col justify-center -mt-24 lg:-mt-40">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center h-full">
 
@@ -28,9 +28,9 @@ export default function Hero() {
                 />
               </div>
 
-              <h1 className="text-3xl min-[375px]:text-4xl sm:text-6xl lg:text-[4.5rem] font-bold tracking-tight text-white mb-8 sm:mb-10 leading-[1.3] flex flex-col" style={{ fontFamily: "'Inter', sans-serif" }}>
+              <h1 className="text-3xl min-[375px]:text-4xl sm:text-6xl lg:text-[4.5rem] font-bold tracking-tight text-gray-900 dark:text-white mb-8 sm:mb-10 leading-[1.3] flex flex-col" style={{ fontFamily: "'Inter', sans-serif" }}>
                 <span className="whitespace-nowrap">CRAFTING DIGITAL</span>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-500 whitespace-nowrap">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-teal-500 dark:from-emerald-400 whitespace-nowrap">
                   EXPERIENCE WITH
                 </span>
                 <span className="whitespace-nowrap">PRECISION.</span>
@@ -43,7 +43,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="text-lg sm:text-xl text-gray-400 max-w-2xl leading-relaxed font-light mb-20"
+              className="text-base sm:text-lg lg:text-xl text-gray-600 dark:text-gray-400 max-w-2xl leading-relaxed font-light mb-12 sm:mb-20"
             >
               Incubating raw concepts into market-leading solutions.
             </motion.p>
@@ -52,11 +52,11 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="flex flex-wrap items-center justify-center lg:justify-start gap-6 mt-6"
+              className="flex flex-wrap items-center justify-center lg:justify-start gap-4 sm:gap-6 mt-4 sm:mt-6 w-full sm:w-auto px-4 sm:px-0"
             >
-              <a href="#contact" className="group relative flex items-center justify-center gap-3 px-12 py-5 border border-white/20 hover:border-emerald-500 text-white text-[13px] sm:text-[15px] font-medium tracking-[0.25em] uppercase overflow-hidden transition-all duration-500">
+              <a href="#contact" className="group relative flex items-center justify-center gap-3 px-8 py-4 sm:px-12 sm:py-5 border border-black/10 dark:border-white/20 hover:border-emerald-500 text-gray-900 dark:text-white text-[11px] sm:text-[13px] lg:text-[15px] font-medium tracking-[0.25em] uppercase overflow-hidden transition-all duration-500 w-full sm:w-auto">
                 <div className="absolute inset-0 bg-emerald-500/5 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
-                <FiMessageSquare className="text-xl opacity-60 group-hover:opacity-100 group-hover:text-emerald-400 transition-all duration-500 relative z-10" />
+                <FiMessageSquare className="text-lg sm:text-xl opacity-60 group-hover:opacity-100 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 transition-all duration-500 relative z-10" />
                 <span className="relative z-10">GET IN TOUCH</span>
               </a>
             </motion.div>
