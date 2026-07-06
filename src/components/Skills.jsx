@@ -1,27 +1,39 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
-  SiJavascript, SiTypescript, SiReact, SiNextdotjs,
-  SiNodedotjs, SiExpress, SiSpringboot, SiTailwindcss,
-  SiMongodb, SiMysql, SiDocker, SiGit, SiFirebase, SiFlutter,
+  SiJavascript, SiReact, SiHtml5, SiCss, SiTailwindcss, SiRedux, SiVite,
+  SiSpringboot, SiNodedotjs, SiExpress, SiPhp,
+  SiMongodb, SiMysql, SiPostgresql, SiRedis,
+  SiDocker, SiGit, SiPostman, SiFigma
 } from 'react-icons/si'
+import { FaJava, FaAws } from 'react-icons/fa'
 import { useTheme } from '../context/ThemeContext'
 
 const skills = [
   { name: 'JavaScript', icon: SiJavascript },
-  { name: 'TypeScript', icon: SiTypescript },
   { name: 'React', icon: SiReact },
-  { name: 'Next.js', icon: SiNextdotjs },
+  { name: 'HTML5', icon: SiHtml5 },
+  { name: 'CSS3', icon: SiCss },
+  { name: 'Tailwind', icon: SiTailwindcss },
+  { name: 'Redux', icon: SiRedux },
+  { name: 'Vite', icon: SiVite },
+  
+  { name: 'Java', icon: FaJava },
+  { name: 'Spring Boot', icon: SiSpringboot },
   { name: 'Node.js', icon: SiNodedotjs },
   { name: 'Express', icon: SiExpress },
-  { name: 'Spring Boot', icon: SiSpringboot },
-  { name: 'Flutter', icon: SiFlutter },
-  { name: 'Tailwind', icon: SiTailwindcss },
+  { name: 'PHP', icon: SiPhp },
+  
   { name: 'MongoDB', icon: SiMongodb },
   { name: 'MySQL', icon: SiMysql },
+  { name: 'PostgreSQL', icon: SiPostgresql },
+  { name: 'Redis', icon: SiRedis },
+  
+  { name: 'AWS', icon: FaAws },
   { name: 'Docker', icon: SiDocker },
   { name: 'Git', icon: SiGit },
-  { name: 'Firebase', icon: SiFirebase },
+  { name: 'Postman', icon: SiPostman },
+  { name: 'Figma', icon: SiFigma },
 ]
 
 function Skills() {
@@ -101,7 +113,7 @@ function Skills() {
                     <Icon
                       className={`w-6 h-6 sm:w-8 sm:h-8 lg:w-12 lg:h-12 transition-all duration-300 ${isActive
                         ? 'text-emerald-400 brightness-125 drop-shadow-[0_0_15px_rgba(16,185,129,0.6)]'
-                        : (isDark ? 'text-white/30' : 'text-black/20')
+                        : (isDark ? 'text-white/60' : 'text-gray-500')
                         }`}
                     />
 
@@ -117,7 +129,7 @@ function Skills() {
                   </div>
                 </div>
 
-                <span className={`relative z-10 text-[9px] font-mono tracking-[0.3em] uppercase text-center transition-all duration-300 ${isActive ? 'text-gray-900 dark:text-white font-black' : (isDark ? 'text-white/20' : 'text-black/40')
+                <span className={`relative z-10 text-[9px] font-mono tracking-[0.3em] uppercase text-center transition-all duration-300 ${isActive ? 'text-gray-900 dark:text-white font-black' : (isDark ? 'text-white/60' : 'text-gray-500')
                   }`}>
                   {skill.name}
                 </span>
