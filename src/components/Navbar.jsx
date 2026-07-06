@@ -105,28 +105,8 @@ function Navbar() {
               ))}
             </div>
 
-            {/* Right — Resume */}
-            <div className="flex items-center gap-4">
-              {/* Pill-shaped Download CV button */}
-              <motion.a
-                href="/cv.pdf"
-                className="inline-flex items-center gap-1.5 text-[10px] font-bold tracking-[0.1em] uppercase text-black transition-all duration-300"
-                style={{
-                  padding: '7px 16px',
-                  borderRadius: '999px',
-                  background: '#10B981',
-                  boxShadow: '0 0 20px rgba(16, 185, 129, 0.2), 0 2px 8px rgba(0,0,0,0.15)',
-                }}
-                whileHover={{
-                  scale: 1.04,
-                  boxShadow: '0 0 30px rgba(16, 185, 129, 0.4), 0 4px 16px rgba(0,0,0,0.2)',
-                }}
-                whileTap={{ scale: 0.97 }}
-              >
-                <FiDownload className="w-3 h-3" />
-                Resume
-              </motion.a>
-            </div>
+            {/* Right — Empty to preserve spacing */}
+            <div className="flex items-center gap-4 w-[100px]"></div>
           </div>
 
           {/* Mobile: simple flex row */}
@@ -201,24 +181,7 @@ function Navbar() {
               </motion.a>
             ))}
 
-            {/* Mobile CV Button */}
-            <motion.a
-              href="/cv.pdf"
-              initial={{ opacity: 0, y: 25 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ delay: navLinks.length * 0.08, duration: 0.45 }}
-              className="inline-flex items-center gap-1.5 mt-4 text-[11px] font-bold tracking-[0.1em] uppercase text-black"
-              style={{
-                padding: '9px 20px',
-                borderRadius: '999px',
-                background: '#10B981',
-                boxShadow: '0 0 25px rgba(16, 185, 129, 0.25)',
-              }}
-            >
-              <FiDownload className="w-3.5 h-3.5" />
-              Resume
-            </motion.a>
+
           </motion.div>
         )}
       </AnimatePresence>

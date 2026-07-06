@@ -10,18 +10,22 @@ export default function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center h-full">
 
           {/* Left: Text Content */}
-          <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left z-20 -mt-32 lg:-mt-72">
+          <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left z-20 -mt-32 lg:mt-16 lg:self-start">
 
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             >
-              <div className="mb-4 h-6">
+              <div className="mb-4 h-6 flex items-center justify-center lg:justify-start">
                 <TypeAnimation
                   sequence={[
                     'Fullstack Developer',
+                    2000,
+                    '',
+                    500
                   ]}
+                  repeat={Infinity}
                   wrapper="span"
                   className="text-emerald-400 font-medium tracking-[0.2em] uppercase text-sm sm:text-base"
                   cursor={true}
@@ -43,21 +47,37 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="text-base sm:text-lg lg:text-xl text-gray-600 dark:text-gray-400 max-w-2xl leading-relaxed font-light mb-12 sm:mb-20"
+              className="text-base sm:text-lg lg:text-xl text-gray-600 dark:text-gray-400 max-w-2xl leading-[1.8] font-light"
+              style={{ marginBottom: '16px' }}
             >
-              Incubating raw concepts into market-leading solutions.
+              Transforming abstract concepts into scalable, intuitive, and production-ready digital solutions with a dedication to end-to-end excellence.
             </motion.p>
 
+            {/* Action Buttons - Modified to two buttons */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="flex flex-wrap items-center justify-center lg:justify-start gap-4 sm:gap-6 mt-4 sm:mt-6 w-full sm:w-auto px-4 sm:px-0"
+              className="flex flex-row flex-wrap items-center justify-center lg:justify-start gap-4 sm:gap-6 mt-4 sm:mt-6 w-full sm:w-auto px-4 sm:px-0"
             >
-              <a href="#contact" className="group relative flex items-center justify-center gap-3 px-8 py-4 sm:px-12 sm:py-5 border border-black/10 dark:border-white/20 hover:border-emerald-500 text-gray-900 dark:text-white text-[11px] sm:text-[13px] lg:text-[15px] font-medium tracking-[0.25em] uppercase overflow-hidden transition-all duration-500 w-full sm:w-auto">
-                <div className="absolute inset-0 bg-emerald-500/5 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
-                <FiMessageSquare className="text-lg sm:text-xl opacity-60 group-hover:opacity-100 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 transition-all duration-500 relative z-10" />
-                <span className="relative z-10">GET IN TOUCH</span>
+              <a
+                href="/cv.pdf"
+                download
+                className="flex items-center justify-center border border-black dark:border-white text-black dark:text-white text-[11px] sm:text-[13px] font-bold tracking-[0.2em] uppercase rounded-none transition-all duration-300 hover:bg-white hover:!text-black dark:hover:bg-white dark:hover:!text-black w-full sm:w-auto"
+                style={{ padding: '16px 48px' }}
+              >
+                DOWNLOAD CV
+              </a>
+              <a
+                href="#projects"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="flex items-center justify-center border border-black dark:border-white text-black dark:text-white text-[11px] sm:text-[13px] font-bold tracking-[0.2em] uppercase rounded-none transition-all duration-300 hover:bg-white hover:!text-black dark:hover:bg-white dark:hover:!text-black w-full sm:w-auto"
+                style={{ padding: '16px 48px' }}
+              >
+                VIEW MY WORK
               </a>
             </motion.div>
 
