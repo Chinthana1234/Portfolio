@@ -132,12 +132,12 @@ function Projects() {
                   {/* Action Links at bottom left */}
                   <div className="absolute bottom-4 left-4 flex gap-2 z-30">
                     <a href={project.github} target="_blank" rel="noopener noreferrer"
-                      className="w-10 h-10 bg-white/20 dark:bg-white/10 backdrop-blur-md flex items-center justify-center text-white hover:bg-white/40 transition-colors duration-300">
+                      className="w-10 h-10 bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/10 hover:border-emerald-500 flex items-center justify-center text-white hover:text-white hover:bg-emerald-500 hover:scale-105 hover:shadow-[0_0_15px_rgba(16,185,129,0.5)] transition-all duration-300">
                       <FiGithub className="w-5 h-5" />
                     </a>
                     {project.live !== '#' && (
                       <a href={project.live} target="_blank" rel="noopener noreferrer"
-                        className="w-10 h-10 bg-white/20 dark:bg-white/10 backdrop-blur-md flex items-center justify-center text-white hover:bg-white/40 transition-colors duration-300">
+                        className="w-10 h-10 bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/10 hover:border-emerald-500 flex items-center justify-center text-white hover:text-white hover:bg-emerald-500 hover:scale-105 hover:shadow-[0_0_15px_rgba(16,185,129,0.5)] transition-all duration-300">
                         <FiArrowRight className="w-5 h-5 -rotate-45" />
                       </a>
                     )}
