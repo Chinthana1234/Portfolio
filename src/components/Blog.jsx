@@ -138,7 +138,7 @@ function Blog() {
                 </div>
 
                 {/* Content Section */}
-                <div className="flex-1 flex flex-col gap-5 bg-black/10 backdrop-blur-md items-center sm:items-start text-center sm:text-left" style={{ padding: 'clamp(24px, 3vw, 36px)' }}>
+                <div className="flex-1 flex flex-col gap-5 bg-black/10 backdrop-blur-md items-center sm:items-start text-center sm:text-left" style={{ padding: '16px clamp(24px, 3vw, 36px) 24px clamp(24px, 3vw, 36px)' }}>
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white transition-colors duration-300 line-clamp-2">
                     {article.title}
                   </h3>

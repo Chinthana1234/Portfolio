@@ -145,7 +145,7 @@ function Projects() {
                 </div>
 
                 {/* Content Section */}
-                <div className="flex-1 flex flex-col items-start text-left" style={{ padding: 'clamp(24px, 3vw, 36px)' }}>
+                <div className="flex-1 flex flex-col items-start text-left" style={{ padding: '16px clamp(24px, 3vw, 36px) 24px clamp(24px, 3vw, 36px)' }}>
                   <span className="text-[10px] font-bold uppercase tracking-widest text-emerald-500 dark:text-emerald-400 mb-5 block">
                     {project.type}
                   </span>
