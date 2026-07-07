@@ -25,6 +25,34 @@ const education = [
 /* ── Certification Data ─────────────────────────────────── */
 const certifications = [
   {
+    title: 'Introduction to Cloud 101',
+    issuer: 'AWS Educate',
+    date: 'Badge',
+    credentialId: 'AWS Educate',
+    verifyLink: '#',
+  },
+  {
+    title: 'Getting Started with Storage Training',
+    issuer: 'AWS Educate',
+    date: 'Badge',
+    credentialId: 'AWS Educate',
+    verifyLink: '#',
+  },
+  {
+    title: 'Describe Cloud Computing',
+    issuer: 'Microsoft Learn',
+    date: 'Badge',
+    credentialId: 'Microsoft Learn',
+    verifyLink: '#',
+  },
+  {
+    title: 'React Basics',
+    issuer: 'Meta',
+    date: 'Certificate',
+    credentialId: 'Meta',
+    verifyLink: '#',
+  },
+  {
     title: 'Figma Design Basics and Features',
     issuer: 'Alison',
     date: 'May 2025',
@@ -37,20 +65,6 @@ const certifications = [
     date: 'Apr 2025',
     credentialId: '3757-47654177',
     verifyLink: 'https://alison.com/certification/check/b1a61b6332',
-  },
-  {
-    title: 'Fundamentals of HTML',
-    issuer: 'Alison',
-    date: 'Apr 2025',
-    credentialId: '3588-47654177',
-    verifyLink: 'https://alison.com/certification/check/e990c6193d',
-  },
-  {
-    title: 'Describe cloud computing',
-    issuer: 'Microsoft Learn',
-    date: 'Badge',
-    credentialId: 'Microsoft Learn',
-    verifyLink: 'https://learn.microsoft.com/en-us/users/chinthanasandeepa-8061/achievements/nmw5jejf?ref=https%3A%2F%2Fwww.linkedin.com%2F',
   },
 ]
 

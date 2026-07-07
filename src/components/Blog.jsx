@@ -138,11 +138,11 @@ function Blog() {
                 </div>
 
                 {/* Content Section */}
-                <div className="p-6 sm:p-10 flex-1 flex flex-col gap-5 bg-black/10 backdrop-blur-md items-center sm:items-start text-center sm:text-left">
+                <div className="flex-1 flex flex-col gap-5 bg-black/10 backdrop-blur-md items-center sm:items-start text-center sm:text-left" style={{ padding: 'clamp(24px, 3vw, 36px)' }}>
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white transition-colors duration-300 line-clamp-2">
                     {article.title}
                   </h3>
-                  <p className="text-gray-600 dark:text-[#A0A0A0] text-sm leading-[1.8] flex-grow line-clamp-3">
+                  <p className="text-gray-600 dark:text-[#A0A0A0] text-sm leading-[1.8] flex-grow line-clamp-3 text-justify">
                     {article.description}
                   </p>
 
@@ -151,7 +151,7 @@ function Blog() {
                     {article.tags.map((tag, i) => (
                       <span
                         key={i}
-                        className="px-3 py-1 text-[10px] font-mono border border-black/10 dark:border-white/5 bg-black/[0.02] dark:bg-white/[0.02] text-gray-500 dark:text-white/40"
+                        className="px-4 py-2 bg-gray-100 dark:bg-[#1a1a1a] border border-gray-200 dark:border-white/[0.08] text-[11px] sm:text-xs text-gray-600 dark:text-gray-400 font-medium tracking-wide transition-colors duration-300"
                       >
                         {tag}
                       </span>

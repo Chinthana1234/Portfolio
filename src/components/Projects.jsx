@@ -3,32 +3,44 @@ import { FiGithub } from 'react-icons/fi'
 
 const projects = [
   {
-    title: 'Stall Reservation System',
-    description: 'A full-stack reservation system allowing users to book stalls efficiently. Features an interactive UI, real-time availability checking, and a robust backend architecture for seamless transaction management.',
-    tech: ['Spring Boot', 'React', 'MySQL'],
-    github: 'https://github.com/Chinthana1234/sa-project', live: '#',
-    image: '/images/stall1.jpg',
+    title: 'CareerCoach AI',
+    type: 'Individual Project',
+    description: 'Developing an AI-powered career preparation platform featuring CV analysis, HR and technical mock interviews, LinkedIn profile reviews, and personalized career guidance. Building secure RESTful APIs using Spring Boot, Spring Security, JWT, and PostgreSQL.',
+    tech: ['React.js', 'Spring Boot', 'PostgreSQL', 'OpenAI API'],
+    github: 'https://github.com/Chinthana1234/CareerCoach-AI', live: '#',
+    image: '/images/career_coach_ai.png',
   },
   {
-    title: 'Food Management System',
-    description: 'A comprehensive management platform designed to track food inventory, process daily orders, and handle secure user authentication, streamlining operations for restaurant staff.',
-    tech: ['React', 'PHP', 'MongoDB'],
-    github: 'https://github.com/Chinthana1234/NA-HackDynamos', live: '#',
-    image: '/images/food1.jpeg',
+    title: 'Aura Gems',
+    type: 'Individual Project',
+    description: 'Built a full-stack MERN e-commerce platform featuring an admin dashboard, advanced product filtering, and Redux Toolkit for state management. Engineered secure backend systems with JWT authentication, Stripe/PayPal integrations, and Cloudinary.',
+    tech: ['Express.js', 'React', 'Node.js', 'MongoDB'],
+    github: 'https://github.com/Chinthana1234/MERN-Gemstone-Shop-', live: '#',
+    image: '/images/aura_gems.png',
   },
   {
-    title: 'Movie Hub',
-    description: 'A modern, highly responsive movie discovery web application. It leverages external APIs to fetch real-time data, using sleek styling and dynamic component rendering for a premium user experience.',
-    tech: ['React', 'Tailwind CSS'],
-    github: 'https://github.com/Chinthana1234/Movie-Hub', live: '#',
-    image: '/images/movie1.webp',
+    title: 'The Grand Ceylon',
+    type: 'Individual Project',
+    description: 'Built a containerized MERN-based hotel booking system using a microservices architecture. Developed a custom API Gateway to route User, Room, Booking, Payment, and Review services with secure JWT authentication.',
+    tech: ['Microservices', 'Node.js', 'React.js', 'Docker'],
+    github: 'https://github.com/Chinthana1234/hotel-booking-microservices', live: '#',
+    image: '/images/grand_ceylon.png',
   },
   {
-    title: 'Pet Store E-commerce',
-    description: 'An online pet store featuring a complete shopping cart system, dynamic product catalogs, and custom database integration to handle inventory, user profiles, and order history.',
-    tech: ['PHP', 'HTML/CSS', 'MySQL'],
+    title: 'StallRes',
+    type: 'Group Project',
+    description: 'Developed a full-stack stall reservation system for managing book fair exhibitor bookings. Implemented real-time availability tracking, role-based access control, automated confirmations, and an admin dashboard.',
+    tech: ['Spring Boot', 'React', 'MySQL', 'Tailwind CSS'],
+    github: 'https://github.com/nalinduash/sa-project', live: '#',
+    image: '/images/stallres.png',
+  },
+  {
+    title: 'Care4Pets',
+    type: 'Group Project',
+    description: 'Developed a full-stack e-commerce platform for pet owners. Implemented dynamic product browsing, shopping cart management, secure user authentication, and order processing with a dedicated admin dashboard.',
+    tech: ['PHP', 'MySQL', 'JavaScript', 'HTML/CSS'],
     github: 'https://github.com/Lochithya/Care4Pets', live: '#',
-    image: '/images/pets1.jpeg  ',
+    image: '/images/care4pets.png',
   },
 ]
 
@@ -103,9 +115,9 @@ function Projects() {
                 />
               </svg>
 
-              <div className="relative flex flex-col h-full bg-black/[0.03] dark:bg-[#1A1A1A] rounded-none overflow-hidden transition-all duration-300">
-                {/* Image Section - Reduced Height for mobile */}
-                <div className="relative h-[130px] sm:h-[220px] overflow-hidden">
+              <div className="relative flex flex-col h-full bg-[#fafafa] dark:bg-[#111111] rounded-none overflow-hidden transition-all duration-300">
+                {/* Image Section */}
+                <div className="relative h-[200px] sm:h-[260px] overflow-hidden group/image">
                   <motion.img
                     src={project.image}
                     alt={project.title}
@@ -113,35 +125,46 @@ function Projects() {
                     variants={{
                       hover: { scale: 1.05 }
                     }}
-                    transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+                    transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-[#1A1A1A] via-transparent to-transparent opacity-80" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-50" />
 
-                  {/* Action Links */}
-                  <div className="absolute top-4 right-4 flex gap-3 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 z-30">
+                  {/* Action Links at bottom left */}
+                  <div className="absolute bottom-4 left-4 flex gap-2 z-30">
                     <a href={project.github} target="_blank" rel="noopener noreferrer"
-                      className="w-9 h-9 rounded-xl bg-black/60 backdrop-blur-md border border-white/10 flex items-center justify-center text-white/70 hover:text-emerald-400 hover:border-emerald-500/30 transition-all duration-300">
-                      <FiGithub className="w-4 h-4" />
+                      className="w-10 h-10 bg-white/20 dark:bg-white/10 backdrop-blur-md flex items-center justify-center text-white hover:bg-white/40 transition-colors duration-300">
+                      <FiGithub className="w-5 h-5" />
                     </a>
+                    {project.live !== '#' && (
+                      <a href={project.live} target="_blank" rel="noopener noreferrer"
+                        className="w-10 h-10 bg-white/20 dark:bg-white/10 backdrop-blur-md flex items-center justify-center text-white hover:bg-white/40 transition-colors duration-300">
+                        <FiArrowRight className="w-5 h-5 -rotate-45" />
+                      </a>
+                    )}
                   </div>
                 </div>
 
-                {/* Content Section - Adjusted Padding */}
-                <div className="p-6 sm:p-10 flex-1 flex flex-col gap-5 bg-black/10 backdrop-blur-md items-center sm:items-start text-center sm:text-left">
-                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white transition-colors duration-300">
+                {/* Content Section */}
+                <div className="flex-1 flex flex-col items-start text-left" style={{ padding: 'clamp(24px, 3vw, 36px)' }}>
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-emerald-500 dark:text-emerald-400 mb-5 block">
+                    {project.type}
+                  </span>
+
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-6 transition-colors duration-300 leading-tight">
                     {project.title}
                   </h3>
-                  <p className="text-gray-600 dark:text-[#A0A0A0] text-sm leading-[1.6] flex-grow mb-4">
+
+                  <p className="text-gray-500 dark:text-[#8b95a5] text-[15px] leading-[1.85] flex-grow mb-10 text-justify">
                     {project.description}
                   </p>
 
-                  <div className="flex flex-col gap-4 mt-auto pt-4 border-t border-black/5 dark:border-white/5 w-full items-center sm:items-start">
+                  <div className="mt-auto w-full">
                     {/* Tech Tags */}
-                    <div className="flex flex-wrap gap-2.5 justify-center sm:justify-start">
+                    <div className="flex flex-wrap gap-3">
                       {project.tech.map((tech, i) => (
                         <span
                           key={i}
-                          className="text-[11px] sm:text-xs font-mono uppercase tracking-wider transition-all duration-300 text-gray-500 dark:text-[#A0A0A0] group-hover:text-[#10B981]"
+                          className="px-4 py-2 bg-gray-100 dark:bg-[#1a1a1a] border border-gray-200 dark:border-white/[0.08] text-[11px] sm:text-xs text-gray-600 dark:text-gray-400 font-medium tracking-wide transition-colors duration-300"
                         >
                           {tech}
                         </span>

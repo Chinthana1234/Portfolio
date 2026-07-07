@@ -39,7 +39,7 @@ function Contact() {
     setIsSubmitting(true)
 
     try {
-      const response = await fetch("https://formsubmit.co/ajax/chinthanasandeepa123@gmail.com", {
+      const response = await fetch("https://formsubmit.co/ajax/chinthana.devs@gmail.com", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -87,7 +87,7 @@ function Contact() {
     {
       id: 'email',
       label: 'Email',
-      value: 'chinthanasandeepa123@gmail.com',
+      value: 'chinthana.devs@gmail.com',
       icon: <FiMail className="w-5 h-5" />,
     },
     {
