@@ -8,7 +8,7 @@ const education = [
     degree: 'Bachelor of Science in Software Engineering',
     institution: 'University of Kelaniya',
     period: '2024 – Present',
-    grade: 'CGPA: 3.30 / 4.0',
+    grade: 'CGPA: 3.68 / 4.0',
     description:
       'Specializing in Net-Centric Web Application Development, Data Science and Engineering Application, Health Informatic Engineering domains.',
   },
