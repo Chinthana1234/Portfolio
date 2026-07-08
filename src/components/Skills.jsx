@@ -17,18 +17,18 @@ const skills = [
   { name: 'Tailwind', icon: SiTailwindcss },
   { name: 'Redux', icon: SiRedux },
   { name: 'Vite', icon: SiVite },
-  
+
   { name: 'Java', icon: FaJava },
   { name: 'Spring Boot', icon: SiSpringboot },
   { name: 'Node.js', icon: SiNodedotjs },
   { name: 'Express', icon: SiExpress },
   { name: 'PHP', icon: SiPhp },
-  
+
   { name: 'MongoDB', icon: SiMongodb },
   { name: 'MySQL', icon: SiMysql },
   { name: 'PostgreSQL', icon: SiPostgresql },
   { name: 'Redis', icon: SiRedis },
-  
+
   { name: 'AWS', icon: FaAws },
   { name: 'Docker', icon: SiDocker },
   { name: 'Git', icon: SiGit },
